@@ -21,11 +21,16 @@
 *.lai
 *.la
 *.a
+*.lib
+*.ilk
 
 # Executables
 *.exe
 *.out
 *.app
 *.tlog
+*.log
 *.idb
 *.pdb
+*.exp
+*.opendb

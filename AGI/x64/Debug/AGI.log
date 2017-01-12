@@ -1,1 +1,16 @@
-﻿
+﻿  AGI.cpp
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(85): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(88): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(107): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(110): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(116): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(117): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(147): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(150): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(151): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(169): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(181): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(182): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+     Creating library C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\AGI.lib and object C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\AGI.exp
+  AGI.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\AGI.dll
+  AGI.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\AGI.pdb (Partial PDB)
