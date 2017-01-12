@@ -34,3 +34,9 @@
 *.pdb
 *.exp
 *.opendb
+.vs/Erebus/v14/.suo
+AGI/x64/Debug/AGI.log
+Erebus/x64/Debug/Erebus.log
+Gear/x64/Debug/Gear.log
+Importer/x64/Debug/Importer.log
+Nurn/x64/Debug/Nurn.log
