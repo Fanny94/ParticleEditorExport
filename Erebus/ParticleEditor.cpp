@@ -12,7 +12,6 @@ bool button = false;
 ParticleEditor::ParticleEditor()
 {
 	this->running = true;
-	//nrPs.numPS = 1;
 	p.numOfParticles = 50;
 	p.lifeTime = 1;
 	p.speed = 10;
@@ -75,8 +74,6 @@ void ParticleEditor::start()
 		deltaTime = counter.getDeltaTime();
 		inputs.update();
 
-		update(deltaTime);
-
 		camera.updateLevelEditorCamera(deltaTime);
 
 		ps.at(0)->updateParticleEditor(deltaTime, tempNumberParticles, tempLifeTime, tempSpeed, tempEmitPerSecond, tempNrOfParticlesPerEmit);
@@ -95,32 +92,6 @@ void ParticleEditor::start()
 	
 	TwTerminate();
 	glfwTerminate();
-}
-
-void ParticleEditor::update(float dt)
-{
-	if (lifeTime = lifeTime)
-	{
-		setAlive();
-	}
-
-	lifeTime = lifeTime - dt;
-	if (lifeTime <= 0)
-	{
-		setAlive();
-	}
-}
-
-void ParticleEditor::setAlive()
-{
-	ps.at(0)->activate();
-}
-
-void ParticleEditor::die(const float & dt)
-{
-	ps.at(0)->deActivate();
-	//ps.at(0)->updateWhenDead(dt);
-
 }
 
 void TW_CALL ParticleEditor::addParticle(void*)
@@ -155,7 +126,6 @@ void ParticleEditor::setBar()
 
 void ParticleEditor::writeToFile()
 {
-
 	std::string texture;
 
 	FILE* file = NULL;
@@ -163,7 +133,6 @@ void ParticleEditor::writeToFile()
 
 	if (file)
 	{
-
 		fwrite(&p, sizeof(particle), 1, file);
 
 		fclose(file);

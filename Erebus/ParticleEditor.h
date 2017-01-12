@@ -19,9 +19,6 @@ public:
 	ParticleEditor();
 	~ParticleEditor();
 	void start();
-	void update(float dt);
-	void setAlive();
-	void die(const float & dt);
 
 	static void TW_CALL addParticle(void*);
 	void setBar();
