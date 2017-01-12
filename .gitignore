@@ -23,5 +23,9 @@
 *.a
 
 # Executables
+*.exe
 *.out
 *.app
+*.tlog
+*.idb
+*.pdb
