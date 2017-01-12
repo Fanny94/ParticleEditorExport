@@ -203,6 +203,8 @@
     <None Include="Scripts\projectile.lua" />
     <None Include="Scripts\test.lua" />
     <None Include="Shaders\anim.frag" />
+    <None Include="Shaders\anim.geom" />
+    <None Include="Shaders\anim.vert" />
     <None Include="Shaders\debugAABB.frag" />
     <None Include="Shaders\debugAABB.geom" />
     <None Include="Shaders\debugAABB.vert" />
@@ -224,6 +226,8 @@
     <None Include="Shaders\geometryPass_notInstanced.vert" />
     <None Include="Shaders\geometryPicking.frag" />
     <None Include="Shaders\geometryPicking.vert" />
+    <None Include="Shaders\g_Buffer.frag" />
+    <None Include="Shaders\g_Buffer.vert" />
     <None Include="Shaders\heightmap.frag" />
     <None Include="Shaders\heightmap.vert" />
     <None Include="Shaders\lightPass.frag" />
