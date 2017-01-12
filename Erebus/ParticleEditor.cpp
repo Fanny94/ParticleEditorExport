@@ -2,8 +2,11 @@
 
 inline void TwEventMouseButtonGLFW3(GLFWwindow* window, int button, int action, int mods) { TwEventMouseButtonGLFW(button, action); }
 inline void TwEventMousePosGLFW3(GLFWwindow* window, double xpos, double ypos) { TwMouseMotion(int(xpos), int(ypos)); }
-glm::vec3 tempColor;
-glm::vec3 tempPos;
+int tempNumberParticles;
+float tempLifeTime;
+float tempSpeed;
+float tempEmitPerSecond;
+int tempNrOfParticlesPerEmit;
 bool button = false;
 
 ParticleEditor::ParticleEditor()
@@ -76,7 +79,7 @@ void ParticleEditor::start()
 
 		camera.updateLevelEditorCamera(deltaTime);
 
-		ps.at(0)->updateParticleEditor(deltaTime);
+		ps.at(0)->updateParticleEditor(deltaTime, tempNumberParticles, tempLifeTime, tempSpeed, tempEmitPerSecond, tempNrOfParticlesPerEmit);
 
 		engine.queueParticles(&ps);
 
@@ -127,8 +130,11 @@ void TW_CALL ParticleEditor::addParticle(void*)
 
 void ParticleEditor::setBar()
 {
-	tempPos = { 1.0, 0.0, 0.0 };
-	tempColor = { 0.0, 0.5, 0.5 };
+	tempNumberParticles = 50;
+	tempLifeTime = 1;
+	tempSpeed = 10;
+	tempEmitPerSecond = 15;
+	tempNrOfParticlesPerEmit = 5;
 
 	editorBarName = "ParticleEditorBar";
 
@@ -136,11 +142,13 @@ void ParticleEditor::setBar()
 
 	TwDefine("ParticleEditorBar label='Particle Editor' position='0 0' size='300 720'resizable=false buttonalign=right color='192 255 192' movable=false");
 
-	TwAddVarRW(editorBar, "Position", TW_TYPE_DIR3F, &tempPos, " label='Position' opened=true");
-	TwAddVarRW(editorBar, "Color", TW_TYPE_COLOR3F, &tempColor, " label='Color' opened=true");
-	//TwAddVarRW(editorBar, "Duration", TW_TYPE_FLOAT, &tempDuration, " label='Duration' min=0 max=10 step=0.01");
-	//TwAddVarRW(editorBar, "Speed", TW_TYPE_FLOAT, &tempSpeed, " label='Speed' min=1 max=10 step=0.1");
-	//TwAddVarRW(editorBar, "Angle", TW_TYPE_FLOAT, &tempAngle, " label='Angle' min=0 max=180 step=1");
+	//TwAddVarRW(editorBar, "Position", TW_TYPE_DIR3F, &tempPos, " label='Position' opened=true");
+	//TwAddVarRW(editorBar, "Color", TW_TYPE_COLOR3F, &tempColor, " label='Color' opened=true");
+	TwAddVarRW(editorBar, "Number Particles", TW_TYPE_INT32, &tempNumberParticles, "label='Number Particles' min=0");
+	TwAddVarRW(editorBar, "Life Time", TW_TYPE_FLOAT, &tempLifeTime, "label='Life Time' min=0 step=0.1");
+	TwAddVarRW(editorBar, "Speed", TW_TYPE_FLOAT, &tempSpeed, "label='Speed' min=1 step=0.1");
+	TwAddVarRW(editorBar, "Emits per Second", TW_TYPE_FLOAT, &tempEmitPerSecond, "label='Emits / Sec' min=1");
+	TwAddVarRW(editorBar, "Number of Particles per Emit", TW_TYPE_INT32, &tempNrOfParticlesPerEmit, "label='Particles / Emit' min=0");
 	TwAddSeparator(editorBar, "Sep", NULL);
 	TwAddButton(editorBar, "AddParticleButton", addParticle, NULL, "label='Add Particle'");
 }

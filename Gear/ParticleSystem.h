@@ -24,7 +24,7 @@ namespace Gear
 		GEAR_API ~ParticleSystem();
 
 		GEAR_API void update(const float &dt);
-		GEAR_API void updateParticleEditor(const float &dt);
+		GEAR_API void updateParticleEditor(const float &dt, int n, int life, float speed, float rate, int number);
 		GEAR_API void explode();
 		GEAR_API void updateWhenDead(const float & dt);
 		GEAR_API GLuint getPartVertexBuffer();
