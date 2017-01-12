@@ -1,19 +1,19 @@
 ﻿  UDPSocket.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\nurn\udpsocket.cpp(16): warning C4244: '=': conversion from 'SOCKET' to 'int', possible loss of data
+c:\users\taccoa\documents\github\particleeditorexport\nurn\udpsocket.cpp(16): warning C4244: '=': conversion from 'SOCKET' to 'int', possible loss of data
   UDPCommunication.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\nurn\udpcommunication.cpp(59): warning C4800: 'int32_t': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\taccoa\documents\github\particleeditorexport\nurn\udpcommunication.cpp(59): warning C4800: 'int32_t': forcing value to bool 'true' or 'false' (performance warning)
   TCPSocket.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\nurn\tcpsocket.cpp(15): warning C4244: '=': conversion from 'SOCKET' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\nurn\tcpsocket.cpp(62): warning C4244: 'initializing': conversion from 'SOCKET' to 'int', possible loss of data
+c:\users\taccoa\documents\github\particleeditorexport\nurn\tcpsocket.cpp(15): warning C4244: '=': conversion from 'SOCKET' to 'int', possible loss of data
+c:\users\taccoa\documents\github\particleeditorexport\nurn\tcpsocket.cpp(62): warning C4244: 'initializing': conversion from 'SOCKET' to 'int', possible loss of data
   TCPCommunication.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\nurn\tcpcommunication.cpp(74): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\taccoa\documents\github\particleeditorexport\nurn\tcpcommunication.cpp(74): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
   Socket.cpp
   Nurn.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\nurn\nurn.hpp(59): warning C4251: 'Nurn::NurnEngine::netCommunication': class 'Nurn::TCPCommunication' needs to have dll-interface to be used by clients of class 'Nurn::NurnEngine'
-  c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\nurn\tcpcommunication.hpp(7): note: see declaration of 'Nurn::TCPCommunication'
+c:\users\taccoa\documents\github\particleeditorexport\nurn\nurn.hpp(59): warning C4251: 'Nurn::NurnEngine::netCommunication': class 'Nurn::TCPCommunication' needs to have dll-interface to be used by clients of class 'Nurn::NurnEngine'
+  c:\users\taccoa\documents\github\particleeditorexport\nurn\tcpcommunication.hpp(7): note: see declaration of 'Nurn::TCPCommunication'
   Communication.cpp
   Address.cpp
   Generating Code...
-     Creating library C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Nurn.lib and object C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Nurn.exp
-  Nurn.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Nurn.dll
-  Nurn.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Nurn.pdb (Full PDB)
+     Creating library C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\Nurn.lib and object C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\Nurn.exp
+  Nurn.vcxproj -> C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\Nurn.dll
+  Nurn.vcxproj -> C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\Nurn.pdb (Full PDB)

@@ -69,7 +69,7 @@ namespace Gear
 		}
 	}
 
-	GEAR_API void ParticleSystem::updateParticleEditor(const float & dt)
+	GEAR_API void ParticleSystem::updateParticleEditor(const float & dt, int n, int life, float speed, float rate, int number)
 	{
 
 		if (isActive)
@@ -77,15 +77,15 @@ namespace Gear
 			if (alive)
 			{
 				timer += dt;
-				if (timer > particleRate)
+				if (timer > /*particleRate*/(1 / rate))
 				{
 					glm::vec3 tempVec = this->position + direction * length; //circle pos
 					glm::vec3 temp2;
 					int i = 0;
-					while (nrOfActiveParticles < maxParticles && partPerRate > i++)
+					while (nrOfActiveParticles < n/*maxParticles*/ && number/*partPerRate*/ > i++)
 					{
 						particlePos[nrOfActiveParticles] = this->position;
-						allParticles[nrOfActiveParticles].lifeSpan = this->lifeTime;
+						allParticles[nrOfActiveParticles].lifeSpan = life/*this->lifeTime*/;
 						//allParticles[nrOfActiveParticles++].direction = glm::normalize(glm::vec3((rand() % 1 - 2), (rand() % 1 - 2), (rand() % 1 - 2))) + tempVec; //circle
 						temp2 = glm::normalize(glm::vec3((rand() % 5 - 10), (rand() % 5 - 10), (rand() % 5 - 10))) + tempVec;
 						allParticles[nrOfActiveParticles++].direction = glm::normalize(temp2 - this->position);
@@ -99,7 +99,7 @@ namespace Gear
 				if (allParticles[i].lifeSpan > 0.0)
 				{
 					allParticles[i].direction.y += gravityFactor * dt;
-					float randomSpeed = rand() % (int)partSpeed;
+					float randomSpeed = rand() % (int)speed/*partSpeed*/;
 					particlePos[i] += allParticles[i].direction * randomSpeed * dt;
 				}
 				else
@@ -126,17 +126,6 @@ namespace Gear
 		}
 		isActive = true;
 		alive = false;
-	}
-
-	GEAR_API void ParticleSystem::updateWhenDead(const float & dt)
-	{
-		/*nrOfActiveParticles = 0;*/
-		nrOfActiveParticles = maxParticles;	
-		alive = true;
-		isActive = true;
-		updateParticleEditor(dt);
-	/*	isActive = true;
-		alive = false;*/
 	}
 
 	GLuint ParticleSystem::getPartVertexBuffer()
