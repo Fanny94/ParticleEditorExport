@@ -7,10 +7,10 @@ float tempLifeTime;
 float tempSpeed;
 float tempEmitPerSecond;
 int tempNrOfParticlesPerEmit;
-bool button = false;
 bool button1 = false;
+bool button2 = false;
 Importer::TextureAsset* pTexture;
-Importer::TextureAsset* particlesTexture;
+Importer::TextureAsset* particlesTexture1;
 Importer::TextureAsset* particlesTexture2;
 char* pTexString;
 
@@ -52,7 +52,7 @@ void ParticleEditor::start()
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
 	
-	particlesTexture = assets.load<TextureAsset>("Textures/fireball.png");
+	particlesTexture1 = assets.load<TextureAsset>("Textures/fireball.png");
 	particlesTexture2 = assets.load<TextureAsset>("Textures/red.png");
 
 	PerformanceCounter counter;
@@ -68,7 +68,7 @@ void ParticleEditor::start()
 
 	ps.at(0)->setEmmiterPos(tempVec);
 	ps.at(0)->isActive = true;
-	pTexture = particlesTexture;
+	pTexture = particlesTexture1;
 
 	while (running == true && window.isWindowOpen())
 	{
@@ -102,12 +102,12 @@ void ParticleEditor::start()
 
 void TW_CALL ParticleEditor::addParticle(void*)
 {
-	button = true;
+	button1 = true;
 }
 
 void TW_CALL ParticleEditor::addParticle1(void*)
 {
-	button1 = true;
+	button2 = true;
 }
 
 void ParticleEditor::setBar()
@@ -153,16 +153,16 @@ void ParticleEditor::writeToFile()
 
 void ParticleEditor::update()
 {
-	if (button == true)
-	{
-		pTexture = particlesTexture;
-		button = false;
-		pTexString = "fireball.png";
-	}
 	if (button1 == true)
 	{
-		pTexture = particlesTexture2;
+		pTexture = particlesTexture1;
 		button1 = false;
+		pTexString = "fireball.png";
+	}
+	if (button2 == true)
+	{
+		pTexture = particlesTexture2;
+		button2 = false;
 		pTexString = "red.png";
 	}
 }
