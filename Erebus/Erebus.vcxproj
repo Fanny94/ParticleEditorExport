@@ -150,11 +150,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Controls.cpp" />
     <ClCompile Include="ParticleEditor.cpp" />
     <ClCompile Include="PerformanceCounter.cpp" />
     <ClCompile Include="source.cpp" />
-    <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gear\Gear.vcxproj">
@@ -182,12 +180,8 @@
     <None Include="Shaders\particle.vert" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Controls.h" />
     <ClInclude Include="ParticleEditor.h" />
     <ClInclude Include="PerformanceCounter.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
