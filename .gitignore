@@ -47,5 +47,6 @@ Erebus/Erebus.vcxproj.filters
 Erebus/x64/Debug/Erebus.log
 Gear/Gear.vcxproj
 Gear/x64/Debug/Gear.log
-*.suo
-Erebus.VC.db
+AGI/x64/Debug/AGI.vcxprojResolveAssemblyReference.cache
+Erebus/x64/Debug/Erebus.vcxprojResolveAssemblyReference.cache
+Gear/x64/Debug/Gear.vcxprojResolveAssemblyReference.cache
