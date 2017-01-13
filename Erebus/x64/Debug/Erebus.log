@@ -1,100 +1,5 @@
-﻿  ParticleEditor.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(85): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(88): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(107): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(110): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\particleeditor.cpp(78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\particleeditor.cpp(80): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\particleeditor.cpp(82): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\particleeditor.cpp(82): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\particleeditor.cpp(162): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
-  Generating Code...
-  Compiling...
-  source.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\nurn\nurn.hpp(59): warning C4251: 'Nurn::NurnEngine::netCommunication': class 'Nurn::TCPCommunication' needs to have dll-interface to be used by clients of class 'Nurn::NurnEngine'
-  c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\nurn\tcpcommunication.hpp(7): note: see declaration of 'Nurn::TCPCommunication'
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(85): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(88): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(107): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(110): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(116): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(117): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(147): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(150): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(151): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(169): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(181): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(182): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  LuaParticles.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luaparticles.cpp(35): warning C4244: 'argument': conversion from 'lua_Integer' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luaparticles.cpp(35): warning C4244: 'argument': conversion from 'lua_Number' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luaparticles.cpp(44): warning C4244: 'initializing': conversion from 'lua_Integer' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luaparticles.cpp(57): warning C4244: 'initializing': conversion from 'lua_Integer' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luaparticles.cpp(66): warning C4244: 'initializing': conversion from 'lua_Integer' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luaparticles.cpp(75): warning C4244: 'initializing': conversion from 'lua_Integer' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luaparticles.cpp(84): warning C4244: 'initializing': conversion from 'lua_Integer' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luaparticles.cpp(85): warning C4244: 'argument': conversion from 'lua_Number' to 'float', possible loss of data
-  LuaGear.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(85): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(88): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(107): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(110): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luagear.cpp(62): warning C4244: 'initializing': conversion from 'lua_Integer' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luagear.cpp(79): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luagear.cpp(99): warning C4244: 'initializing': conversion from 'lua_Integer' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luagear.cpp(118): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luagear.cpp(140): warning C4244: 'initializing': conversion from 'lua_Number' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luagear.cpp(141): warning C4244: 'initializing': conversion from 'lua_Number' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luagear.cpp(175): warning C4244: 'initializing': conversion from 'lua_Number' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luagear.cpp(176): warning C4244: 'initializing': conversion from 'lua_Integer' to 'int', possible loss of data
-  LuaErebus.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(85): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(88): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(107): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(110): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luaerebus.cpp(30): warning C4244: 'initializing': conversion from 'lua_Integer' to 'int', possible loss of data
-  LuaControls.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(85): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(88): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(107): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(110): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-  LuaCamera.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(85): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(88): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(107): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(110): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luacamera.cpp(35): warning C4244: '=': conversion from 'lua_Number' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luacamera.cpp(36): warning C4244: '=': conversion from 'lua_Number' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luacamera.cpp(37): warning C4244: '=': conversion from 'lua_Number' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luacamera.cpp(38): warning C4244: '=': conversion from 'lua_Number' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luacamera.cpp(39): warning C4244: '=': conversion from 'lua_Integer' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luacamera.cpp(40): warning C4244: '=': conversion from 'lua_Number' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luacamera.cpp(53): warning C4244: '=': conversion from 'lua_Number' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luacamera.cpp(54): warning C4244: '=': conversion from 'lua_Number' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luacamera.cpp(55): warning C4244: '=': conversion from 'lua_Number' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luacamera.cpp(56): warning C4244: '=': conversion from 'lua_Number' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luacamera.cpp(57): warning C4244: '=': conversion from 'lua_Number' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luacamera.cpp(58): warning C4244: '=': conversion from 'lua_Number' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luacamera.cpp(67): warning C4244: 'initializing': conversion from 'lua_Integer' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luacamera.cpp(85): warning C4244: 'initializing': conversion from 'lua_Number' to 'float', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\luacamera.cpp(91): warning C4244: 'initializing': conversion from 'lua_Integer' to 'int', possible loss of data
-  LuaBinds.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(85): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(88): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(107): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(110): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(116): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(117): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(147): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(150): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(151): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(169): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(181): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\agi\agi.h(182): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+﻿C:\Program Files (x86)\MSBuild\14.0\bin\Microsoft.Common.CurrentVersion.targets(1611,5): warning : The referenced project '..\Nurn\Nurn.vcxproj' does not exist.
   LevelEditor.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\nurn\nurn.hpp(59): warning C4251: 'Nurn::NurnEngine::netCommunication': class 'Nurn::TCPCommunication' needs to have dll-interface to be used by clients of class 'Nurn::NurnEngine'
-  c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\nurn\tcpcommunication.hpp(7): note: see declaration of 'Nurn::TCPCommunication'
 c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(85): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
 c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(88): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
 c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(107): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
@@ -111,12 +16,6 @@ c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\ere
 c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\leveleditor.cpp(89): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\leveleditor.cpp(112): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\erebus\leveleditor.cpp(115): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-  Controls.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(85): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(88): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(107): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(110): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-  Generating Code...
      Creating library C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Erebus.lib and object C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Erebus.exp
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
 LuaLib.lib(lapi.obj) : warning LNK4099: PDB 'LuaLib.pdb' was not found with 'LuaLib.lib(lapi.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\LuaLib.pdb'; linking object as if no debug info

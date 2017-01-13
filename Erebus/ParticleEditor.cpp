@@ -18,7 +18,7 @@ ParticleEditor::ParticleEditor()
 	p.emitPerSecond = 15;
 	p.nrOfParticlesPerEmit = 5;
 
-	char* ptr = "fireball";
+	char* ptr = "fireball.png";
 	memcpy(&p.textureName, ptr, sizeof(const char[32]));	
 	
 	lifeTime = 3;

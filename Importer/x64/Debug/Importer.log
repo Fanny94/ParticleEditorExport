@@ -1,53 +1,26 @@
-﻿  TextureAsset.cpp
-  ParticleImport.cpp
-  ModelAsset.cpp
-  MaterialAsset.cpp
-c:\users\taccoa\documents\github\particleeditorexport\importer\materialasset.cpp(31): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-c:\users\taccoa\documents\github\particleeditorexport\importer\materialasset.cpp(47): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
-c:\users\taccoa\documents\github\particleeditorexport\importer\materialasset.cpp(117): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\taccoa\documents\github\particleeditorexport\importer\materialasset.cpp(138): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\taccoa\documents\github\particleeditorexport\importer\materialasset.cpp(155): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
-  ImageAsset.cpp
-c:\users\taccoa\documents\github\particleeditorexport\importer\imageasset.cpp(117): warning C4018: '<': signed/unsigned mismatch
-  HeightMap.cpp
-c:\users\taccoa\documents\github\particleeditorexport\gear\staticnonmodels.h(85): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\taccoa\documents\github\particleeditorexport\gear\staticnonmodels.h(88): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\taccoa\documents\github\particleeditorexport\gear\staticnonmodels.h(107): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\taccoa\documents\github\particleeditorexport\gear\staticnonmodels.h(110): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\taccoa\documents\github\particleeditorexport\importer\heightmap.cpp(238): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\taccoa\documents\github\particleeditorexport\importer\heightmap.cpp(238): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\taccoa\documents\github\particleeditorexport\importer\heightmap.cpp(292): warning C4267: 'initializing': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\taccoa\documents\github\particleeditorexport\importer\heightmap.cpp(353): warning C4267: 'argument': conversion from 'size_t' to 'glm::tvec4<float,0>::length_type', possible loss of data
-c:\users\taccoa\documents\github\particleeditorexport\importer\heightmap.cpp(353): warning C4267: 'argument': conversion from 'size_t' to 'glm::tvec3<float,0>::length_type', possible loss of data
-c:\users\taccoa\documents\github\particleeditorexport\importer\heightmap.cpp(445): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\taccoa\documents\github\particleeditorexport\importer\heightmap.cpp(446): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\taccoa\documents\github\particleeditorexport\importer\heightmap.cpp(448): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\taccoa\documents\github\particleeditorexport\importer\heightmap.cpp(449): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  FontAsset.cpp
-  Assets.cpp
-  Generating Code...
-     Creating library C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\Importer.lib and object C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\Importer.exp
-libpng_d.lib(png.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(png.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
-libpng_d.lib(pngerror.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngerror.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
-libpng_d.lib(pngget.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngget.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
-libpng_d.lib(pngmem.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngmem.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
-libpng_d.lib(pngread.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngread.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
-libpng_d.lib(pngrio.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngrio.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
-libpng_d.lib(pngrtran.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngrtran.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
-libpng_d.lib(pngrutil.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngrutil.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
-libpng_d.lib(pngset.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngset.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
-libpng_d.lib(pngtrans.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngtrans.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
-libpng_d.lib(pngwio.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngwio.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
-libpng_d.lib(pngwrite.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngwrite.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
-libpng_d.lib(pngwtran.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngwtran.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
-libpng_d.lib(pngwutil.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngwutil.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
-zlib_d.lib(adler32.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(adler32.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
-zlib_d.lib(crc32.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(crc32.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
-zlib_d.lib(deflate.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(deflate.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
-zlib_d.lib(inffast.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(inffast.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
-zlib_d.lib(inflate.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(inflate.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
-zlib_d.lib(inftrees.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(inftrees.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
-zlib_d.lib(trees.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(trees.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
-zlib_d.lib(zutil.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(zutil.obj)' or at 'C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
-  Importer.vcxproj -> C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\Importer.dll
-  Importer.vcxproj -> C:\Users\Taccoa\Documents\GitHub\ParticleEditorExport\x64\Debug\Importer.pdb (Partial PDB)
+﻿  ParticleImport.cpp
+     Creating library C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Importer.lib and object C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Importer.exp
+libpng_d.lib(png.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(png.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngerror.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngerror.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngget.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngget.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngmem.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngmem.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngread.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngread.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngrio.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngrio.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngrtran.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngrtran.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngrutil.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngrutil.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngset.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngset.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngtrans.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngtrans.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngwio.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngwio.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngwrite.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngwrite.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngwtran.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngwtran.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngwutil.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngwutil.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+zlib_d.lib(adler32.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(adler32.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
+zlib_d.lib(crc32.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(crc32.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
+zlib_d.lib(deflate.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(deflate.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
+zlib_d.lib(inffast.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(inffast.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
+zlib_d.lib(inflate.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(inflate.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
+zlib_d.lib(inftrees.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(inftrees.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
+zlib_d.lib(trees.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(trees.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
+zlib_d.lib(zutil.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(zutil.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
+  Importer.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Importer.dll
+  Importer.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Importer.pdb (Partial PDB)
