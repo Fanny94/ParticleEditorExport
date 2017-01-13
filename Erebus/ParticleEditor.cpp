@@ -99,7 +99,6 @@ void ParticleEditor::start()
 		window.update();
 	}
 	
-	writeToFile();
 	TwTerminate();
 	glfwTerminate();
 }
@@ -117,6 +116,11 @@ void TW_CALL ParticleEditor::newTexture2(void*)
 void TW_CALL ParticleEditor::reset(void *)
 {
 	buttonReset = true;
+}
+
+void TW_CALL ParticleEditor::save(void *)
+{
+	buttonSave = true;
 }
 
 void ParticleEditor::setBar()
@@ -147,11 +151,14 @@ void ParticleEditor::setBar()
 	TwAddButton(editorBar, "Red Texture", newTexture2, NULL, "label='Red Texture'");
 	TwAddSeparator(editorBar, "Sep2", NULL);
 	TwAddButton(editorBar, "Reset", reset, NULL, "label='Reset'");
+	TwAddButton(editorBar, "Save", save, NULL, "label='Save'");
 }
 
 void ParticleEditor::writeToFile()
 {
 	std::string texture;
+
+	updateParticle();
 
 	char* ptr = pTexString;
 	memcpy(&p.textureName, ptr, sizeof(const char[32]));
@@ -195,4 +202,20 @@ void ParticleEditor::update()
 		pTexture = particlesTexture1;
 		buttonReset = false;
 	}
+	if (buttonSave == true)
+	{
+		writeToFile();
+		buttonSave = false;
+	}
+}
+
+void ParticleEditor::updateParticle()
+{
+	p.emitPerSecond = tempEmitPerSecond;
+	p.focusSpread = tempFocusSpread;
+	p.gravity = tempGravity;
+	p.lifeTime = tempLifeTime;
+	p.nrOfParticlesPerEmit = tempNrOfParticlesPerEmit;
+	p.numOfParticles = tempNumberParticles;
+	p.speed = tempSpeed;
 }

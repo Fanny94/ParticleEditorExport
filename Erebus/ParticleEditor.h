@@ -23,9 +23,11 @@ public:
 	static void TW_CALL newTexture1(void*);
 	static void TW_CALL newTexture2(void*);
 	static void TW_CALL reset(void*);
+	static void TW_CALL save(void*);
 	void setBar();
 	void writeToFile();
 	void update();
+	void updateParticle();
 
 	struct particle
 	{
