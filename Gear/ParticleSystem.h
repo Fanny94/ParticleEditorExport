@@ -39,6 +39,8 @@ namespace Gear
 		GEAR_API Color getColor() const;
 		GEAR_API void setTextrue(Importer::TextureAsset* tAParticles);
 		GEAR_API Importer::TextureAsset* getTexture();
+
+		GEAR_API void resetEmitter();
 		bool isActive;
 		bool alive;
 

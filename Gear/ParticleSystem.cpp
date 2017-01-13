@@ -72,50 +72,6 @@ namespace Gear
 		}
 	}
 
-
-	GEAR_API void ParticleSystem::updateParticleEditor(const float & dt, int n, int life, float speed, float rate, int number, float focusSpread, float gravity, glm::vec3 direction)
-	{
-		
-		if (isActive)
-		{
-			if (alive)
-			{
-				timer += dt;
-				if (timer > /*particleRate*/(1 / rate))
-				{
-					glm::vec3 tempVec = this->position + this->direction * focusSpread /*focus*/; //circle pos
-					glm::vec3 temp2;
-					int i = 0;
-					while (nrOfActiveParticles < n/*maxParticles*/ && number/*partPerRate*/ > i++)
-					{
-						particlePos[nrOfActiveParticles] = this->position;
-						allParticles[nrOfActiveParticles].lifeSpan = life/*this->lifeTime*/;
-						temp2 = glm::normalize(glm::vec3((rand() % 5 - 10), (rand() % 5 - 10), (rand() % 5 - 10))) + tempVec;
-						allParticles[nrOfActiveParticles++].direction = glm::normalize(temp2 - this->position);
-					}
-					timer = 0;
-				}
-			}
-			for (int i = 0; i < nrOfActiveParticles; i++)
-			{
-				allParticles[i].lifeSpan -= dt;
-				if (allParticles[i].lifeSpan > 0.0)
-				{
-					allParticles[i].direction.y += /*gravityFactor*/ gravity * dt;
-					float randomSpeed = rand() % (int)speed/*partSpeed*/;
-					particlePos[i] += allParticles[i].direction * randomSpeed * dt;
-				}
-				else
-				{
-					particlePos[i] = particlePos[nrOfActiveParticles - 1];
-					allParticles[i] = allParticles[--nrOfActiveParticles];
-					if (nrOfActiveParticles <= 0)
-						isActive = false;
-				}
-			}
-		}
-	}
-
 	void ParticleSystem::explode()
 	{
 		nrOfActiveParticles = 0;
@@ -129,6 +85,17 @@ namespace Gear
 		}
 		isActive = true;
 		alive = false;
+	}
+
+	void ParticleSystem::resetEmitter()
+	{
+		for (int i = 0; i < this->maxParticles; i++)
+		{
+			particlePos[i] = this->position;
+			allParticles[i].lifeSpan = 0;
+			allParticles[i].direction = { 0, 0, 0 };
+		}
+		nrOfActiveParticles = 0;
 	}
 
 	GLuint ParticleSystem::getPartVertexBuffer()
