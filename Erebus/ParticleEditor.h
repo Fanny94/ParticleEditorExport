@@ -21,8 +21,10 @@ public:
 	void start();
 
 	static void TW_CALL addParticle(void*);
+	static void TW_CALL addParticle1(void*);
 	void setBar();
 	void writeToFile();
+	void update();
 
 	struct particle
 	{

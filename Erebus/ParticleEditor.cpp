@@ -8,6 +8,11 @@ float tempSpeed;
 float tempEmitPerSecond;
 int tempNrOfParticlesPerEmit;
 bool button = false;
+bool button1 = false;
+Importer::TextureAsset* pTexture;
+Importer::TextureAsset* particlesTexture;
+Importer::TextureAsset* particlesTexture2;
+char* pTexString;
 
 ParticleEditor::ParticleEditor()
 {
@@ -17,9 +22,6 @@ ParticleEditor::ParticleEditor()
 	p.speed = 10;
 	p.emitPerSecond = 15;
 	p.nrOfParticlesPerEmit = 5;
-
-	char* ptr = "fireball.png";
-	memcpy(&p.textureName, ptr, sizeof(const char[32]));	
 	
 	lifeTime = 3;
 }
@@ -50,9 +52,8 @@ void ParticleEditor::start()
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
 	
-	Importer::TextureAsset* particlesTexture = assets.load<TextureAsset>("Textures/fireball.png");
-
-	writeToFile();
+	particlesTexture = assets.load<TextureAsset>("Textures/fireball.png");
+	particlesTexture2 = assets.load<TextureAsset>("Textures/red.png");
 
 	PerformanceCounter counter;
 	double deltaTime;
@@ -67,10 +68,12 @@ void ParticleEditor::start()
 
 	ps.at(0)->setEmmiterPos(tempVec);
 	ps.at(0)->isActive = true;
-	ps.at(0)->setTextrue(particlesTexture);
+	pTexture = particlesTexture;
 
 	while (running == true && window.isWindowOpen())
 	{
+		ps.at(0)->setTextrue(pTexture);
+
 		deltaTime = counter.getDeltaTime();
 		inputs.update();
 
@@ -85,11 +88,14 @@ void ParticleEditor::start()
 		if (inputs.keyPressed(GLFW_KEY_ESCAPE))
 			running = false;
 
+		update();
+
 		glfwPollEvents();
 		TwDraw();
 		window.update();
 	}
 	
+	writeToFile();
 	TwTerminate();
 	glfwTerminate();
 }
@@ -97,6 +103,11 @@ void ParticleEditor::start()
 void TW_CALL ParticleEditor::addParticle(void*)
 {
 	button = true;
+}
+
+void TW_CALL ParticleEditor::addParticle1(void*)
+{
+	button1 = true;
 }
 
 void ParticleEditor::setBar()
@@ -117,12 +128,16 @@ void ParticleEditor::setBar()
 	TwAddVarRW(editorBar, "Emits per Second", TW_TYPE_FLOAT, &tempEmitPerSecond, "label='Emits / Sec' min=1");
 	TwAddVarRW(editorBar, "Number of Particles per Emit", TW_TYPE_INT32, &tempNrOfParticlesPerEmit, "label='Particles / Emit' min=0");
 	TwAddSeparator(editorBar, "Sep", NULL);
-	TwAddButton(editorBar, "AddParticleButton", addParticle, NULL, "label='Add Particle'");
+	TwAddButton(editorBar, "Fireball Texture", addParticle, NULL, "label='Fireball Texture'");
+	TwAddButton(editorBar, "Red Texture", addParticle1, NULL, "label='Red Texture'");
 }
 
 void ParticleEditor::writeToFile()
 {
 	std::string texture;
+
+	char* ptr = pTexString;
+	memcpy(&p.textureName, ptr, sizeof(const char[32]));
 
 	FILE* file = NULL;
 	file = fopen("particle.dp", "wb");
@@ -134,4 +149,20 @@ void ParticleEditor::writeToFile()
 		fclose(file);
 	}
 	int x = 0;
+}
+
+void ParticleEditor::update()
+{
+	if (button == true)
+	{
+		pTexture = particlesTexture;
+		button = false;
+		pTexString = "fireball.png";
+	}
+	if (button1 == true)
+	{
+		pTexture = particlesTexture2;
+		button1 = false;
+		pTexString = "red.png";
+	}
 }
