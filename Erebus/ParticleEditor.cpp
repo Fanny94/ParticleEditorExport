@@ -9,9 +9,11 @@ float tempEmitPerSecond;
 int tempNrOfParticlesPerEmit;
 float tempGravity;
 float tempFocusSpread;
+glm::vec3 tempDirection;
 bool button1 = false;
 bool button2 = false;
 bool buttonReset = false;
+bool buttonSave = false;
 Importer::TextureAsset* pTexture;
 Importer::TextureAsset* particlesTexture1;
 Importer::TextureAsset* particlesTexture2;
@@ -66,10 +68,7 @@ void ParticleEditor::start()
 	engine.addDebugger(Debugger::getInstance());
 
 	ps.push_back(new Gear::ParticleSystem(p.numOfParticles, p.lifeTime, p.speed, p.emitPerSecond, p.nrOfParticlesPerEmit));
-
-	glm::vec3 tempVec = { 0, 0, -2 };
-
-	ps.at(0)->setEmmiterPos(tempVec);
+	
 	ps.at(0)->isActive = true;
 	pTexture = particlesTexture1;
 	pTexString = "fireball.png";
@@ -77,13 +76,14 @@ void ParticleEditor::start()
 	while (running == true && window.isWindowOpen())
 	{
 		ps.at(0)->setTextrue(pTexture);
+		ps.at(0)->setEmmiterPos(tempDirection);
 
 		deltaTime = counter.getDeltaTime();
 		inputs.update();
 
 		camera.updateLevelEditorCamera(deltaTime);
 
-		ps.at(0)->updateParticleEditor(deltaTime, tempNumberParticles, tempLifeTime, tempSpeed, tempEmitPerSecond, tempNrOfParticlesPerEmit, tempFocusSpread, tempGravity);
+		ps.at(0)->updateParticleEditor(deltaTime, tempNumberParticles, tempLifeTime, tempSpeed, tempEmitPerSecond, tempNrOfParticlesPerEmit, tempFocusSpread, tempGravity, tempDirection);
 
 		engine.queueParticles(&ps);
 
@@ -128,6 +128,7 @@ void ParticleEditor::setBar()
 	tempNrOfParticlesPerEmit = 5;
 	tempFocusSpread = 0;
 	tempGravity = 0.0;
+	tempDirection = { 0, 0, -2 };
 
 	editorBar = TwNewBar("ParticleEditorBar");
 
@@ -140,6 +141,7 @@ void ParticleEditor::setBar()
 	TwAddVarRW(editorBar, "Number of Particles per Emit", TW_TYPE_INT32, &tempNrOfParticlesPerEmit, "label='Particles / Emit' min=0");
 	TwAddVarRW(editorBar, "Focus Spread", TW_TYPE_FLOAT, &tempFocusSpread, "label='Focus Spread' step=0.1");
 	TwAddVarRW(editorBar, "Gravity", TW_TYPE_FLOAT, &tempGravity, "label='Gravity' step=0.1");
+	TwAddVarRW(editorBar, "Direction", TW_TYPE_DIR3F, &tempDirection, "label='Direction' opened=true");
 	TwAddSeparator(editorBar, "Sep1", NULL);
 	TwAddButton(editorBar, "Fireball Texture", newTexture1, NULL, "label='Fireball Texture'");
 	TwAddButton(editorBar, "Red Texture", newTexture2, NULL, "label='Red Texture'");
@@ -189,6 +191,7 @@ void ParticleEditor::update()
 		tempNrOfParticlesPerEmit = 5;
 		tempFocusSpread = 0;
 		tempGravity = 0.0;
+		tempDirection = { 0, 0, -2 };
 		pTexture = particlesTexture1;
 		buttonReset = false;
 	}

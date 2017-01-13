@@ -24,7 +24,7 @@ namespace Gear
 		GEAR_API ~ParticleSystem();
 
 		GEAR_API void update(const float &dt);
-		GEAR_API void updateParticleEditor(const float & dt, int n, int life, float speed, float rate, int number, float focusSpread, float gravity);
+		GEAR_API void updateParticleEditor(const float & dt, int n, int life, float speed, float rate, int number, float focusSpread, float gravity, glm::vec3 direction);
 		GEAR_API void explode();
 		GEAR_API GLuint getPartVertexBuffer();
 		GEAR_API void setEmmiterPos(glm::vec3 pos);

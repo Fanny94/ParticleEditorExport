@@ -68,7 +68,7 @@ namespace Gear
 		}
 	}
 
-	GEAR_API void ParticleSystem::updateParticleEditor(const float & dt, int n, int life, float speed, float rate, int number, float focusSpread, float gravity)
+	GEAR_API void ParticleSystem::updateParticleEditor(const float & dt, int n, int life, float speed, float rate, int number, float focusSpread, float gravity, glm::vec3 direction)
 	{
 
 		if (isActive)
