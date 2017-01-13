@@ -153,38 +153,27 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="BaseIncludes.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="Debug.h" />
-    <ClInclude Include="DebugHandler.h" />
     <ClInclude Include="Gear.h" />
     <ClInclude Include="Inputs.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="Light.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Particles.h" />
     <ClInclude Include="ParticleSystem.h" />
-    <ClInclude Include="Ray.h" />
     <ClInclude Include="RenderQueue.h" />
-    <ClInclude Include="RenderQueueElement.h" />
     <ClInclude Include="ShaderCreator.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="staticNonModels.h" />
-    <ClInclude Include="TextRenderer.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Debug.cpp" />
-    <ClCompile Include="DebugHandler.cpp" />
     <ClCompile Include="Gear.cpp" />
     <ClCompile Include="Inputs.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Particles.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
-    <ClCompile Include="Ray.cpp" />
     <ClCompile Include="RenderQueue.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
-    <ClCompile Include="TextRenderer.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>

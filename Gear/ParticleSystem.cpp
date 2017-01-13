@@ -71,7 +71,7 @@ namespace Gear
 
 	GEAR_API void ParticleSystem::updateParticleEditor(const float & dt, int n, int life, float speed, float rate, int number)
 	{
-
+		
 		if (isActive)
 		{
 			if (alive)
@@ -86,7 +86,6 @@ namespace Gear
 					{
 						particlePos[nrOfActiveParticles] = this->position;
 						allParticles[nrOfActiveParticles].lifeSpan = life/*this->lifeTime*/;
-						//allParticles[nrOfActiveParticles++].direction = glm::normalize(glm::vec3((rand() % 1 - 2), (rand() % 1 - 2), (rand() % 1 - 2))) + tempVec; //circle
 						temp2 = glm::normalize(glm::vec3((rand() % 5 - 10), (rand() % 5 - 10), (rand() % 5 - 10))) + tempVec;
 						allParticles[nrOfActiveParticles++].direction = glm::normalize(temp2 - this->position);
 					}

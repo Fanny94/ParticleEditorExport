@@ -111,20 +111,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AGI.h" />
-    <ClInclude Include="InfluenceNode.h" />
-    <ClInclude Include="RadiusInfluenceNode.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Gear\Gear.vcxproj">
       <Project>{7ae8f691-75c9-447c-ae7b-63364e8daa79}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Importer\Importer.vcxproj">
       <Project>{56d70726-725f-48e5-b935-71a5451ccd72}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="AGI.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

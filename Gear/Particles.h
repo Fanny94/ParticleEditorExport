@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseIncludes.h"
-#include "RenderQueueElement.h"
 #include "ShaderProgram.h"
 
 struct ParticlePoint
@@ -15,14 +14,14 @@ struct ParticlePoint
 
 namespace Gear
 {
-	class Particle : public RenderQueueElement
+	class Particle 
 	{
 	public:
 
 		GEAR_API Particle();
 		GEAR_API Particle(glm::vec3 pos, glm::vec3 color, glm::vec3 speed, float duration);
 		GEAR_API ~Particle();
-		GEAR_API virtual void draw(const GLuint &shaderProgramId) override;
+		GEAR_API virtual void draw(const GLuint &shaderProgramId);
 		GEAR_API void update(glm::vec3 &speed);
 		GEAR_API bool isDead();
 

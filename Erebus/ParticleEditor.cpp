@@ -59,8 +59,6 @@ void ParticleEditor::start()
 	bool lockMouse = false;
 	window.changeCursorStatus(lockMouse);
 
-	engine.addDebugger(Debugger::getInstance());
-
 	ps.push_back(new Gear::ParticleSystem(p.numOfParticles, p.lifeTime, p.speed, p.emitPerSecond, p.nrOfParticlesPerEmit));
 
 	glm::vec3 tempVec = { 0, 0, -2 };
@@ -89,9 +87,7 @@ void ParticleEditor::start()
 		TwDraw();
 		window.update();
 	}
-	
 	TwTerminate();
-	glfwTerminate();
 }
 
 void TW_CALL ParticleEditor::addParticle(void*)

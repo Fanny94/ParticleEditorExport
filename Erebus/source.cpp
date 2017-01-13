@@ -8,7 +8,6 @@ int main()
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	ParticleEditor particleEditor;
 	particleEditor.start();
-	return 0;
-	
+	return 0;	
 }
 

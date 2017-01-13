@@ -58,7 +58,8 @@ ShaderProgram::ShaderProgram(shaderBaseType type, std::string shaderName) : Shad
 
 ShaderProgram::~ShaderProgram()
 {
-	glDeleteProgram(programID);
+	if(programID != 0)
+		glDeleteProgram(programID);
 	if (textureIDs != nullptr)
 		delete textureIDs;
 	if (shaderIDs != nullptr)
