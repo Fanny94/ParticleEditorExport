@@ -119,7 +119,6 @@
   <ItemGroup>
     <ClInclude Include="Assets.h" />
     <ClInclude Include="FontAsset.h" />
-    <ClInclude Include="HeightMap.h" />
     <ClInclude Include="ImageAsset.h" />
     <ClInclude Include="Importer.h" />
     <ClInclude Include="MaterialAsset.h" />
@@ -130,7 +129,6 @@
   <ItemGroup>
     <ClCompile Include="Assets.cpp" />
     <ClCompile Include="FontAsset.cpp" />
-    <ClCompile Include="HeightMap.cpp" />
     <ClCompile Include="ImageAsset.cpp" />
     <ClCompile Include="MaterialAsset.cpp" />
     <ClCompile Include="ModelAsset.cpp" />

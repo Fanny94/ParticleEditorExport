@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseIncludes.h"
-#include "HeightMap.h"
 
 
 class Transform
