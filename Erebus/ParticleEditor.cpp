@@ -136,14 +136,10 @@ void ParticleEditor::setBar()
 	tempEmitPerSecond = 15;
 	tempNrOfParticlesPerEmit = 5;
 
-	editorBarName = "ParticleEditorBar";
-
-	editorBar = TwNewBar(editorBarName.c_str());
+	editorBar = TwNewBar("ParticleEditorBar");
 
 	TwDefine("ParticleEditorBar label='Particle Editor' position='0 0' size='300 720'resizable=false buttonalign=right color='192 255 192' movable=false");
 
-	//TwAddVarRW(editorBar, "Position", TW_TYPE_DIR3F, &tempPos, " label='Position' opened=true");
-	//TwAddVarRW(editorBar, "Color", TW_TYPE_COLOR3F, &tempColor, " label='Color' opened=true");
 	TwAddVarRW(editorBar, "Number Particles", TW_TYPE_INT32, &tempNumberParticles, "label='Number Particles' min=0");
 	TwAddVarRW(editorBar, "Life Time", TW_TYPE_FLOAT, &tempLifeTime, "label='Life Time' min=1 step=0.1");
 	TwAddVarRW(editorBar, "Speed", TW_TYPE_FLOAT, &tempSpeed, "label='Speed' min=1 step=0.1");
@@ -155,7 +151,6 @@ void ParticleEditor::setBar()
 
 void ParticleEditor::writeToFile()
 {
-
 	std::string texture;
 
 	FILE* file = NULL;
@@ -169,5 +164,4 @@ void ParticleEditor::writeToFile()
 		fclose(file);
 	}
 	int x = 0;
-
 }

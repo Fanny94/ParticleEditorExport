@@ -45,7 +45,6 @@ private:
 	Window window;
 	std::vector<Gear::ParticleSystem*> ps;
 	TwBar * editorBar;
-	std::string editorBarName;
 	particle p;
 	TextureAsset* textureAsset;
 };

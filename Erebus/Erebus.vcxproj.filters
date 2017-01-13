@@ -90,20 +90,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\AI\BasicEnemyAI.lua" />
-    <None Include="Scripts\AI\states.lua" />
-    <None Include="Scripts\arc.lua" />
-    <None Include="Scripts\basespell.lua" />
-    <None Include="Scripts\bullets.lua" />
-    <None Include="Scripts\camera.lua" />
-    <None Include="Scripts\cameraLevelEditor.lua" />
-    <None Include="Scripts\enemies.lua" />
-    <None Include="Scripts\level.lua" />
-    <None Include="Scripts\main.lua" />
-    <None Include="Scripts\particle.lua" />
-    <None Include="Scripts\player.lua" />
-    <None Include="Scripts\projectile.lua" />
-    <None Include="Scripts\test.lua" />
     <None Include="Shaders\anim.frag">
       <Filter>Shaders</Filter>
     </None>
@@ -218,6 +204,48 @@
     <None Include="Shaders\g_Buffer.vert">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="Scripts\arc.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="Scripts\cameraLevelEditor.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="Scripts\basespell.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="Scripts\AI\BasicEnemyAI.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="Scripts\bullets.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="Scripts\camera.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="Scripts\enemies.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="Scripts\level.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="Scripts\main.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="Scripts\particle.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="Scripts\player.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="Scripts\projectile.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="Scripts\AI\states.lua">
+      <Filter>Lua</Filter>
+    </None>
+    <None Include="Scripts\test.lua">
+      <Filter>Lua</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Shaders">
@@ -225,6 +253,9 @@
     </Filter>
     <Filter Include="Headers">
       <UniqueIdentifier>{751d6f35-63f4-420e-89d5-add56e2b7fd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua">
+      <UniqueIdentifier>{edd57d12-c2ee-49b5-b159-9c8b601ed997}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
