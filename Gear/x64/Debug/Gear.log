@@ -1,3 +1,21 @@
-﻿     Creating library C:\Users\Maggan\Desktop\ParticleEditorExport\x64\Debug\Gear.lib and object C:\Users\Maggan\Desktop\ParticleEditorExport\x64\Debug\Gear.exp
+﻿  Animation.cpp
+c:\users\maggan\desktop\particleeditorexport\gear\animation.cpp(54): warning C4305: 'initializing': truncation from 'int' to 'float'
+c:\users\maggan\desktop\particleeditorexport\gear\animation.cpp(55): warning C4305: 'initializing': truncation from 'int' to 'float'
+c:\users\maggan\desktop\particleeditorexport\gear\animation.cpp(45): warning C4101: 'joint': unreferenced local variable
+  Generating Code...
+  Compiling...
+  Gear.cpp
+c:\users\maggan\desktop\particleeditorexport\gear\staticnonmodels.h(85): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+c:\users\maggan\desktop\particleeditorexport\gear\staticnonmodels.h(88): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+c:\users\maggan\desktop\particleeditorexport\gear\staticnonmodels.h(107): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+c:\users\maggan\desktop\particleeditorexport\gear\staticnonmodels.h(110): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+  Generating Code...
+  Compiling...
+  RenderQueue.cpp
+c:\users\maggan\desktop\particleeditorexport\gear\renderqueue.cpp(51): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+c:\users\maggan\desktop\particleeditorexport\gear\renderqueue.cpp(35): warning C4101: 'c': unreferenced local variable
+c:\users\maggan\desktop\particleeditorexport\gear\renderqueue.cpp(36): warning C4101: 'tA': unreferenced local variable
+  Generating Code...
+     Creating library C:\Users\Maggan\Desktop\ParticleEditorExport\x64\Debug\Gear.lib and object C:\Users\Maggan\Desktop\ParticleEditorExport\x64\Debug\Gear.exp
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Gear.vcxproj -> C:\Users\Maggan\Desktop\ParticleEditorExport\x64\Debug\Gear.dll

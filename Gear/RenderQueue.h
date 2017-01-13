@@ -10,6 +10,7 @@
 #include <algorithm>
 #include "Animation.h"
 
+
 using namespace Importer;
 struct ModelInstance
 {
