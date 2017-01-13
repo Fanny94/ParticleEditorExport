@@ -1,5 +1,7 @@
-﻿  TextureAsset.cpp
-  ParticleImport.cpp
+﻿  Assets.cpp
+  Generating Code...
+  Compiling...
+  TextureAsset.cpp
   ModelAsset.cpp
   MaterialAsset.cpp
 c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\importer\materialasset.cpp(31): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
@@ -10,7 +12,6 @@ c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\imp
   ImageAsset.cpp
 c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\importer\imageasset.cpp(117): warning C4018: '<': signed/unsigned mismatch
   FontAsset.cpp
-  Assets.cpp
   Generating Code...
      Creating library C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Importer.lib and object C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Importer.exp
 libpng_d.lib(png.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(png.obj)' or at 'C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
