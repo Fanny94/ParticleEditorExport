@@ -20,8 +20,9 @@ public:
 	~ParticleEditor();
 	void start();
 
-	static void TW_CALL addParticle(void*);
-	static void TW_CALL addParticle1(void*);
+	static void TW_CALL newTexture1(void*);
+	static void TW_CALL newTexture2(void*);
+	static void TW_CALL reset(void*);
 	void setBar();
 	void writeToFile();
 	void update();
@@ -33,6 +34,8 @@ public:
 		float speed;
 		float emitPerSecond;
 		int nrOfParticlesPerEmit;
+		float gravity;
+		float focusSpread;
 		/*float dirX, dirY, dirZ;*/
 		char textureName[32];
 	};

@@ -20,8 +20,7 @@ namespace Gear
 		particleRate = 1 / rate;
 		partPerRate = number;
 		direction = { 1, 0, 0 };
-		length = 0;
-	
+		focus = 0;
 	}
 
 	ParticleSystem::~ParticleSystem()
@@ -69,7 +68,7 @@ namespace Gear
 		}
 	}
 
-	GEAR_API void ParticleSystem::updateParticleEditor(const float & dt, int n, int life, float speed, float rate, int number)
+	GEAR_API void ParticleSystem::updateParticleEditor(const float & dt, int n, int life, float speed, float rate, int number, float focusSpread, float gravity)
 	{
 
 		if (isActive)
@@ -79,7 +78,7 @@ namespace Gear
 				timer += dt;
 				if (timer > /*particleRate*/(1 / rate))
 				{
-					glm::vec3 tempVec = this->position + direction * length; //circle pos
+					glm::vec3 tempVec = this->position + direction * focusSpread /*focus*/; //circle pos
 					glm::vec3 temp2;
 					int i = 0;
 					while (nrOfActiveParticles < n/*maxParticles*/ && number/*partPerRate*/ > i++)
@@ -98,7 +97,7 @@ namespace Gear
 				allParticles[i].lifeSpan -= dt;
 				if (allParticles[i].lifeSpan > 0.0)
 				{
-					allParticles[i].direction.y += gravityFactor * dt;
+					allParticles[i].direction.y += /*gravityFactor*/ gravity * dt;
 					float randomSpeed = rand() % (int)speed/*partSpeed*/;
 					particlePos[i] += allParticles[i].direction * randomSpeed * dt;
 				}
