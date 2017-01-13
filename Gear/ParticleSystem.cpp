@@ -38,24 +38,28 @@ namespace Gear
 				timer += dt;
 				if (timer > particleRate)
 				{
+					glm::vec3 tempVec = this->position + direction * focus; //emit direction
+					glm::vec3 temp2;
 					int i = 0;
 					while (nrOfActiveParticles < maxParticles && partPerRate > i++)
 					{
 						particlePos[nrOfActiveParticles] = this->position;
 						allParticles[nrOfActiveParticles].lifeSpan = this->lifeTime;
-						allParticles[nrOfActiveParticles++].direction = glm::vec3(rand() % 10 - 5, rand() % 5 - 2.5, rand() % 5 - 2.5);
-						
+						temp2 = glm::normalize(glm::vec3((rand() % 20 - 10), (rand() % 20 - 10), (rand() % 20 - 10))) + tempVec;
+						allParticles[nrOfActiveParticles++].direction = glm::normalize(temp2 - this->position);
 					}
 					timer = 0;
 				}
 			}
+			float randomSpeed;
 			for (int i = 0; i < nrOfActiveParticles; i++)
 			{
 				allParticles[i].lifeSpan -= dt;
 				if (allParticles[i].lifeSpan > 0.0)
 				{
 					allParticles[i].direction.y += gravityFactor * dt;
-					particlePos[i] += allParticles[i].direction * partSpeed * dt;
+					randomSpeed = rand() % (int)partSpeed;
+					particlePos[i] += allParticles[i].direction * randomSpeed * dt;
 				}
 				else
 				{
@@ -68,6 +72,7 @@ namespace Gear
 		}
 	}
 
+
 	GEAR_API void ParticleSystem::updateParticleEditor(const float & dt, int n, int life, float speed, float rate, int number, float focusSpread, float gravity, glm::vec3 direction)
 	{
 		
@@ -78,7 +83,7 @@ namespace Gear
 				timer += dt;
 				if (timer > /*particleRate*/(1 / rate))
 				{
-					glm::vec3 tempVec = this->position + direction * focusSpread /*focus*/; //circle pos
+					glm::vec3 tempVec = this->position + this->direction * focusSpread /*focus*/; //circle pos
 					glm::vec3 temp2;
 					int i = 0;
 					while (nrOfActiveParticles < n/*maxParticles*/ && number/*partPerRate*/ > i++)
@@ -134,6 +139,11 @@ namespace Gear
 	void ParticleSystem::setEmmiterPos(glm::vec3 pos)
 	{
 		this->position = pos;
+	}
+
+	void ParticleSystem::setDirection(glm::vec3 dir)
+	{
+		this->direction = dir;
 	}
 
 	GEAR_API int ParticleSystem::getNrOfActiveParticles()

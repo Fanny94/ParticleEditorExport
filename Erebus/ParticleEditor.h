@@ -26,7 +26,7 @@ public:
 	void setBar();
 	void writeToFile();
 	void update();
-	void updateParticle();
+	void updateSystem();
 
 	struct particle
 	{
