@@ -18,9 +18,11 @@ bool buttonReset = false;
 bool hardReset = false;
 bool buttonSave = false;
 Importer::TextureAsset* pTexture;
-Importer::TextureAsset* particlesTexture1;
-Importer::TextureAsset* particlesTexture2;
+Importer::TextureAsset* particlesTexture;
 char* pTexString;
+std::string textureName = "fireball.png";
+std::string saveName = "particle";
+Importer::Assets assets;
 
 ParticleEditor::ParticleEditor(): selectedEmitter(0), nrOfEmitters(1)
 {
@@ -63,8 +65,7 @@ void ParticleEditor::start()
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
 	
-	particlesTexture1 = assets.load<TextureAsset>("Textures/fireball.png");
-	particlesTexture2 = assets.load<TextureAsset>("Textures/red.png");
+	particlesTexture = assets.load<TextureAsset>("Textures/fireball.png");
 
 	PerformanceCounter counter;
 	double deltaTime;
@@ -72,7 +73,7 @@ void ParticleEditor::start()
 	window.changeCursorStatus(false);
 	
 	ps.at(selectedEmitter)->isActive = false;
-	pTexture = particlesTexture1;
+	pTexture = particlesTexture;
 	pTexString = "fireball.png";
 	ps.at(selectedEmitter)->setTextrue(pTexture);
 	engine.queueParticles(&ps);
@@ -135,14 +136,9 @@ void ParticleEditor::start()
 	TwTerminate();
 }
 
-void TW_CALL ParticleEditor::newTexture1(void*)
+void TW_CALL ParticleEditor::newTexture(void*)
 {
 	button1 = true;
-}
-
-void TW_CALL ParticleEditor::newTexture2(void*)
-{
-	button2 = true;
 }
 
 void TW_CALL ParticleEditor::start(void*)
@@ -163,6 +159,30 @@ void TW_CALL ParticleEditor::reset(void *)
 void TW_CALL ParticleEditor::save(void *)
 {
 	buttonSave = true;
+}
+
+void TW_CALL SetTextureStringCB(const void *value, void *clientData)
+{
+	const std::string *srcPtr = static_cast<const std::string *>(value);
+	textureName = *srcPtr;
+}
+
+void TW_CALL GetTextureStringCB(void *value, void *)
+{
+	std::string *destPtr = static_cast<std::string *>(value);
+	TwCopyStdStringToLibrary(*destPtr, textureName);
+}
+
+void TW_CALL SetSaveNameStringCB(const void *value, void *clientData)
+{
+	const std::string *srcPtr = static_cast<const std::string *>(value);
+	saveName = *srcPtr;
+}
+
+void TW_CALL GetSaveNameStringCB(void *value, void *)
+{
+	std::string *destPtr = static_cast<std::string *>(value);
+	TwCopyStdStringToLibrary(*destPtr, saveName);
 }
 
 void ParticleEditor::setBar()
@@ -194,10 +214,11 @@ void ParticleEditor::setBar()
 	TwAddSeparator(editorBar, "Sep1", NULL);
 	TwAddButton(editorBar, "Activate", start, NULL, "label='Activate'");
 	TwAddButton(editorBar, "Add Emitter", addEmitter, NULL, "label='Add Emitter'");
-	TwAddButton(editorBar, "Fireball Texture", newTexture1, NULL, "label='Fireball Texture'");
-	TwAddButton(editorBar, "Red Texture", newTexture2, NULL, "label='Red Texture'");
+	TwAddVarCB(editorBar, "Texture Name", TW_TYPE_STDSTRING, SetTextureStringCB, GetTextureStringCB, NULL, "label='Texture Name'");
+	TwAddButton(editorBar, "Load Texture", newTexture, NULL, "label='Load Texture'");
 	TwAddSeparator(editorBar, "Sep2", NULL);
 	TwAddButton(editorBar, "Reset", reset, NULL, "label='Reset'");
+	TwAddVarCB(editorBar, "Name of Saved File", TW_TYPE_STDSTRING, SetSaveNameStringCB, GetSaveNameStringCB, NULL, "label='Name of Saved File'");
 	TwAddButton(editorBar, "Save", save, NULL, "label='Save'");
 }
 
@@ -219,28 +240,25 @@ void ParticleEditor::update()
 {
 	if (button1 == true)
 	{
-		ps.at(selectedEmitter)->textureAssetParticles = particlesTexture1;
+		//particlesTexture->unload();
 		//particlesTexture->load("Textures/" + textureName, &assets);
+		particlesTexture = assets.load<TextureAsset>("Textures/" + textureName);
+		ps.at(selectedEmitter)->textureAssetParticles = particlesTexture;
+		pTexture = particlesTexture;
+		pTexString = (char*)textureName.c_str();
 		button1 = false;
-		pTexString = "fireball.png";
+
 	}
 	if (button2 == true)
 	{
-		ps.at(selectedEmitter)->textureAssetParticles = particlesTexture2;
+		ps.at(selectedEmitter)->textureAssetParticles = particlesTexture;
 		button2 = false;
 		pTexString = "red.png";
 	}
 	if (buttonReset == true)
 	{
-		/*tempNumberParticles = 50;
-		tempLifeTime = 1;
-		tempSpeed = 10;
-		tempEmitPerSecond = 15;
-		tempNrOfParticlesPerEmit = 5;
-		tempFocusSpread = 0;
-		tempGravity = 0.0;*/
 		ps.at(selectedEmitter)->resetEmitter();
-		pTexture = particlesTexture1;
+		pTexture = particlesTexture;
 		buttonReset = false;
 	}
 	if (newEmitter)
