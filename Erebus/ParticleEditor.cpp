@@ -71,11 +71,10 @@ void ParticleEditor::start()
 	ps.at(0)->isActive = false;
 	pTexture = particlesTexture;
 	pTexString = "fireball.png";
-	ps.at(0)->setTextrue(pTexture);
 	ps.at(0)->setEmmiterPos(glm::vec3(0, 0, -2));
-
 	ps.at(0)->direction = { 0, 5, 0 };
 	ps.at(0)->focus = 2;
+
 	while (running == true && window.isWindowOpen())
 	{
 		ps.at(0)->setTextrue(pTexture);
