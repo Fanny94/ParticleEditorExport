@@ -64,7 +64,7 @@ void ParticleEditor::start()
 	bool lockMouse = false;
 	window.changeCursorStatus(lockMouse);
 
-	Importer::ModelAsset* mA = assets.load<ModelAsset>("Models/cube.model");
+	//Importer::ModelAsset* mA = assets.load<ModelAsset>("Models/cube.model");
 
 	ps.push_back(new Gear::ParticleSystem(p.numOfParticles, p.lifeTime, p.speed, p.emitPerSecond, p.nrOfParticlesPerEmit));
 	

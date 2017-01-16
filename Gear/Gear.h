@@ -18,8 +18,8 @@ namespace Gear
 	private:
 		std::vector<staticNonModels*> statModels;
 
-		std::vector<ModelInstance>* staticModels;
-		std::vector<ModelInstance> defaultModelList = std::vector<ModelInstance>(0);
+		/*std::vector<ModelInstance>* staticModels;
+		std::vector<ModelInstance> defaultModelList = std::vector<ModelInstance>(0);*/
 
 		RenderQueue queue;	
 	/*	std::vector<ModelInstance>* dynamicModels;*/
