@@ -19,6 +19,8 @@ Importer::TextureAsset* pTexture;
 Importer::TextureAsset* particlesTexture1;
 Importer::TextureAsset* particlesTexture2;
 char* pTexString;
+std::string textureName = "fireball";
+std::string saveName = "particle";
 
 ParticleEditor::ParticleEditor()
 {
@@ -125,6 +127,30 @@ void TW_CALL ParticleEditor::save(void *)
 	buttonSave = true;
 }
 
+void TW_CALL SetTextureStringCB(const void *value, void *clientData)
+{
+	const std::string *srcPtr = static_cast<const std::string *>(value);
+	textureName = *srcPtr;
+}
+
+void TW_CALL GetTextureStringCB(void *value, void *)
+{
+	std::string *destPtr = static_cast<std::string *>(value);
+	TwCopyStdStringToLibrary(*destPtr, textureName);
+}
+
+void TW_CALL SetSaveNameStringCB(const void *value, void *clientData)
+{
+	const std::string *srcPtr = static_cast<const std::string *>(value);
+	saveName = *srcPtr;
+}
+
+void TW_CALL GetSaveNameStringCB(void *value, void *)
+{
+	std::string *destPtr = static_cast<std::string *>(value);
+	TwCopyStdStringToLibrary(*destPtr, saveName);
+}
+
 void ParticleEditor::setBar()
 {
 	tempNumberParticles = 50;
@@ -152,8 +178,10 @@ void ParticleEditor::setBar()
 	TwAddButton(editorBar, "Activate", start, NULL, "label='Activate'");
 	TwAddButton(editorBar, "Fireball Texture", newTexture1, NULL, "label='Fireball Texture'");
 	TwAddButton(editorBar, "Red Texture", newTexture2, NULL, "label='Red Texture'");
+	TwAddVarCB(editorBar, "Texture Name", TW_TYPE_STDSTRING, SetTextureStringCB, GetTextureStringCB, NULL, "label='Texture Name'");
 	TwAddSeparator(editorBar, "Sep2", NULL);
 	TwAddButton(editorBar, "Reset", reset, NULL, "label='Reset'");
+	TwAddVarCB(editorBar, "Name of Saved File", TW_TYPE_STDSTRING, SetSaveNameStringCB, GetSaveNameStringCB, NULL, "label='Name of Saved File'");
 	TwAddButton(editorBar, "Save", save, NULL, "label='Save'");
 }
 
@@ -163,7 +191,9 @@ void ParticleEditor::writeToFile()
 	char* ptr = pTexString;
 	memcpy(&p.textureName, ptr, sizeof(const char[32]));
 	FILE* file = NULL;
-	file = fopen("particle.dp", "wb");
+	saveName = saveName + ".dp";
+	const char* newString = saveName.c_str();
+	file = fopen(newString /*+ "particle.dp"*/, "wb");
 	if (file)
 	{
 		fwrite(&p, sizeof(particle), 1, file);
