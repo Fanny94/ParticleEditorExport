@@ -20,7 +20,7 @@ RenderQueue::RenderQueue()
 //
 RenderQueue::~RenderQueue()
 {
-    delete allShaders[ShaderType::PARTICLES];
+    delete allShaders[0];
 //	if (worldMatrices != nullptr)
 //		delete[] worldMatrices;
 //	for (size_t i = 0; i < ShaderType::NUM_SHADER_TYPES; i++)
@@ -68,7 +68,7 @@ RenderQueue::~RenderQueue()
 void RenderQueue::init()
 {
 //	/*allShaders[ShaderType::FORWARD] = new ShaderProgram(shaderBaseType::VERTEX_GEOMETRY_FRAGMENT, "forward");*/
-	allShaders[ShaderType::PARTICLES] = new ShaderProgram(shaderBaseType::VERTEX_GEOMETRY_FRAGMENT, "particle");
+	allShaders[0] = new ShaderProgram(shaderBaseType::VERTEX_GEOMETRY_FRAGMENT, "particle");
 }
 
 void RenderQueue::updateUniforms(Camera* camera)
@@ -81,10 +81,10 @@ void RenderQueue::updateUniforms(Camera* camera)
 	////allShaders[FORWARD]->addUniform(glm::vec3(1.0f, 1.0f, 1.0f), "lightColor");
 	//allShaders[FORWARD]->unUse();
 
-	allShaders[PARTICLES]->use();
-	allShaders[PARTICLES]->addUniform(camera->getProjectionMatrix(), "projectionMatrix");
-	allShaders[PARTICLES]->addUniform(camera->getViewMatrix(), "viewMatrix");
-	allShaders[PARTICLES]->unUse();
+	allShaders[0]->use();
+	allShaders[0]->addUniform(camera->getProjectionMatrix(), "projectionMatrix");
+	allShaders[0]->addUniform(camera->getViewMatrix(), "viewMatrix");
+	allShaders[0]->unUse();
 }
 
 //void RenderQueue::forwardPass(std::vector<ModelInstance>* staticModels, std::vector<ModelInstance>* dynamicModels)
@@ -126,8 +126,8 @@ void RenderQueue::updateUniforms(Camera* camera)
 
 void RenderQueue::particlePass(std::vector<Gear::ParticleSystem*>* particleSystems)
 {
-	allShaders[PARTICLES]->use();
-	GLuint loc = glGetUniformLocation(allShaders[PARTICLES]->getProgramID(), "particleSize");
+	allShaders[0]->use();
+	GLuint loc = glGetUniformLocation(allShaders[0]->getProgramID(), "particleSize");
 	glUniform1f(loc, 1.0);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -151,6 +151,6 @@ void RenderQueue::particlePass(std::vector<Gear::ParticleSystem*>* particleSyste
 			glDrawArraysInstanced(GL_POINTS, 0, ParticleCount, 1);
 		}
 	}
-	allShaders[PARTICLES]->unUse();
+	allShaders[0]->unUse();
 	glDisable(GL_BLEND);
 }
