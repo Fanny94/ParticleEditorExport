@@ -68,10 +68,8 @@ void ParticleEditor::start()
 
 	PerformanceCounter counter;
 	double deltaTime;
-	bool lockMouse = false;
-	window.changeCursorStatus(lockMouse);
 
-	
+	window.changeCursorStatus(false);
 	
 	ps.at(selectedEmitter)->isActive = false;
 	pTexture = particlesTexture1;
@@ -182,6 +180,7 @@ void ParticleEditor::setBar()
 
 	TwDefine("ParticleEditorBar label='Particle Editor' position='0 0' size='300 720'resizable=false buttonalign=right color='192 255 192' movable=false");
 
+	TwAddVarRO(editorBar, "Number of Emitters", TW_TYPE_INT32, &nrOfEmitters, "label='Number of Emitters' opened=true");
 	TwAddVarRO(editorBar, "Selected Emitter", TW_TYPE_INT32, &selectedEmitter, "label='Selected Emitter' opened=true");
 	TwAddVarRW(editorBar, "Number Particles", TW_TYPE_INT32, &tempNumberParticles, "label='Number Particles' min=0");
 	TwAddVarRW(editorBar, "Life Time", TW_TYPE_FLOAT, &tempLifeTime, "label='Life Time' min=1 step=0.1");
@@ -232,13 +231,13 @@ void ParticleEditor::update()
 	}
 	if (buttonReset == true)
 	{
-		tempNumberParticles = 50;
+		/*tempNumberParticles = 50;
 		tempLifeTime = 1;
 		tempSpeed = 10;
 		tempEmitPerSecond = 15;
 		tempNrOfParticlesPerEmit = 5;
 		tempFocusSpread = 0;
-		tempGravity = 0.0;
+		tempGravity = 0.0;*/
 		ps.at(selectedEmitter)->resetEmitter();
 		pTexture = particlesTexture1;
 		buttonReset = false;
