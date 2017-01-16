@@ -102,7 +102,7 @@ void ParticleEditor::start()
 	TwTerminate();
 }
 
-void TW_CALL ParticleEditor::newTexture1(void*)
+void TW_CALL ParticleEditor::newTexture(void*)
 {
 	button1 = true;
 }
@@ -172,7 +172,7 @@ void ParticleEditor::setBar()
 	TwAddSeparator(editorBar, "Sep1", NULL);
 	TwAddButton(editorBar, "Activate", start, NULL, "label='Activate'");
 	TwAddVarCB(editorBar, "Texture Name", TW_TYPE_STDSTRING, SetTextureStringCB, GetTextureStringCB, NULL, "label='Texture Name'");
-	TwAddButton(editorBar, "Load Texture", newTexture1, NULL, "label='Load Texture'");
+	TwAddButton(editorBar, "Load Texture", newTexture, NULL, "label='Load Texture'");
 	TwAddSeparator(editorBar, "Sep2", NULL);
 	TwAddButton(editorBar, "Reset", reset, NULL, "label='Reset'");
 	TwAddVarCB(editorBar, "Name of Saved File", TW_TYPE_STDSTRING, SetSaveNameStringCB, GetSaveNameStringCB, NULL, "label='Name of Saved File'");
