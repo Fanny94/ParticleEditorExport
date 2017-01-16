@@ -44,7 +44,7 @@ namespace Gear
 		GEAR_API void resetEmitter();
 		bool isActive;
 		bool alive;
-
+		float particleSize;
 		GLuint particleVertexBuffer;
 		glm::vec3 position;
 		glm::vec3 direction;

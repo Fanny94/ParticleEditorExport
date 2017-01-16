@@ -1,5 +1,10 @@
 ﻿  RenderQueue.cpp
-c:\users\maggan\desktop\particleeditorexport\gear\renderqueue.cpp(51): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+c:\users\maggan\desktop\particleeditorexport\gear\renderqueue.cpp(52): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
 c:\users\maggan\desktop\particleeditorexport\gear\renderqueue.cpp(35): warning C4101: 'c': unreferenced local variable
 c:\users\maggan\desktop\particleeditorexport\gear\renderqueue.cpp(36): warning C4101: 'tA': unreferenced local variable
+  ParticleSystem.cpp
+c:\users\maggan\desktop\particleeditorexport\gear\particlesystem.cpp(80): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Gear.cpp
   Gear.vcxproj -> C:\Users\Maggan\Desktop\ParticleEditorExport\x64\Debug\Gear.dll

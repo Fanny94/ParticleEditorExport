@@ -28,7 +28,7 @@ void RenderQueue::particlePass(std::vector<Gear::ParticleSystem*>* particleSyste
 {
 	allShaders[0]->use();
 	GLuint loc = glGetUniformLocation(allShaders[0]->getProgramID(), "particleSize");
-	glUniform1f(loc, 1.0);
+	
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -40,6 +40,7 @@ void RenderQueue::particlePass(std::vector<Gear::ParticleSystem*>* particleSyste
 	{
 		if (particleSystems->at(i)->isActive)
 		{
+			glUniform1f(loc, particleSystems->at(i)->particleSize);
 			pos = particleSystems->at(i)->getPositions();
 			particleSystems->at(i)->getTexture()->bind(GL_TEXTURE0);
 			size_t ParticleCount = particleSystems->at(i)->getNrOfActiveParticles();

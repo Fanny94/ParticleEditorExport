@@ -3,11 +3,11 @@
 
 namespace Gear
 {
-	ParticleSystem::ParticleSystem()
+	ParticleSystem::ParticleSystem(): particleSize(1.0)
 	{
 
 	}
-	ParticleSystem::ParticleSystem(int n, float life, float speed, float rate, int number) : isActive(false), timer(0)
+	ParticleSystem::ParticleSystem(int n, float life, float speed, float rate, int number) : isActive(false), timer(0), particleSize(1.0)
 	{
 		gravityFactor = 0.0;
 		maxParticles = n;

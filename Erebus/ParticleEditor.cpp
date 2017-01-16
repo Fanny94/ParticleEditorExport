@@ -9,6 +9,7 @@ float tempEmitPerSecond;
 int tempNrOfParticlesPerEmit;
 float tempGravity;
 float tempFocusSpread;
+float tempParticleSize;
 bool active = false;
 glm::vec3 tempDirection;
 bool button1 = false;
@@ -195,6 +196,7 @@ void ParticleEditor::setBar()
 	tempFocusSpread = 0;
 	tempGravity = 0.0;
 	tempDirection = { 0, 1, 0 };
+	tempParticleSize = 1.0;
 
 	editorBar = TwNewBar("ParticleEditorBar");
 
@@ -209,6 +211,7 @@ void ParticleEditor::setBar()
 	TwAddVarRW(editorBar, "Number of Particles per Emit", TW_TYPE_INT32, &tempNrOfParticlesPerEmit, "label='Particles / Emit' min=0");
 	TwAddVarRW(editorBar, "Focus Spread", TW_TYPE_FLOAT, &tempFocusSpread, "label='Focus Spread' step=0.1");
 	TwAddVarRW(editorBar, "Gravity", TW_TYPE_FLOAT, &tempGravity, "label='Gravity' step=0.1");
+	TwAddVarRW(editorBar, "Particle Size", TW_TYPE_FLOAT, &tempParticleSize, "label='Particle Size' step=0.1");
 	TwAddVarRW(editorBar, "Direction", TW_TYPE_DIR3F, &tempDirection, "label='Direction' opened=true");
 	TwAddVarRO(editorBar, "Position", TW_TYPE_DIR3F, &(ps.at(selectedEmitter)->position), "label='Position' opened=true");
 	TwAddSeparator(editorBar, "Sep1", NULL);
@@ -240,8 +243,6 @@ void ParticleEditor::update()
 {
 	if (button1 == true)
 	{
-		//particlesTexture->unload();
-		//particlesTexture->load("Textures/" + textureName, &assets);
 		particlesTexture = assets.load<TextureAsset>("Textures/" + textureName);
 		ps.at(selectedEmitter)->textureAssetParticles = particlesTexture;
 		pTexture = particlesTexture;
@@ -287,6 +288,7 @@ void ParticleEditor::updateSystem()
 	ps.at(selectedEmitter)->partSpeed = tempSpeed;
 	ps.at(selectedEmitter)->direction = tempDirection;
 	ps.at(selectedEmitter)->isActive = active;
+	ps.at(selectedEmitter)->particleSize = tempParticleSize;
 }
 
 void ParticleEditor::copyOverVariables()
@@ -299,4 +301,5 @@ void ParticleEditor::copyOverVariables()
 	tempGravity = ps.at(selectedEmitter)->gravityFactor;
 	tempFocusSpread = ps.at(selectedEmitter)->focus;
 	tempDirection = ps.at(selectedEmitter)->direction;
+	tempParticleSize = ps.at(selectedEmitter)->particleSize;
 }
