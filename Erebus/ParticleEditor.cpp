@@ -12,15 +12,14 @@ float tempFocusSpread;
 bool active = false;
 glm::vec3 tempDirection;
 bool button1 = false;
-bool button2 = false;
 bool buttonReset = false;
 bool buttonSave = false;
 Importer::TextureAsset* pTexture;
-Importer::TextureAsset* particlesTexture1;
-Importer::TextureAsset* particlesTexture2;
+Importer::TextureAsset* particlesTexture;
 char* pTexString;
-std::string textureName = "fireball";
+std::string textureName = "fireball.png";
 std::string saveName = "particle";
+Importer::Assets assets;
 
 ParticleEditor::ParticleEditor()
 {
@@ -41,8 +40,6 @@ ParticleEditor::~ParticleEditor()
 
 void ParticleEditor::start()
 {
-	Importer::Assets assets;
-
 	TwInit(TW_OPENGL_CORE, NULL);
 
 	Gear::GearEngine engine;
@@ -60,8 +57,7 @@ void ParticleEditor::start()
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
 	
-	particlesTexture1 = assets.load<TextureAsset>("Textures/fireball.png");
-	particlesTexture2 = assets.load<TextureAsset>("Textures/red.png");
+	particlesTexture = assets.load<TextureAsset>("Textures/fireball.png");
 
 	PerformanceCounter counter;
 	double deltaTime;
@@ -71,7 +67,7 @@ void ParticleEditor::start()
 	ps.push_back(new Gear::ParticleSystem(p.numOfParticles, p.lifeTime, p.speed, p.emitPerSecond, p.nrOfParticlesPerEmit));
 	
 	ps.at(0)->isActive = false;
-	pTexture = particlesTexture1;
+	pTexture = particlesTexture;
 	pTexString = "fireball.png";
 	ps.at(0)->setTextrue(pTexture);
 	ps.at(0)->setEmmiterPos(glm::vec3(0, 0, -2));
@@ -80,6 +76,7 @@ void ParticleEditor::start()
 	ps.at(0)->focus = 2;
 	while (running == true && window.isWindowOpen())
 	{
+		ps.at(0)->setTextrue(pTexture);
 	
 		deltaTime = counter.getDeltaTime();
 		inputs.update();
@@ -105,11 +102,6 @@ void ParticleEditor::start()
 void TW_CALL ParticleEditor::newTexture1(void*)
 {
 	button1 = true;
-}
-
-void TW_CALL ParticleEditor::newTexture2(void*)
-{
-	button2 = true;
 }
 
 void TW_CALL ParticleEditor::start(void*)
@@ -176,9 +168,8 @@ void ParticleEditor::setBar()
 	TwAddVarRW(editorBar, "Direction", TW_TYPE_DIR3F, &tempDirection, "label='Direction' opened=true");
 	TwAddSeparator(editorBar, "Sep1", NULL);
 	TwAddButton(editorBar, "Activate", start, NULL, "label='Activate'");
-	TwAddButton(editorBar, "Fireball Texture", newTexture1, NULL, "label='Fireball Texture'");
-	TwAddButton(editorBar, "Red Texture", newTexture2, NULL, "label='Red Texture'");
 	TwAddVarCB(editorBar, "Texture Name", TW_TYPE_STDSTRING, SetTextureStringCB, GetTextureStringCB, NULL, "label='Texture Name'");
+	TwAddButton(editorBar, "Load Texture", newTexture1, NULL, "label='Load Texture'");
 	TwAddSeparator(editorBar, "Sep2", NULL);
 	TwAddButton(editorBar, "Reset", reset, NULL, "label='Reset'");
 	TwAddVarCB(editorBar, "Name of Saved File", TW_TYPE_STDSTRING, SetSaveNameStringCB, GetSaveNameStringCB, NULL, "label='Name of Saved File'");
@@ -193,7 +184,7 @@ void ParticleEditor::writeToFile()
 	FILE* file = NULL;
 	saveName = saveName + ".dp";
 	const char* newString = saveName.c_str();
-	file = fopen(newString /*+ "particle.dp"*/, "wb");
+	file = fopen(newString, "wb");
 	if (file)
 	{
 		fwrite(&p, sizeof(particle), 1, file);
@@ -205,15 +196,12 @@ void ParticleEditor::update()
 {
 	if (button1 == true)
 	{
-		ps.at(0)->textureAssetParticles = particlesTexture1;
+		particlesTexture->unload();
+		particlesTexture = assets.load<TextureAsset>("Textures/" + textureName);
+		ps.at(0)->textureAssetParticles = particlesTexture;
+		pTexture = particlesTexture;
+		pTexString = (char*)textureName.c_str();
 		button1 = false;
-		pTexString = "fireball.png";
-	}
-	if (button2 == true)
-	{
-		ps.at(0)->textureAssetParticles = particlesTexture2;
-		button2 = false;
-		pTexString = "red.png";
 	}
 	if (buttonReset == true)
 	{
@@ -225,7 +213,7 @@ void ParticleEditor::update()
 		tempFocusSpread = 0;
 		tempGravity = 0.0;
 		ps.at(0)->resetEmitter();
-		pTexture = particlesTexture1;
+		pTexture = particlesTexture;
 		buttonReset = false;
 	}
 	if (buttonSave == true)
