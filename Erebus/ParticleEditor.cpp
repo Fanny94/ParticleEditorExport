@@ -9,15 +9,17 @@ float tempEmitPerSecond;
 int tempNrOfParticlesPerEmit;
 float tempGravity;
 float tempFocusSpread;
+bool active = false;
 glm::vec3 tempDirection;
 bool button1 = false;
-bool button2 = false;
 bool buttonReset = false;
 bool buttonSave = false;
 Importer::TextureAsset* pTexture;
-Importer::TextureAsset* particlesTexture1;
-Importer::TextureAsset* particlesTexture2;
+Importer::TextureAsset* particlesTexture;
 char* pTexString;
+std::string textureName = "fireball.png";
+std::string saveName = "particle";
+Importer::Assets assets;
 
 ParticleEditor::ParticleEditor()
 {
@@ -38,8 +40,6 @@ ParticleEditor::~ParticleEditor()
 
 void ParticleEditor::start()
 {
-	Importer::Assets assets;
-
 	TwInit(TW_OPENGL_CORE, NULL);
 
 	Gear::GearEngine engine;
@@ -57,8 +57,7 @@ void ParticleEditor::start()
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
 	
-	particlesTexture1 = assets.load<TextureAsset>("Textures/fireball.png");
-	particlesTexture2 = assets.load<TextureAsset>("Textures/red.png");
+	particlesTexture = assets.load<TextureAsset>("Textures/fireball.png");
 
 	PerformanceCounter counter;
 	double deltaTime;
@@ -69,22 +68,25 @@ void ParticleEditor::start()
 
 	ps.push_back(new Gear::ParticleSystem(p.numOfParticles, p.lifeTime, p.speed, p.emitPerSecond, p.nrOfParticlesPerEmit));
 	
-	ps.at(0)->isActive = true;
-	pTexture = particlesTexture1;
+	ps.at(0)->isActive = false;
+	pTexture = particlesTexture;
 	pTexString = "fireball.png";
+	ps.at(0)->setTextrue(pTexture);
+	ps.at(0)->setEmmiterPos(glm::vec3(0, 0, -2));
 
+	ps.at(0)->direction = { 0, 5, 0 };
+	ps.at(0)->focus = 2;
 	while (running == true && window.isWindowOpen())
 	{
 		ps.at(0)->setTextrue(pTexture);
-		ps.at(0)->setEmmiterPos(tempDirection);
-
+	
 		deltaTime = counter.getDeltaTime();
 		inputs.update();
 
 		camera.updateLevelEditorCamera(deltaTime);
+		updateSystem();
 
-		ps.at(0)->updateParticleEditor(deltaTime, tempNumberParticles, tempLifeTime, tempSpeed, tempEmitPerSecond, tempNrOfParticlesPerEmit, tempFocusSpread, tempGravity, tempDirection);
-
+		ps.at(0)->update(deltaTime);
 		//engine.queueModels();
 		engine.queueParticles(&ps);
 
@@ -92,9 +94,7 @@ void ParticleEditor::start()
 		
 		if (inputs.keyPressed(GLFW_KEY_ESCAPE))
 			running = false;
-
 		update();
-
 		glfwPollEvents();
 		TwDraw();
 		window.update();
@@ -107,9 +107,9 @@ void TW_CALL ParticleEditor::newTexture1(void*)
 	button1 = true;
 }
 
-void TW_CALL ParticleEditor::newTexture2(void*)
+void TW_CALL ParticleEditor::start(void*)
 {
-	button2 = true;
+	active = !active;
 }
 
 void TW_CALL ParticleEditor::reset(void *)
@@ -122,6 +122,30 @@ void TW_CALL ParticleEditor::save(void *)
 	buttonSave = true;
 }
 
+void TW_CALL SetTextureStringCB(const void *value, void *clientData)
+{
+	const std::string *srcPtr = static_cast<const std::string *>(value);
+	textureName = *srcPtr;
+}
+
+void TW_CALL GetTextureStringCB(void *value, void *)
+{
+	std::string *destPtr = static_cast<std::string *>(value);
+	TwCopyStdStringToLibrary(*destPtr, textureName);
+}
+
+void TW_CALL SetSaveNameStringCB(const void *value, void *clientData)
+{
+	const std::string *srcPtr = static_cast<const std::string *>(value);
+	saveName = *srcPtr;
+}
+
+void TW_CALL GetSaveNameStringCB(void *value, void *)
+{
+	std::string *destPtr = static_cast<std::string *>(value);
+	TwCopyStdStringToLibrary(*destPtr, saveName);
+}
+
 void ParticleEditor::setBar()
 {
 	tempNumberParticles = 50;
@@ -131,7 +155,7 @@ void ParticleEditor::setBar()
 	tempNrOfParticlesPerEmit = 5;
 	tempFocusSpread = 0;
 	tempGravity = 0.0;
-	tempDirection = { 0, 0, -2 };
+	tempDirection = { 0, 5, 0 };
 
 	editorBar = TwNewBar("ParticleEditorBar");
 
@@ -146,47 +170,42 @@ void ParticleEditor::setBar()
 	TwAddVarRW(editorBar, "Gravity", TW_TYPE_FLOAT, &tempGravity, "label='Gravity' step=0.1");
 	TwAddVarRW(editorBar, "Direction", TW_TYPE_DIR3F, &tempDirection, "label='Direction' opened=true");
 	TwAddSeparator(editorBar, "Sep1", NULL);
-	TwAddButton(editorBar, "Fireball Texture", newTexture1, NULL, "label='Fireball Texture'");
-	TwAddButton(editorBar, "Red Texture", newTexture2, NULL, "label='Red Texture'");
+	TwAddButton(editorBar, "Activate", start, NULL, "label='Activate'");
+	TwAddVarCB(editorBar, "Texture Name", TW_TYPE_STDSTRING, SetTextureStringCB, GetTextureStringCB, NULL, "label='Texture Name'");
+	TwAddButton(editorBar, "Load Texture", newTexture1, NULL, "label='Load Texture'");
 	TwAddSeparator(editorBar, "Sep2", NULL);
 	TwAddButton(editorBar, "Reset", reset, NULL, "label='Reset'");
+	TwAddVarCB(editorBar, "Name of Saved File", TW_TYPE_STDSTRING, SetSaveNameStringCB, GetSaveNameStringCB, NULL, "label='Name of Saved File'");
 	TwAddButton(editorBar, "Save", save, NULL, "label='Save'");
 }
 
 void ParticleEditor::writeToFile()
 {
 	std::string texture;
-
-	updateParticle();
-
 	char* ptr = pTexString;
 	memcpy(&p.textureName, ptr, sizeof(const char[32]));
-
 	FILE* file = NULL;
-	file = fopen("particle.dp", "wb");
-
+	saveName = saveName + ".dp";
+	const char* newString = saveName.c_str();
+	file = fopen(newString, "wb");
 	if (file)
 	{
 		fwrite(&p, sizeof(particle), 1, file);
-
 		fclose(file);
 	}
-	int x = 0;
 }
 
 void ParticleEditor::update()
 {
 	if (button1 == true)
 	{
-		pTexture = particlesTexture1;
+		particlesTexture->unload();
+		particlesTexture->load("Textures/" + textureName, &assets);
+		particlesTexture = assets.load<TextureAsset>("Textures/" + textureName);
+		ps.at(0)->textureAssetParticles = particlesTexture;
+		pTexture = particlesTexture;
+		pTexString = (char*)textureName.c_str();
 		button1 = false;
-		pTexString = "fireball.png";
-	}
-	if (button2 == true)
-	{
-		pTexture = particlesTexture2;
-		button2 = false;
-		pTexString = "red.png";
 	}
 	if (buttonReset == true)
 	{
@@ -197,8 +216,8 @@ void ParticleEditor::update()
 		tempNrOfParticlesPerEmit = 5;
 		tempFocusSpread = 0;
 		tempGravity = 0.0;
-		tempDirection = { 0, 0, -2 };
-		pTexture = particlesTexture1;
+		ps.at(0)->resetEmitter();
+		pTexture = particlesTexture;
 		buttonReset = false;
 	}
 	if (buttonSave == true)
@@ -208,13 +227,15 @@ void ParticleEditor::update()
 	}
 }
 
-void ParticleEditor::updateParticle()
+void ParticleEditor::updateSystem()
 {
-	p.emitPerSecond = tempEmitPerSecond;
-	p.focusSpread = tempFocusSpread;
-	p.gravity = tempGravity;
-	p.lifeTime = tempLifeTime;
-	p.nrOfParticlesPerEmit = tempNrOfParticlesPerEmit;
-	p.numOfParticles = tempNumberParticles;
-	p.speed = tempSpeed;
+	ps.at(0)->particleRate = 1 / tempEmitPerSecond;
+	ps.at(0)->focus = tempFocusSpread;
+	ps.at(0)->gravityFactor = tempGravity;
+	ps.at(0)->lifeTime = tempLifeTime;
+	ps.at(0)->partPerRate = tempNrOfParticlesPerEmit;
+	ps.at(0)->maxParticles = tempNumberParticles;
+	ps.at(0)->partSpeed = tempSpeed;
+	ps.at(0)->direction = tempDirection;
+	ps.at(0)->isActive = active;
 }

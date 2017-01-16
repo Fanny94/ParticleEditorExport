@@ -28,6 +28,7 @@ namespace Gear
 		GEAR_API void explode();
 		GEAR_API GLuint getPartVertexBuffer();
 		GEAR_API void setEmmiterPos(glm::vec3 pos);
+		GEAR_API void setDirection(glm::vec3 dir);
 		GEAR_API int getNrOfActiveParticles();
 		GEAR_API void activate();
 		GEAR_API void deActivate();
@@ -38,9 +39,11 @@ namespace Gear
 		GEAR_API Color getColor() const;
 		GEAR_API void setTextrue(Importer::TextureAsset* tAParticles);
 		GEAR_API Importer::TextureAsset* getTexture();
+
+		GEAR_API void resetEmitter();
 		bool isActive;
 		bool alive;
-	private:
+
 		GLuint particleVertexBuffer;
 		glm::vec3 position;
 		glm::vec3 direction;
