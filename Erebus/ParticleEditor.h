@@ -53,4 +53,5 @@ private:
 	TwBar * editorBar;
 	particle p;
 	TextureAsset* textureAsset;
+	void copyOverVariables();
 };

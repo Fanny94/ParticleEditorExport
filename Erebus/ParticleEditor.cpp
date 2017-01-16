@@ -77,19 +77,19 @@ void ParticleEditor::start()
 	pTexture = particlesTexture1;
 	pTexString = "fireball.png";
 	ps.at(selectedEmitter)->setTextrue(pTexture);
+	engine.queueParticles(&ps);
 
 	while (running == true && window.isWindowOpen())
 	{
-	
 		deltaTime = counter.getDeltaTime();
 		inputs.update();
-
-		camera.updateLevelEditorCamera(deltaTime);
-		updateSystem();
+		/*Används camera.update() ???*/
+		//camera.updateLevelEditorCamera(deltaTime);
+		if(nrOfEmitters > 0)
+			updateSystem();
 
 		for (int i = 0; i < nrOfEmitters; i++)
 			ps.at(i)->update(deltaTime);
-		engine.queueParticles(&ps);
 
 		engine.drawParticle(&camera);
 		
@@ -110,6 +110,7 @@ void ParticleEditor::start()
 		if (inputs.keyPressedThisFrame(GLFW_KEY_TAB))
 		{
 			selectedEmitter = (selectedEmitter + 1) % nrOfEmitters;
+			copyOverVariables();
 		}
 		if (inputs.keyPressedThisFrame(GLFW_KEY_ENTER))
 		{
@@ -118,6 +119,14 @@ void ParticleEditor::start()
 				hardReset = false;
 				ps.at(selectedEmitter)->systemInit(p.numOfParticles, p.lifeTime, p.speed, p.emitPerSecond, p.nrOfParticlesPerEmit);
 			}
+		}
+		if (inputs.keyPressedThisFrame(GLFW_KEY_DELETE))
+		{
+			delete ps.at(selectedEmitter);
+			ps.erase(ps.begin() + selectedEmitter);
+			nrOfEmitters--;
+			if(nrOfEmitters > 0)
+				selectedEmitter = (selectedEmitter + 1) % nrOfEmitters;
 		}
 
 		update();
@@ -260,4 +269,16 @@ void ParticleEditor::updateSystem()
 	ps.at(selectedEmitter)->partSpeed = tempSpeed;
 	ps.at(selectedEmitter)->direction = tempDirection;
 	ps.at(selectedEmitter)->isActive = active;
+}
+
+void ParticleEditor::copyOverVariables()
+{
+	tempNumberParticles = ps.at(selectedEmitter)->maxParticles;
+	tempLifeTime = ps.at(selectedEmitter)->lifeTime;
+	tempSpeed = ps.at(selectedEmitter)->partSpeed;
+	tempEmitPerSecond = 1 / ps.at(selectedEmitter)->particleRate;
+	tempNrOfParticlesPerEmit = ps.at(selectedEmitter)->partPerRate;
+	tempGravity = ps.at(selectedEmitter)->gravityFactor;
+	tempFocusSpread = ps.at(selectedEmitter)->focus;
+	tempDirection = ps.at(selectedEmitter)->direction;
 }
