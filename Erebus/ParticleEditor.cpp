@@ -13,14 +13,16 @@ bool active = false;
 glm::vec3 tempDirection;
 bool button1 = false;
 bool button2 = false;
+bool newEmitter = false;
 bool buttonReset = false;
+bool hardReset = false;
 bool buttonSave = false;
 Importer::TextureAsset* pTexture;
 Importer::TextureAsset* particlesTexture1;
 Importer::TextureAsset* particlesTexture2;
 char* pTexString;
 
-ParticleEditor::ParticleEditor()
+ParticleEditor::ParticleEditor(): selectedEmitter(0), nrOfEmitters(1)
 {
 	this->running = true;
 	p.numOfParticles = 50;
@@ -34,7 +36,8 @@ ParticleEditor::ParticleEditor()
 
 ParticleEditor::~ParticleEditor()
 {
-	delete ps.at(0);
+	for (int i = 0; i < nrOfEmitters; i++)
+		delete ps.at(i);
 }
 
 void ParticleEditor::start()
@@ -53,6 +56,8 @@ void ParticleEditor::start()
 
 	TwWindowSize(1280, 720);
 	
+
+	//ps.push_back(new Gear::ParticleSystem(p.numOfParticles, p.lifeTime, p.speed, p.emitPerSecond, p.nrOfParticlesPerEmit));
 	setBar();
 
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
@@ -66,16 +71,11 @@ void ParticleEditor::start()
 	bool lockMouse = false;
 	window.changeCursorStatus(lockMouse);
 
-	ps.push_back(new Gear::ParticleSystem(p.numOfParticles, p.lifeTime, p.speed, p.emitPerSecond, p.nrOfParticlesPerEmit));
 	
-	ps.at(0)->isActive = false;
 	pTexture = particlesTexture1;
 	pTexString = "fireball.png";
-	ps.at(0)->setTextrue(pTexture);
-	ps.at(0)->setEmmiterPos(glm::vec3(0, 0, -2));
 
-	ps.at(0)->direction = { 0, 5, 0 };
-	ps.at(0)->focus = 2;
+
 	while (running == true && window.isWindowOpen())
 	{
 	
@@ -84,14 +84,37 @@ void ParticleEditor::start()
 
 		camera.updateLevelEditorCamera(deltaTime);
 		updateSystem();
-
-		ps.at(0)->update(deltaTime);
+		if (nrOfEmitters > 0)
+			ps.at(selectedEmitter)->update(deltaTime);
 		engine.queueParticles(&ps);
 
 		engine.drawParticle(&camera);
 		
 		if (inputs.keyPressed(GLFW_KEY_ESCAPE))
 			running = false;
+		if (inputs.keyPressed(GLFW_KEY_UP))
+			ps.at(selectedEmitter)->position += glm::vec3(0, 2.0 * deltaTime, 0);
+		if (inputs.keyPressed(GLFW_KEY_DOWN))
+			ps.at(selectedEmitter)->position += glm::vec3(0, -2.0 * deltaTime, 0);
+		if (inputs.keyPressed(GLFW_KEY_LEFT))
+			ps.at(selectedEmitter)->position += glm::vec3(-2.0 * deltaTime, 0, 0);
+		if (inputs.keyPressed(GLFW_KEY_RIGHT))
+			ps.at(selectedEmitter)->position += glm::vec3(2.0 * deltaTime, 0, 0);
+		if (inputs.keyPressed(GLFW_KEY_KP_ADD))
+			ps.at(selectedEmitter)->position += glm::vec3(0, 0, 2.0 * deltaTime);
+		if (inputs.keyPressed(GLFW_KEY_KP_SUBTRACT))
+			ps.at(selectedEmitter)->position += glm::vec3(0, 0, -2.0 * deltaTime);
+		if (inputs.keyPressedThisFrame(GLFW_KEY_TAB))
+			selectedEmitter = (selectedEmitter + 1) % nrOfEmitters;
+		if (inputs.keyPressedThisFrame(GLFW_KEY_ENTER))
+		{
+			if (hardReset)
+			{
+				hardReset = false;
+
+			}
+		}
+
 		update();
 		glfwPollEvents();
 		TwDraw();
@@ -115,6 +138,11 @@ void TW_CALL ParticleEditor::start(void*)
 	active = !active;
 }
 
+void TW_CALL ParticleEditor::addEmitter(void*)
+{
+	newEmitter = true;
+}
+
 void TW_CALL ParticleEditor::reset(void *)
 {
 	buttonReset = true;
@@ -134,12 +162,13 @@ void ParticleEditor::setBar()
 	tempNrOfParticlesPerEmit = 5;
 	tempFocusSpread = 0;
 	tempGravity = 0.0;
-	tempDirection = { 0, 5, 0 };
+	tempDirection = { 0, 1, 0 };
 
 	editorBar = TwNewBar("ParticleEditorBar");
 
 	TwDefine("ParticleEditorBar label='Particle Editor' position='0 0' size='300 720'resizable=false buttonalign=right color='192 255 192' movable=false");
 
+	TwAddVarRO(editorBar, "Selected Emitter", TW_TYPE_INT32, &selectedEmitter, "label='Selected Emitter' opened=true");
 	TwAddVarRW(editorBar, "Number Particles", TW_TYPE_INT32, &tempNumberParticles, "label='Number Particles' min=0");
 	TwAddVarRW(editorBar, "Life Time", TW_TYPE_FLOAT, &tempLifeTime, "label='Life Time' min=1 step=0.1");
 	TwAddVarRW(editorBar, "Speed", TW_TYPE_FLOAT, &tempSpeed, "label='Speed' min=1 step=0.1");
@@ -148,8 +177,10 @@ void ParticleEditor::setBar()
 	TwAddVarRW(editorBar, "Focus Spread", TW_TYPE_FLOAT, &tempFocusSpread, "label='Focus Spread' step=0.1");
 	TwAddVarRW(editorBar, "Gravity", TW_TYPE_FLOAT, &tempGravity, "label='Gravity' step=0.1");
 	TwAddVarRW(editorBar, "Direction", TW_TYPE_DIR3F, &tempDirection, "label='Direction' opened=true");
+	TwAddVarRO(editorBar, "Position", TW_TYPE_DIR3F, &(ps.at(selectedEmitter)->position), "label='Position' opened=true");
 	TwAddSeparator(editorBar, "Sep1", NULL);
 	TwAddButton(editorBar, "Activate", start, NULL, "label='Activate'");
+	TwAddButton(editorBar, "Add Emitter", addEmitter, NULL, "label='Add Emitter'");
 	TwAddButton(editorBar, "Fireball Texture", newTexture1, NULL, "label='Fireball Texture'");
 	TwAddButton(editorBar, "Red Texture", newTexture2, NULL, "label='Red Texture'");
 	TwAddSeparator(editorBar, "Sep2", NULL);
@@ -175,13 +206,13 @@ void ParticleEditor::update()
 {
 	if (button1 == true)
 	{
-		ps.at(0)->textureAssetParticles = particlesTexture1;
+		ps.at(selectedEmitter)->textureAssetParticles = particlesTexture1;
 		button1 = false;
 		pTexString = "fireball.png";
 	}
 	if (button2 == true)
 	{
-		ps.at(0)->textureAssetParticles = particlesTexture2;
+		ps.at(selectedEmitter)->textureAssetParticles = particlesTexture2;
 		button2 = false;
 		pTexString = "red.png";
 	}
@@ -194,9 +225,17 @@ void ParticleEditor::update()
 		tempNrOfParticlesPerEmit = 5;
 		tempFocusSpread = 0;
 		tempGravity = 0.0;
-		ps.at(0)->resetEmitter();
+		ps.at(selectedEmitter)->resetEmitter();
 		pTexture = particlesTexture1;
 		buttonReset = false;
+	}
+	if (newEmitter)
+	{
+		ps.push_back(new Gear::ParticleSystem());
+		nrOfEmitters++;
+		selectedEmitter = (selectedEmitter + 1) % nrOfEmitters;
+		ps.at(selectedEmitter)->setTextrue(pTexture);
+		hardReset = true;
 	}
 	if (buttonSave == true)
 	{
@@ -207,13 +246,12 @@ void ParticleEditor::update()
 
 void ParticleEditor::updateSystem()
 {
-	ps.at(0)->particleRate = 1 / tempEmitPerSecond;
-	ps.at(0)->focus = tempFocusSpread;
-	ps.at(0)->gravityFactor = tempGravity;
-	ps.at(0)->lifeTime = tempLifeTime;
-	ps.at(0)->partPerRate = tempNrOfParticlesPerEmit;
-	ps.at(0)->maxParticles = tempNumberParticles;
-	ps.at(0)->partSpeed = tempSpeed;
-	ps.at(0)->direction = tempDirection;
-	ps.at(0)->isActive = active;
+	ps.at(selectedEmitter)->particleRate = 1 / tempEmitPerSecond;
+	ps.at(selectedEmitter)->focus = tempFocusSpread;
+	ps.at(selectedEmitter)->gravityFactor = tempGravity;
+	ps.at(selectedEmitter)->lifeTime = tempLifeTime;
+	ps.at(selectedEmitter)->partPerRate = tempNrOfParticlesPerEmit;
+	ps.at(selectedEmitter)->partSpeed = tempSpeed;
+	ps.at(selectedEmitter)->direction = tempDirection;
+	ps.at(selectedEmitter)->isActive = active;
 }

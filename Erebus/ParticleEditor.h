@@ -24,6 +24,7 @@ public:
 	static void TW_CALL start(void*);
 	static void TW_CALL reset(void*);
 	static void TW_CALL save(void*);
+	static void TW_CALL addEmitter(void*);
 	void setBar();
 	void writeToFile();
 	void update();
@@ -44,6 +45,8 @@ public:
 
 private:
 	float lifeTime;
+	int selectedEmitter;
+	int nrOfEmitters;
 	bool running;
 	Window window;
 	std::vector<Gear::ParticleSystem*> ps;

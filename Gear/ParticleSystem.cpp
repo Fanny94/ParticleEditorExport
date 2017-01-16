@@ -20,6 +20,7 @@ namespace Gear
 		particleRate = 1 / rate;
 		partPerRate = number;
 		direction = { 1, 0, 0 };
+		direction = { 0, 0, 0 };
 		focus = 0;
 	}
 
@@ -27,6 +28,24 @@ namespace Gear
 	{
 		delete[] allParticles;
 		delete[] particlePos;
+	}
+
+	void ParticleSystem::systemInit(int n, float life, float speed, float rate, int number)
+	{
+		isActive = false; timer = 0;
+		gravityFactor = 0.0;
+		maxParticles = n;
+		allParticles = new Partikel[n];
+		particlePos = new glm::vec3[n];
+		nrOfActiveParticles = 0;
+		glGenBuffers(1, &particleVertexBuffer);
+		this->lifeTime = life;
+		partSpeed = speed;
+		particleRate = 1 / rate;
+		partPerRate = number;
+		direction = { 1, 0, 0 };
+		direction = { 0, 0, 0 };
+		focus = 0;
 	}
 
 	GEAR_API void ParticleSystem::update(const float &dt)
