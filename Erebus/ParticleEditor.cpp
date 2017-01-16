@@ -197,6 +197,7 @@ void ParticleEditor::update()
 	if (button1 == true)
 	{
 		particlesTexture->unload();
+		particlesTexture->load("Textures/" + textureName, &assets);
 		particlesTexture = assets.load<TextureAsset>("Textures/" + textureName);
 		ps.at(0)->textureAssetParticles = particlesTexture;
 		pTexture = particlesTexture;
