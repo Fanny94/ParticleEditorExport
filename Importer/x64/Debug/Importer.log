@@ -1,4 +1,14 @@
-﻿     Creating library C:\Users\Maggan\Desktop\ParticleEditorExport\x64\Debug\Importer.lib and object C:\Users\Maggan\Desktop\ParticleEditorExport\x64\Debug\Importer.exp
+﻿  ParticleImport.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  TextureAsset.cpp
+  ModelAsset.cpp
+  MaterialAsset.cpp
+  ImageAsset.cpp
+  FontAsset.cpp
+  Assets.cpp
+  LINK : C:\Users\Maggan\Desktop\ParticleEditorExport\x64\Debug\Importer.dll not found or not built by the last incremental link; performing full link
+     Creating library C:\Users\Maggan\Desktop\ParticleEditorExport\x64\Debug\Importer.lib and object C:\Users\Maggan\Desktop\ParticleEditorExport\x64\Debug\Importer.exp
 libpng_d.lib(png.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(png.obj)' or at 'C:\Users\Maggan\Desktop\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
 libpng_d.lib(pngerror.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngerror.obj)' or at 'C:\Users\Maggan\Desktop\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
 libpng_d.lib(pngget.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngget.obj)' or at 'C:\Users\Maggan\Desktop\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info

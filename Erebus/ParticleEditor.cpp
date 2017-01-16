@@ -220,7 +220,7 @@ void ParticleEditor::update()
 	if (button1 == true)
 	{
 		ps.at(selectedEmitter)->textureAssetParticles = particlesTexture1;
-		particlesTexture->load("Textures/" + textureName, &assets);
+		//particlesTexture->load("Textures/" + textureName, &assets);
 		button1 = false;
 		pTexString = "fireball.png";
 	}

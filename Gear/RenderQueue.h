@@ -10,22 +10,7 @@
 #include <algorithm>
 #include "Animation.h"
 
-
 using namespace Importer;
-struct ModelInstance
-{
-	ModelAsset* asset;
-	//Material material;
-	std::vector<int> worldIndices;
-};
-
-struct AnimatedInstance
-{
-	ModelAsset* asset;
-	//Material material;
-	std::vector<int> worldIndices;
-	std::vector<Animation*> animations;
-};
 
 class RenderQueue
 {

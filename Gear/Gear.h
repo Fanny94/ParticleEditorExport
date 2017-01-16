@@ -15,10 +15,7 @@ namespace Gear
 		GEAR_API void queueParticles(std::vector<ParticleSystem*>* particles);
 		GEAR_API void drawParticle(Camera* camera);
 	private:
-		std::vector<staticNonModels*> statModels;
 		RenderQueue queue;	
-		std::vector<ModelInstance>* dynamicModels;
-		std::vector<AnimatedInstance>* animatedModels;
 		std::vector<ParticleSystem*>* particleSystems;
 	};
 }
