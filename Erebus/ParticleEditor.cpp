@@ -57,7 +57,7 @@ void ParticleEditor::start()
 	TwWindowSize(1280, 720);
 	
 
-	//ps.push_back(new Gear::ParticleSystem(p.numOfParticles, p.lifeTime, p.speed, p.emitPerSecond, p.nrOfParticlesPerEmit));
+	ps.push_back(new Gear::ParticleSystem(p.numOfParticles, p.lifeTime, p.speed, p.emitPerSecond, p.nrOfParticlesPerEmit));
 	setBar();
 
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
@@ -72,9 +72,11 @@ void ParticleEditor::start()
 	window.changeCursorStatus(lockMouse);
 
 	
+	
+	ps.at(selectedEmitter)->isActive = false;
 	pTexture = particlesTexture1;
 	pTexString = "fireball.png";
-
+	ps.at(selectedEmitter)->setTextrue(pTexture);
 
 	while (running == true && window.isWindowOpen())
 	{
@@ -84,8 +86,9 @@ void ParticleEditor::start()
 
 		camera.updateLevelEditorCamera(deltaTime);
 		updateSystem();
-		if (nrOfEmitters > 0)
-			ps.at(selectedEmitter)->update(deltaTime);
+
+		for (int i = 0; i < nrOfEmitters; i++)
+			ps.at(i)->update(deltaTime);
 		engine.queueParticles(&ps);
 
 		engine.drawParticle(&camera);
@@ -105,13 +108,15 @@ void ParticleEditor::start()
 		if (inputs.keyPressed(GLFW_KEY_KP_SUBTRACT))
 			ps.at(selectedEmitter)->position += glm::vec3(0, 0, -2.0 * deltaTime);
 		if (inputs.keyPressedThisFrame(GLFW_KEY_TAB))
+		{
 			selectedEmitter = (selectedEmitter + 1) % nrOfEmitters;
+		}
 		if (inputs.keyPressedThisFrame(GLFW_KEY_ENTER))
 		{
 			if (hardReset)
 			{
 				hardReset = false;
-
+				ps.at(selectedEmitter)->systemInit(p.numOfParticles, p.lifeTime, p.speed, p.emitPerSecond, p.nrOfParticlesPerEmit);
 			}
 		}
 
@@ -236,6 +241,7 @@ void ParticleEditor::update()
 		selectedEmitter = (selectedEmitter + 1) % nrOfEmitters;
 		ps.at(selectedEmitter)->setTextrue(pTexture);
 		hardReset = true;
+		newEmitter = false;
 	}
 	if (buttonSave == true)
 	{
