@@ -1,4 +1,6 @@
 #include <iostream>
+
+#include "Gear.h"
 #include "Window.h"
 #include <thread>
 #include "ParticleEditor.h"

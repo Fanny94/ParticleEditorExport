@@ -65,6 +65,8 @@ void ParticleEditor::start()
 	bool lockMouse = false;
 	window.changeCursorStatus(lockMouse);
 
+	Importer::ModelAsset* mA = assets.load<ModelAsset>("Models/cube.model");
+
 	ps.push_back(new Gear::ParticleSystem(p.numOfParticles, p.lifeTime, p.speed, p.emitPerSecond, p.nrOfParticlesPerEmit));
 	
 	ps.at(0)->isActive = true;
@@ -83,6 +85,7 @@ void ParticleEditor::start()
 
 		ps.at(0)->updateParticleEditor(deltaTime, tempNumberParticles, tempLifeTime, tempSpeed, tempEmitPerSecond, tempNrOfParticlesPerEmit, tempFocusSpread, tempGravity, tempDirection);
 
+		//engine.queueModels();
 		engine.queueParticles(&ps);
 
 		engine.drawParticle(&camera);

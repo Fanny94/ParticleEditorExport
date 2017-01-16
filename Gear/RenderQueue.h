@@ -33,9 +33,13 @@ public:
 	RenderQueue();
 	~RenderQueue();
 
+	//int addModelInstance(ModelAsset * asset);
+	//int generateWorldMatrix();
+
 	void init();
 	void updateUniforms(Camera* camera);
 
+	//void forwardPass(std::vector<ModelInstance>* staticModels, std::vector<ModelInstance>* dynamicModels);
 	// TEMP:
 	std::vector<Gear::ParticleSystem*> particleSystem;
 
@@ -43,4 +47,12 @@ public:
 
 private:
 	ShaderProgram* allShaders[1];
+	//ShaderProgram* allShaders[ShaderType::NUM_SHADER_TYPES];
+	std::vector<ModelInstance> instances;
+	std::vector<ModelInstance> staticInstances;
+	//glm::mat4* worldMatrices;
+	//glm::mat4* tempMatrices;
+	//int nrOfWorlds;
+	//int totalWorlds;
+
 };

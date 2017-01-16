@@ -255,7 +255,7 @@ void MFileImporter::writeToBinary(const char * fileDestination)
 
 
 		txt = "Normal texture: ";
-		str = txt + std::string(expMat.normalTextureFilePath) + "\n";
+		str = txt + std::string(expMat.normalTextureFilePath);
 		outFile.write(str.c_str(), str.length());
 
 		//str = std::string(txt +  + '\n');

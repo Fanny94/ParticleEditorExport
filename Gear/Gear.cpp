@@ -5,12 +5,18 @@ namespace Gear
 	GearEngine::GearEngine()
 	{
 		glewInit();
+		staticModels = &defaultModelList;
 		queue.init();
 	}
 
 	GearEngine::~GearEngine()
 	{
 		glfwTerminate();
+	}
+
+	void GearEngine::queueModels(std::vector<ModelInstance>* models)
+	{
+		staticModels = models;
 	}
 
 	void GearEngine::queueParticles(std::vector<ParticleSystem*>* particles)
