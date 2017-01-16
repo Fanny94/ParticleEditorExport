@@ -1,3 +1,4 @@
+*.orig
 *.suo
 *.sdf
 *.log
