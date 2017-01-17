@@ -6,60 +6,13 @@ RenderQueue::RenderQueue()
 
 }
 
-//RenderQueue::RenderQueue() : nrOfWorlds(0), totalWorlds(0), worldMatrices(nullptr)
-//{
-//	for (size_t i = 0; i < ShaderType::NUM_SHADER_TYPES; i++)
-//	{
-//		allShaders[i] = nullptr;
-//	}
-//
-//	int maximumNumberOfInstancesPerModel = 105;
-//	tempMatrices = new glm::mat4[maximumNumberOfInstancesPerModel];
-//
-//}
-//
 RenderQueue::~RenderQueue()
 {
 	for (size_t i = 0; i < 2; i++)
 		if (allShaders[i] != nullptr)
 			delete allShaders[i];
 }
-//
-//int RenderQueue::addModelInstance(ModelAsset* asset)
-//{
-//	int result = this->nrOfWorlds++;
-//
-//	int index = -1;
-//	for (int i = 0; i < instances.size() && index < 0; i++)
-//		if (instances[i].asset == asset)
-//			index = i;
-//
-//	if (index < 0)
-//	{
-//		ModelInstance instance;
-//		instance.asset = asset;
-//		instance.worldIndices.push_back(result);
-//
-//		index = instances.size();
-//		instances.push_back(instance);
-//	}
-//
-//	instances[index].worldIndices.push_back(result);
-//	worldMatrices[result] = glm::mat4(1, 0, 0, 0,
-//		0, 1, 0, 0,
-//		0, 0, 1, 0,
-//		0, 0, nrOfWorlds, 1);
-//
-//	return result;
-//}
 
-//int RenderQueue::generateWorldMatrix()
-//{
-//	int result = nrOfWorlds++;
-//	worldMatrices[result];
-//	return result;
-//}
-//
 void RenderQueue::init()
 {
 	allShaders[0] = new ShaderProgram(shaderBaseType::VERTEX_FRAGMENT, "forward");
