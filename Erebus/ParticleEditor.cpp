@@ -243,9 +243,11 @@ void ParticleEditor::writeToFile()
 
 	if (file)
 	{
+		p.numEmitters = nrOfEmitters;
+		fwrite(&p.numEmitters, sizeof(int), 1, file);
 		for (int i = 0; i < ps.size(); i++)
 		{
-			p.numEmitters = i;
+			/*p.numEmitters = nrOfEmitters;*/
 			p.numOfParticles = ps.at(i)->maxParticles;
 			p.lifeTime = ps.at(i)->lifeTime;
 			p.speed = ps.at(i)->partSpeed;
