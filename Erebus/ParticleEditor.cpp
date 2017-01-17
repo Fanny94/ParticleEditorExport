@@ -19,6 +19,7 @@ bool buttonReset = false;
 bool hardReset = false;
 bool buttonSave = false;
 Importer::TextureAsset* pTexture;
+Importer::TextureAsset* cubeTexture;
 Importer::TextureAsset* particlesTexture;
 char* pTexString;
 std::string textureName = "fireball.png";
@@ -73,10 +74,10 @@ void ParticleEditor::start()
 	double deltaTime;
 
 	Importer::ModelAsset* mA = assets.load<ModelAsset>("Models/cube.model");
+
 	window.changeCursorStatus(false);
 	mI.resize(1);
 	mI.at(0).asset = mA;
-
 
 	ps.at(selectedEmitter)->isActive = false;
 

@@ -43,6 +43,7 @@ void RenderQueue::forwardPass(std::vector<ModelInstance>* staticModels)
 		for (int j = 0; j < statAsset->getHeader()->numMeshes; j++)
 		{
 			//0 == STATIC 1 == DYNAMIC/ANIMATEDS
+			statAsset->getMaterial()->getDiffuseTexture()->bind(GL_TEXTURE0);
 			size_t size = statAsset->getHeader()->TYPE == 0 ? sizeof(Importer::sVertex) : sizeof(Importer::sSkeletonVertex);
 			glBindBuffer(GL_ARRAY_BUFFER, statAsset->getVertexBuffer(j));
 			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, size, 0);
