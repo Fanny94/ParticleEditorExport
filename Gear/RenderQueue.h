@@ -10,31 +10,16 @@
 #include <algorithm>
 #include "Animation.h"
 
-
 using namespace Importer;
-struct ModelInstance
-{
+struct ModelInstance {
 	ModelAsset* asset;
-	//Material material;
 	std::vector<int> worldIndices;
 };
-
-struct AnimatedInstance
-{
-	ModelAsset* asset;
-	//Material material;
-	std::vector<int> worldIndices;
-	std::vector<Animation*> animations;
-};
-
 class RenderQueue
 {
 public:
 	RenderQueue();
 	~RenderQueue();
-
-	//int addModelInstance(ModelAsset * asset);
-	//int generateWorldMatrix();
 
 	void init();
 	void updateUniforms(Camera* camera);
@@ -47,9 +32,7 @@ public:
 
 private:
 	ShaderProgram* allShaders[2];
-	//ShaderProgram* allShaders[ShaderType::NUM_SHADER_TYPES];
 	std::vector<ModelInstance> instances;
-	//std::vector<ModelInstance> staticInstances;
 	glm::mat4* worldMatrices;
 	glm::mat4* tempMatrices;
 	int nrOfWorlds;
