@@ -12,7 +12,6 @@
 #include <thread>
 #include <AntTweakBar.h>
 
-
 class ParticleEditor
 {
 public:

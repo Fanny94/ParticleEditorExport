@@ -200,6 +200,7 @@ GLuint ShaderProgram::getUniformLocation(std::string pos)
 void ShaderProgram::addUniform(glm::mat4 &matrix4x4, std::string position, int count)
 {
 	glUniformMatrix4fv(getUniformLocation(position), count, GL_FALSE, glm::value_ptr(matrix4x4));
+	int x = 0;
 }
 
 void ShaderProgram::addUniform(glm::vec3 &vec3, std::string position, int count)

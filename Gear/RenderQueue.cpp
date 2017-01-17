@@ -20,16 +20,11 @@ RenderQueue::RenderQueue()
 //
 RenderQueue::~RenderQueue()
 {
-    delete allShaders[0];
-//	if (worldMatrices != nullptr)
-//		delete[] worldMatrices;
-//	for (size_t i = 0; i < ShaderType::NUM_SHADER_TYPES; i++)
-//		if (allShaders[i] != nullptr)
-//			delete allShaders[i];
-//	delete[] tempMatrices;
-//
+	for (size_t i = 0; i < 2; i++)
+		if (allShaders[i] != nullptr)
+			delete allShaders[i];
 }
-
+//
 //int RenderQueue::addModelInstance(ModelAsset* asset)
 //{
 //	int result = this->nrOfWorlds++;
@@ -57,7 +52,7 @@ RenderQueue::~RenderQueue()
 //
 //	return result;
 //}
-//
+
 //int RenderQueue::generateWorldMatrix()
 //{
 //	int result = nrOfWorlds++;
@@ -67,67 +62,53 @@ RenderQueue::~RenderQueue()
 //
 void RenderQueue::init()
 {
-//	/*allShaders[ShaderType::FORWARD] = new ShaderProgram(shaderBaseType::VERTEX_GEOMETRY_FRAGMENT, "forward");*/
-	allShaders[0] = new ShaderProgram(shaderBaseType::VERTEX_GEOMETRY_FRAGMENT, "particle");
+	allShaders[0] = new ShaderProgram(shaderBaseType::VERTEX_FRAGMENT, "forward");
+	allShaders[1] = new ShaderProgram(shaderBaseType::VERTEX_GEOMETRY_FRAGMENT, "particle");
 }
 
 void RenderQueue::updateUniforms(Camera* camera)
 {
-	//allShaders[FORWARD]->use();
-	//allShaders[FORWARD]->addUniform(camera->getProjectionMatrix(), "projectionMatrix");
-	//allShaders[FORWARD]->addUniform(camera->getViewMatrix(), "viewMatrix");
-	//allShaders[FORWARD]->addUniform(camera->getPosition(), "viewPos");
-	////allShaders[FORWARD]->addUniform(camera->getPosition(), "lightPos");
-	////allShaders[FORWARD]->addUniform(glm::vec3(1.0f, 1.0f, 1.0f), "lightColor");
-	//allShaders[FORWARD]->unUse();
-
 	allShaders[0]->use();
 	allShaders[0]->addUniform(camera->getProjectionMatrix(), "projectionMatrix");
 	allShaders[0]->addUniform(camera->getViewMatrix(), "viewMatrix");
 	allShaders[0]->unUse();
+
+	allShaders[1]->use();
+	allShaders[1]->addUniform(camera->getProjectionMatrix(), "projectionMatrix");
+	allShaders[1]->addUniform(camera->getViewMatrix(), "viewMatrix");
+	allShaders[1]->unUse();
 }
 
-//void RenderQueue::forwardPass(std::vector<ModelInstance>* staticModels, std::vector<ModelInstance>* dynamicModels)
-//{
-//	allShaders[FORWARD]->use();
-//	GLuint worldMatrixLocation = glGetUniformLocation(this->allShaders[FORWARD]->getProgramID(), "worldMatrix");
-//	GLuint worldMatricesLocation = glGetUniformLocation(allShaders[FORWARD]->getProgramID(), "worldMatrices");
-//
-//	for (int i = 0; i < dynamicModels->size(); i++)
-//	{
-//		ModelAsset* modelAsset = dynamicModels->at(i).asset;
-//		int meshes = modelAsset->getHeader()->numMeshes;
-//		int numInstance = 0;
-//		//dynamicModels->at(i).material.bindTextures(allShaders[FORWARD]->getProgramID());
-//		for (int j = 0; j < dynamicModels->at(i).worldIndices.size(); j++)
-//		{
-//			int index = dynamicModels->at(i).worldIndices[j];
-//			tempMatrices[numInstance++] = worldMatrices[index];
-//		}
-//
-//		glUniformMatrix4fv(worldMatricesLocation, numInstance, GL_FALSE, &tempMatrices[0][0][0]);
-//
-//		for (int j = 0; j < modelAsset->getHeader()->numMeshes; j++)
-//		{
-//			//0 == STATIC 1 == DYNAMIC/ANIMATEDS
-//			size_t size = modelAsset->getHeader()->TYPE == 0 ? sizeof(Importer::sVertex) : sizeof(Importer::sSkeletonVertex);
-//			glBindBuffer(GL_ARRAY_BUFFER, modelAsset->getVertexBuffer(j));
-//			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, size, 0);
-//			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, size, (void*)(sizeof(float) * 3));
-//			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, size, (void*)(sizeof(float) * 6));
-//			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, modelAsset->getIndexBuffer(j));
-//			glDrawElementsInstanced(GL_TRIANGLES, modelAsset->getBufferSize(j), GL_UNSIGNED_INT, 0, numInstance);
-//			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-//			glBindBuffer(GL_ARRAY_BUFFER, 0);
-//		}
-//	}
-//	allShaders[FORWARD]->unUse();
-//}
+void RenderQueue::forwardPass(std::vector<ModelInstance>* staticModels)
+{
+	allShaders[0]->use();
+
+	for (int i = 0; i < staticModels->size(); i++)
+	{
+		ModelAsset* statAsset = staticModels->at(i).asset;
+		int numInstance = 0;
+		for (int j = 0; j < statAsset->getHeader()->numMeshes; j++)
+		{
+			//0 == STATIC 1 == DYNAMIC/ANIMATEDS
+			size_t size = statAsset->getHeader()->TYPE == 0 ? sizeof(Importer::sVertex) : sizeof(Importer::sSkeletonVertex);
+			glBindBuffer(GL_ARRAY_BUFFER, statAsset->getVertexBuffer(j));
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, size, 0);
+			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, size, (void*)(sizeof(float) * 3));
+			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, size, (void*)(sizeof(float) * 6));
+			//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, statAsset->getIndexBuffer(j));
+			//glDrawElementsInstanced(GL_TRIANGLES, statAsset->getBufferSize(j), GL_UNSIGNED_INT, 0, numInstance);
+			//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+			glDrawArrays(GL_TRIANGLES, 0, size);
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+		}
+	}
+	allShaders[0]->unUse();
+}
 
 void RenderQueue::particlePass(std::vector<Gear::ParticleSystem*>* particleSystems)
 {
-	allShaders[0]->use();
-	GLuint loc = glGetUniformLocation(allShaders[0]->getProgramID(), "particleSize");
+	allShaders[1]->use();
+	GLuint loc = glGetUniformLocation(allShaders[1]->getProgramID(), "particleSize");
 	glUniform1f(loc, 1.0);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -151,6 +132,6 @@ void RenderQueue::particlePass(std::vector<Gear::ParticleSystem*>* particleSyste
 			glDrawArraysInstanced(GL_POINTS, 0, ParticleCount, 1);
 		}
 	}
-	allShaders[0]->unUse();
+	allShaders[1]->unUse();
 	glDisable(GL_BLEND);
 }

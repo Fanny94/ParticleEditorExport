@@ -20,6 +20,7 @@ char* pTexString;
 std::string textureName = "fireball.png";
 std::string saveName = "particle";
 Importer::Assets assets;
+std::vector<ModelInstance> mI;
 
 ParticleEditor::ParticleEditor()
 {
@@ -64,10 +65,14 @@ void ParticleEditor::start()
 	bool lockMouse = false;
 	window.changeCursorStatus(lockMouse);
 
-	//Importer::ModelAsset* mA = assets.load<ModelAsset>("Models/cube.model");
+	Importer::ModelAsset* mA = assets.load<ModelAsset>("Models/cube.model");
+	mI.resize(1);
+	mI.at(0).asset = mA;
 
 	ps.push_back(new Gear::ParticleSystem(p.numOfParticles, p.lifeTime, p.speed, p.emitPerSecond, p.nrOfParticlesPerEmit));
-	
+
+	//rQ.addModelInstance(mA);
+
 	ps.at(0)->isActive = false;
 	pTexture = particlesTexture;
 	pTexString = "fireball.png";
@@ -76,6 +81,10 @@ void ParticleEditor::start()
 
 	ps.at(0)->direction = { 0, 5, 0 };
 	ps.at(0)->focus = 2;
+
+	engine.queueModels(&mI);
+	engine.queueParticles(&ps);
+
 	while (running == true && window.isWindowOpen())
 	{
 		ps.at(0)->setTextrue(pTexture);
@@ -87,10 +96,9 @@ void ParticleEditor::start()
 		updateSystem();
 
 		ps.at(0)->update(deltaTime);
-		//engine.queueModels();
-		engine.queueParticles(&ps);
 
-		engine.drawParticle(&camera);
+
+		engine.draw(&camera);
 		
 		if (inputs.keyPressed(GLFW_KEY_ESCAPE))
 			running = false;
