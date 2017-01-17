@@ -38,8 +38,9 @@ namespace Gear
 		GEAR_API void setParticlePosition(glm::vec3* pos);
 		GEAR_API void setColor(float r, float g, float b);
 		GEAR_API Color getColor() const;
-		GEAR_API void setTextrue(Importer::TextureAsset* tAParticles);
+		GEAR_API void setTextrue(Importer::TextureAsset* tAParticles, char* textureName);
 		GEAR_API Importer::TextureAsset* getTexture();
+		GEAR_API char* getTextureName();
 
 		GEAR_API void resetEmitter();
 		bool isActive;
@@ -61,5 +62,6 @@ namespace Gear
 		float focus;
 		Color color;
 		Importer::TextureAsset* textureAssetParticles;
+		char* particleTextureName;
 	};
 }

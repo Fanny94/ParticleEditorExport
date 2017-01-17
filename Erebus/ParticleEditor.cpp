@@ -23,7 +23,7 @@ Importer::TextureAsset* cubeTexture;
 Importer::TextureAsset* particlesTexture;
 char* pTexString;
 std::string textureName = "fireball.png";
-std::string saveName = "particle";
+std::string saveName = "filename";
 Importer::Assets assets;
 std::vector<ModelInstance> mI;
 
@@ -35,8 +35,6 @@ ParticleEditor::ParticleEditor(): selectedEmitter(0), nrOfEmitters(1)
 	p.speed = 10;
 	p.emitPerSecond = 15;
 	p.nrOfParticlesPerEmit = 5;
-	p.gravity = 0.0;
-	p.focusSpread = 0;
 }
 
 ParticleEditor::~ParticleEditor()
@@ -83,7 +81,7 @@ void ParticleEditor::start()
 
 	pTexture = particlesTexture;
 	pTexString = "fireball.png";
-	ps.at(selectedEmitter)->setTextrue(pTexture);
+	ps.at(selectedEmitter)->setTextrue(pTexture, pTexString);
 	engine.queueParticles(&ps);
 
 	engine.queueModels(&mI);
@@ -238,16 +236,36 @@ void ParticleEditor::setBar()
 
 void ParticleEditor::writeToFile()
 {
-	std::string texture;
-	char* ptr = pTexString;
-	memcpy(&p.textureName, ptr, sizeof(const char[32]));
+
 	FILE* file = NULL;
-	file = fopen("particle.dp", "wb");
+	saveName = saveName + ".particle";
+	file = fopen((char*)("ParticleFiles/" + saveName).c_str(), "wb");
+
 	if (file)
 	{
-		fwrite(&p, sizeof(particle), 1, file);
+		for (int i = 0; i < ps.size(); i++)
+		{
+			p.numEmitters = i;
+			p.numOfParticles = ps.at(i)->maxParticles;
+			p.lifeTime = ps.at(i)->lifeTime;
+			p.speed = ps.at(i)->partSpeed;
+			p.emitPerSecond = ps.at(i)->particleRate;
+			p.nrOfParticlesPerEmit = ps.at(i)->partPerRate;
+			p.gravity = ps.at(i)->gravityFactor;
+			p.focusSpread = ps.at(i)->focus;
+			p.particleSize = ps.at(i)->particleSize;
+			p.dirX = ps.at(i)->direction.x;
+			p.dirY = ps.at(i)->direction.y;
+			p.dirZ = ps.at(i)->direction.z;
+			pTexString = ps.at(i)->getTextureName();
+			char* ptr = pTexString;
+			memcpy(&p.textureName, ptr, sizeof(const char[32]));
+			fwrite(&p, sizeof(particle), 1, file);
+		}
+
 		fclose(file);
 	}
+
 }
 
 void ParticleEditor::update()
@@ -278,7 +296,7 @@ void ParticleEditor::update()
 		ps.push_back(new Gear::ParticleSystem());
 		nrOfEmitters++;
 		selectedEmitter = (selectedEmitter + 1) % nrOfEmitters;
-		ps.at(selectedEmitter)->setTextrue(pTexture);
+		ps.at(selectedEmitter)->setTextrue(pTexture, pTexString);
 		hardReset = true;
 		newEmitter = false;
 	}

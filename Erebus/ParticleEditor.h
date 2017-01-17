@@ -31,6 +31,7 @@ public:
 
 	struct particle
 	{
+		int numEmitters;
 		int numOfParticles;
 		float lifeTime;
 		float speed;
@@ -38,7 +39,8 @@ public:
 		int nrOfParticlesPerEmit;
 		float gravity;
 		float focusSpread;
-		/*float dirX, dirY, dirZ;*/
+		float particleSize;
+		float dirX, dirY, dirZ;
 		char textureName[32];
 	};
 
