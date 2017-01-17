@@ -7,4 +7,5 @@ c:\users\maggan\desktop\particleeditorexport\gear\staticnonmodels.h(110): warnin
 c:\users\maggan\desktop\particleeditorexport\erebus\particleeditor.cpp(92): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
 c:\users\maggan\desktop\particleeditorexport\erebus\particleeditor.cpp(234): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Erebus.vcxproj -> C:\Users\Maggan\Desktop\ParticleEditorExport\x64\Debug\Erebus.exe
