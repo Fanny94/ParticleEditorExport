@@ -76,9 +76,7 @@ void ParticleEditor::start()
 	ps.at(0)->isActive = false;
 	pTexture = particlesTexture;
 	pTexString = "fireball.png";
-	ps.at(0)->setTextrue(pTexture);
 	ps.at(0)->setEmmiterPos(glm::vec3(0, 0, -2));
-
 	ps.at(0)->direction = { 0, 5, 0 };
 	ps.at(0)->focus = 2;
 
@@ -167,7 +165,7 @@ void ParticleEditor::setBar()
 
 	editorBar = TwNewBar("ParticleEditorBar");
 
-	TwDefine("ParticleEditorBar label='Particle Editor' position='0 0' size='300 720'resizable=false buttonalign=right color='192 255 192' movable=false");
+	TwDefine("ParticleEditorBar label='Particle Editor' position='0 0' size='300 720' valueswidth=145 buttonalign=right color='192 255 192' movable=false resizable=false iconifiable=false");
 
 	TwAddVarRW(editorBar, "Number Particles", TW_TYPE_INT32, &tempNumberParticles, "label='Number Particles' min=0");
 	TwAddVarRW(editorBar, "Life Time", TW_TYPE_FLOAT, &tempLifeTime, "label='Life Time' min=1 step=0.1");
