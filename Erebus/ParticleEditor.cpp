@@ -24,6 +24,7 @@ char* pTexString;
 std::string textureName = "fireball.png";
 std::string saveName = "particle";
 Importer::Assets assets;
+std::vector<ModelInstance> mI;
 
 ParticleEditor::ParticleEditor(): selectedEmitter(0), nrOfEmitters(1)
 {
@@ -71,12 +72,20 @@ void ParticleEditor::start()
 	PerformanceCounter counter;
 	double deltaTime;
 
+	Importer::ModelAsset* mA = assets.load<ModelAsset>("Models/cube.model");
 	window.changeCursorStatus(false);
-	
+	mI.resize(1);
+	mI.at(0).asset = mA;
+
+
 	ps.at(selectedEmitter)->isActive = false;
+
 	pTexture = particlesTexture;
 	pTexString = "fireball.png";
 	ps.at(selectedEmitter)->setTextrue(pTexture);
+	engine.queueParticles(&ps);
+
+	engine.queueModels(&mI);
 	engine.queueParticles(&ps);
 
 	while (running == true && window.isWindowOpen())
@@ -91,7 +100,8 @@ void ParticleEditor::start()
 		for (int i = 0; i < nrOfEmitters; i++)
 			ps.at(i)->update(deltaTime);
 
-		engine.drawParticle(&camera);
+
+		engine.draw(&camera);
 		
 		if (inputs.keyPressed(GLFW_KEY_ESCAPE))
 			running = false;
@@ -200,7 +210,7 @@ void ParticleEditor::setBar()
 
 	editorBar = TwNewBar("ParticleEditorBar");
 
-	TwDefine("ParticleEditorBar label='Particle Editor' position='0 0' size='300 720'resizable=false buttonalign=right color='192 255 192' movable=false");
+	TwDefine("ParticleEditorBar label='Particle Editor' position='0 0' size='300 720' valueswidth=145 buttonalign=right color='192 255 192' movable=false resizable=false iconifiable=false");
 
 	TwAddVarRO(editorBar, "Number of Emitters", TW_TYPE_INT32, &nrOfEmitters, "label='Number of Emitters' opened=true");
 	TwAddVarRO(editorBar, "Selected Emitter", TW_TYPE_INT32, &selectedEmitter, "label='Selected Emitter' opened=true");

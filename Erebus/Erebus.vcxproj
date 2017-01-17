@@ -161,9 +161,6 @@
     <ProjectReference Include="..\Importer\Importer.vcxproj">
       <Project>{56d70726-725f-48e5-b935-71a5451ccd72}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Nurn\Nurn.vcxproj">
-      <Project>{db7257bd-f056-4eeb-9db7-66b785ceb0e6}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\anim.frag" />

@@ -87,7 +87,7 @@ namespace Importer
 		std::array<float, 3>  normal;
 		std::array<float, 3>  tangent;
 		std::array<float, 2>  UV;*/
-		float position[3], normal[3], UV[2], tangent[3];
+		float position[3], normal[3], UV[2] , tangent[3];
 	};
 	struct sSkeletonVertex
 	{
@@ -118,17 +118,4 @@ namespace Importer
 		int jointOffset;
 	};
 
-	struct numParticleSystems
-	{
-		int numPS;
-		char textureName[32];
-	};
-	struct particle
-	{
-		int numOfParticles;
-		float lifeTime;
-		float speed;
-		float extPerSecond;
-		int nrOfParticlesPerExt;
-	};
 };
