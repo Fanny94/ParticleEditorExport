@@ -30,11 +30,11 @@ std::vector<ModelInstance> mI;
 ParticleEditor::ParticleEditor(): selectedEmitter(0), nrOfEmitters(1)
 {
 	this->running = true;
-	p.numOfParticles = 50;
-	p.lifeTime = 1;
-	p.speed = 10;
-	p.emitPerSecond = 15;
-	p.nrOfParticlesPerEmit = 5;
+	emit.numOfParticles = 50;
+	emit.lifeTime = 1;
+	emit.speed = 10;
+	emit.particleRate = 15;
+	emit.partPerRate = 5;
 }
 
 ParticleEditor::~ParticleEditor()
@@ -60,7 +60,7 @@ void ParticleEditor::start()
 	TwWindowSize(1280, 720);
 	
 
-	ps.push_back(new Gear::ParticleSystem(p.numOfParticles, p.lifeTime, p.speed, p.emitPerSecond, p.nrOfParticlesPerEmit));
+	ps.push_back(new Gear::ParticleSystem(emit.numOfParticles, emit.lifeTime, emit.speed, emit.particleRate, emit.partPerRate));
 	setBar();
 
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
@@ -126,7 +126,7 @@ void ParticleEditor::start()
 			if (hardReset)
 			{
 				hardReset = false;
-				ps.at(selectedEmitter)->systemInit(p.numOfParticles, p.lifeTime, p.speed, p.emitPerSecond, p.nrOfParticlesPerEmit);
+				ps.at(selectedEmitter)->systemInit(emit.numOfParticles, emit.lifeTime, emit.speed, emit.particleRate, emit.partPerRate);
 			}
 		}
 		if (inputs.keyPressedThisFrame(GLFW_KEY_DELETE))
@@ -243,26 +243,27 @@ void ParticleEditor::writeToFile()
 
 	if (file)
 	{
-		p.numEmitters = nrOfEmitters;
-		fwrite(&p.numEmitters, sizeof(int), 1, file);
+		emit.numEmitters = nrOfEmitters;
+		fwrite(&emit.numEmitters, sizeof(int), 1, file);
 		for (int i = 0; i < ps.size(); i++)
 		{
 			/*p.numEmitters = nrOfEmitters;*/
-			p.numOfParticles = ps.at(i)->maxParticles;
-			p.lifeTime = ps.at(i)->lifeTime;
-			p.speed = ps.at(i)->partSpeed;
-			p.emitPerSecond = ps.at(i)->particleRate;
-			p.nrOfParticlesPerEmit = ps.at(i)->partPerRate;
-			p.gravity = ps.at(i)->gravityFactor;
-			p.focusSpread = ps.at(i)->focus;
-			p.particleSize = ps.at(i)->particleSize;
-			p.dirX = ps.at(i)->direction.x;
-			p.dirY = ps.at(i)->direction.y;
-			p.dirZ = ps.at(i)->direction.z;
+
+			emit.numOfParticles = ps.at(i)->maxParticles;
+			emit.lifeTime = ps.at(i)->lifeTime;
+			emit.speed = ps.at(i)->partSpeed;
+			emit.particleRate = ps.at(i)->particleRate;
+			emit.partPerRate = ps.at(i)->partPerRate;
+			emit.gravity = ps.at(i)->gravityFactor;
+			emit.focusSpread = ps.at(i)->focus;
+			emit.particleSize = ps.at(i)->particleSize;
+			emit.dirX = ps.at(i)->direction.x;
+			emit.dirY = ps.at(i)->direction.y;
+			emit.dirZ = ps.at(i)->direction.z;
 			pTexString = ps.at(i)->getTextureName();
 			char* ptr = pTexString;
-			memcpy(&p.textureName, ptr, sizeof(const char[32]));
-			fwrite(&p, sizeof(particle), 1, file);
+			memcpy(&emit.textureName, ptr, sizeof(const char[32]));
+			fwrite(&emit, sizeof(emitter), 1, file);
 		}
 
 		fclose(file);

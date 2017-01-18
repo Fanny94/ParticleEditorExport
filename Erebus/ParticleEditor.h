@@ -29,19 +29,20 @@ public:
 	void update();
 	void updateSystem();
 
-	struct particle
+	struct emitter
 	{
 		int numEmitters;
 		int numOfParticles;
 		float lifeTime;
 		float speed;
-		float emitPerSecond;
-		int nrOfParticlesPerEmit;
+		float particleRate;
+		int partPerRate;
 		float gravity;
 		float focusSpread;
 		float particleSize;
 		float dirX, dirY, dirZ;
 		char textureName[32];
+
 	};
 
 private:
@@ -52,7 +53,7 @@ private:
 	Window window;
 	std::vector<Gear::ParticleSystem*> ps;
 	TwBar * editorBar;
-	particle p;
+	emitter emit;
 	TextureAsset* textureAsset;
 	void copyOverVariables();
 };
