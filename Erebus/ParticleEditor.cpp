@@ -19,6 +19,7 @@ bool newEmitter = false;
 bool buttonReset = false;
 bool hardReset = false;
 bool buttonSave = false;
+bool systemPosActive = false;
 Importer::TextureAsset* pTexture;
 Importer::TextureAsset* cubeTexture;
 Importer::TextureAsset* particlesTexture;
@@ -124,6 +125,12 @@ void ParticleEditor::start()
 			selectedEmitter = (selectedEmitter + 1) % nrOfEmitters;
 			copyOverVariables();
 		}
+	/*	if (inputs.keyPressed(GLFW_KEY_SPACE))
+			if (systemPosActive)
+			{
+				
+			}*/
+			
 		if (inputs.keyPressedThisFrame(GLFW_KEY_ENTER))
 		{
 			if (hardReset)
