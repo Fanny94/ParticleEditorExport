@@ -11,6 +11,7 @@
 #include <String>
 #include <thread>
 #include <AntTweakBar.h>
+#include "ParticleSystem.h"
 
 class ParticleEditor
 {
@@ -42,7 +43,6 @@ public:
 		float particleSize;
 		float dirX, dirY, dirZ;
 		char textureName[32];
-
 	};
 
 private:
@@ -51,7 +51,9 @@ private:
 	int nrOfEmitters;
 	bool running;
 	Window window;
-	std::vector<Gear::ParticleSystem*> ps;
+	//std::vector<Gear::ParticleSystem*> ps;
+	Gear::ParticleSystem* ps;
+	std::vector<Gear::ParticleEmitter*> particleEmitters;
 	TwBar * editorBar;
 	emitter emit;
 	TextureAsset* textureAsset;

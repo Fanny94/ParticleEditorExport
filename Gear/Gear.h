@@ -13,7 +13,7 @@ namespace Gear
 		GEAR_API GearEngine();
 		GEAR_API ~GearEngine();
 		GEAR_API void queueModels(std::vector<ModelInstance>* models);
-		GEAR_API void queueParticles(std::vector<ParticleSystem*>* particles);
+		GEAR_API void queueParticles(std::vector<ParticleEmitter*>* particleEmitters);
 		GEAR_API void draw(Camera* camera);
 	private:
 
@@ -22,6 +22,6 @@ namespace Gear
 
 		RenderQueue queue;	
 
-		std::vector<ParticleSystem*>* particleSystems;
+		std::vector<ParticleEmitter*>* emitters;
 	};
 }

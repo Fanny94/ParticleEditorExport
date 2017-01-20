@@ -19,16 +19,16 @@ namespace Gear
 		staticModels = models;
 	}
 
-	void GearEngine::queueParticles(std::vector<ParticleSystem*>* particles)
+	void GearEngine::queueParticles(std::vector<ParticleEmitter*>* particleEmitters)
 	{
-		particleSystems = particles;
+		emitters = particleEmitters;
 	}
 
 	void GearEngine::draw(Camera* camera)
 	{
 		queue.updateUniforms(camera);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		queue.particlePass(particleSystems);
+		queue.particlePass(emitters);
 		queue.forwardPass(staticModels);
 	}
 

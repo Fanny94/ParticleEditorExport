@@ -59,7 +59,7 @@ void RenderQueue::forwardPass(std::vector<ModelInstance>* staticModels)
 	allShaders[0]->unUse();
 }
 
-void RenderQueue::particlePass(std::vector<Gear::ParticleSystem*>* particleSystems)
+void RenderQueue::particlePass(std::vector<Gear::ParticleEmitter*>* particleEmitters)
 {
 	allShaders[1]->use();
 	GLuint loc = glGetUniformLocation(allShaders[1]->getProgramID(), "particleSize");
@@ -71,16 +71,16 @@ void RenderQueue::particlePass(std::vector<Gear::ParticleSystem*>* particleSyste
 	TextureAsset* tA;
 	glm::vec3* pos;
 
-	for (size_t i = 0; i < particleSystems->size(); i++)
+	for (size_t i = 0; i < particleEmitters->size(); i++)
 	{
-		if (particleSystems->at(i)->isActive)
+		if (particleEmitters->at(i)->isActive)
 		{
-			glUniform1f(loc, particleSystems->at(i)->particleSize);
-			pos = particleSystems->at(i)->getPositions();
-			particleSystems->at(i)->getTexture()->bind(GL_TEXTURE0);
-			size_t ParticleCount = particleSystems->at(i)->getNrOfActiveParticles();
+			glUniform1f(loc, particleEmitters->at(i)->particleSize);
+			pos = particleEmitters->at(i)->getPositions();
+			particleEmitters->at(i)->getTexture()->bind(GL_TEXTURE0);
+			size_t ParticleCount = particleEmitters->at(i)->getNrOfActiveParticles();
 
-			glBindBuffer(GL_ARRAY_BUFFER, particleSystems->at(i)->getPartVertexBuffer());
+			glBindBuffer(GL_ARRAY_BUFFER, particleEmitters->at(i)->getPartVertexBuffer());
 			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (GLvoid*)0);
 			glBufferData(GL_ARRAY_BUFFER, (sizeof(glm::vec3)) * ParticleCount, &pos[0], GL_STATIC_DRAW);
 			glEnableVertexAttribArray(0);

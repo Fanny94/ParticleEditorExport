@@ -1,7 +1,7 @@
 #pragma once
 #include "ShaderProgram.h"
 #include "Camera.h"
-#include "ParticleSystem.h"
+#include "ParticleEmitter.h"
 #include "ModelAsset.h"
 #include "TextureAsset.h"
 #include "Material.h"
@@ -26,9 +26,9 @@ public:
 
 	void forwardPass(std::vector<ModelInstance>* staticModels);
 	// TEMP:
-	std::vector<Gear::ParticleSystem*> particleSystem;
+	std::vector<Gear::ParticleEmitter*> particleEmitters;
 
-	void particlePass(std::vector<Gear::ParticleSystem*>* particleSystems);
+	void particlePass(std::vector<Gear::ParticleEmitter*>* particleEmitters);
 
 private:
 	ShaderProgram* allShaders[2];
