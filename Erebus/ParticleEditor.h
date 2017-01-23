@@ -54,7 +54,6 @@ private:
 	Gear::ParticleSystem* ps;
 	std::vector<Gear::ParticleEmitter*> particleEmitters;
 	Gear::ParticleEmitter* pEmitter;
-	emitter* emitters;
 	TwBar * editorBar;
 	emitter emit;
 	TextureAsset* textureAsset;
