@@ -14,7 +14,6 @@ namespace Gear
 		GEAR_API void update(const float &dt);
 		GEAR_API void addEmitter(ParticleEmitter* emitter);
 
-	private:
 		glm::vec3 systemPos;
 		glm::vec3 systemRot;
 
@@ -25,5 +24,8 @@ namespace Gear
 		glm::vec3 v2;
 		glm::vec3 v3;
 		std::vector<Gear::ParticleEmitter*> particleEmitters;
+
+	private:
+
 	};
 }

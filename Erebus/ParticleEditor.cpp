@@ -106,29 +106,50 @@ void ParticleEditor::start()
 		
 		if (inputs.keyPressed(GLFW_KEY_ESCAPE))
 			running = false;
-		if (inputs.keyPressed(GLFW_KEY_UP))
-			particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, 2.0 * deltaTime, 0);
-		if (inputs.keyPressed(GLFW_KEY_DOWN))
-			particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, -2.0 * deltaTime, 0);
-		if (inputs.keyPressed(GLFW_KEY_LEFT))
-			particleEmitters.at(selectedEmitter)->localPos += glm::vec3(-2.0 * deltaTime, 0, 0);
-		if (inputs.keyPressed(GLFW_KEY_RIGHT))
-			particleEmitters.at(selectedEmitter)->localPos += glm::vec3(2.0 * deltaTime, 0, 0);
-		if (inputs.keyPressed(GLFW_KEY_KP_ADD))
-			particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, 0, 2.0 * deltaTime);
-		if (inputs.keyPressed(GLFW_KEY_KP_SUBTRACT))
-			particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, 0, -2.0 * deltaTime);
+
+		if (systemPosActive == false)
+		{
+			if (inputs.keyPressed(GLFW_KEY_UP))
+				particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, 2.0 * deltaTime, 0);
+			if (inputs.keyPressed(GLFW_KEY_DOWN))
+				particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, -2.0 * deltaTime, 0);
+			if (inputs.keyPressed(GLFW_KEY_LEFT))
+				particleEmitters.at(selectedEmitter)->localPos += glm::vec3(-2.0 * deltaTime, 0, 0);
+			if (inputs.keyPressed(GLFW_KEY_RIGHT))
+				particleEmitters.at(selectedEmitter)->localPos += glm::vec3(2.0 * deltaTime, 0, 0);
+			if (inputs.keyPressed(GLFW_KEY_KP_ADD))
+				particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, 0, 2.0 * deltaTime);
+			if (inputs.keyPressed(GLFW_KEY_KP_SUBTRACT))
+				particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, 0, -2.0 * deltaTime);
+		}
 		if (inputs.keyPressedThisFrame(GLFW_KEY_TAB))
 		{
 			selectedEmitter = (selectedEmitter + 1) % nrOfEmitters;
 			copyOverVariables();
 		}
-		//if (inputs.keyPressed(GLFW_KEY_SPACE))
-		//	if (systemPosActive)
-		//	{
-		//		
-		//	}
-			
+
+		if (inputs.keyPressedThisFrame(GLFW_KEY_SPACE))
+		{
+			systemPosActive = true;			
+		}
+
+		while (systemPosActive)
+		{
+			if (inputs.keyPressed(GLFW_KEY_UP))
+				ps->systemPos += glm::vec3(0, 2.0 * deltaTime, 0);
+			if (inputs.keyPressed(GLFW_KEY_DOWN))
+				ps->systemPos += glm::vec3(0, -2.0 * deltaTime, 0);
+			if (inputs.keyPressed(GLFW_KEY_LEFT))
+				ps->systemPos += glm::vec3(-2.0 * deltaTime, 0, 0);
+			if (inputs.keyPressed(GLFW_KEY_RIGHT))
+				ps->systemPos += glm::vec3(2.0 * deltaTime, 0, 0);
+
+			if (inputs.keyPressedThisFrame(GLFW_KEY_SPACE))
+			{
+				systemPosActive = false;
+			}
+		}
+
 		if (inputs.keyPressedThisFrame(GLFW_KEY_ENTER))
 		{
 			if (hardReset)
