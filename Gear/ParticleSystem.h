@@ -10,12 +10,9 @@ namespace Gear
 	public:
 		GEAR_API ParticleSystem();
 		GEAR_API ~ParticleSystem();
-		GEAR_API ParticleSystem(int n, float life, float speed, float rate, int number);
 
-		GEAR_API std::vector<Gear::ParticleEmitter*> getParticleEmitters();
-		GEAR_API void update(const float &dt, int nrOfEmitters);
-	/*	void setEmmiterPos(glm::vec3 pos);*/
-		GEAR_API void addNewEmitter(std::vector<Gear::ParticleEmitter*> partEmitter);
+		GEAR_API void update(const float &dt);
+		GEAR_API void addEmitter(ParticleEmitter* emitter);
 
 	private:
 		glm::vec3 systemPos;

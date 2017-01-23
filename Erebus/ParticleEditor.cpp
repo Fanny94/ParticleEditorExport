@@ -61,9 +61,11 @@ void ParticleEditor::start()
 	Camera camera(45.f, 1280.f / 720.f, 0.1f, 2000.f, &inputs);
 
 	TwWindowSize(1280, 720);
-	
-	ps = new Gear::ParticleSystem(emit.numOfParticles, emit.lifeTime, emit.speed, emit.particleRate, emit.partPerRate);
-	particleEmitters = ps->getParticleEmitters();
+	ps = new Gear::ParticleSystem();
+
+	pEmitter = new Gear::ParticleEmitter(emit.numOfParticles, emit.lifeTime, emit.speed, emit.particleRate, emit.partPerRate);
+	particleEmitters.push_back(pEmitter);
+	ps->addEmitter(pEmitter);
 
 	setBar();
 
@@ -86,7 +88,6 @@ void ParticleEditor::start()
 	pTexture = particlesTexture;
 	pTexString = "fireball.png";
 	particleEmitters.at(selectedEmitter)->setTextrue(pTexture, pTexString);
-	engine.queueParticles(&particleEmitters);
 
 	engine.queueModels(&mI);
 	engine.queueParticles(&particleEmitters);
@@ -100,10 +101,7 @@ void ParticleEditor::start()
 		if(nrOfEmitters > 0)
 			updateSystem();
 
-		//for (int i = 0; i < nrOfEmitters; i++)
-		//	particleEmitters.at(i)->update(deltaTime);
-
-		ps->update(deltaTime, nrOfEmitters);
+		ps->update(deltaTime);
 		engine.draw(&camera);
 		
 		if (inputs.keyPressed(GLFW_KEY_ESCAPE))
@@ -125,11 +123,11 @@ void ParticleEditor::start()
 			selectedEmitter = (selectedEmitter + 1) % nrOfEmitters;
 			copyOverVariables();
 		}
-	/*	if (inputs.keyPressed(GLFW_KEY_SPACE))
-			if (systemPosActive)
-			{
-				
-			}*/
+		//if (inputs.keyPressed(GLFW_KEY_SPACE))
+		//	if (systemPosActive)
+		//	{
+		//		
+		//	}
 			
 		if (inputs.keyPressedThisFrame(GLFW_KEY_ENTER))
 		{
@@ -304,8 +302,9 @@ void ParticleEditor::update()
 	}
 	if (newEmitter)
 	{
-		particleEmitters.push_back(new Gear::ParticleEmitter());
-		ps->addNewEmitter(particleEmitters);
+		pEmitter = new Gear::ParticleEmitter();
+		particleEmitters.push_back(pEmitter);
+		ps->addEmitter(pEmitter);
 
 		nrOfEmitters++;
 		selectedEmitter = (selectedEmitter + 1) % nrOfEmitters;
