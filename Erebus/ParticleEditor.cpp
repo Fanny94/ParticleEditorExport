@@ -72,7 +72,7 @@ void ParticleEditor::start()
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
 	
 	particlesTexture = assets.load<TextureAsset>("Textures/fireball.png");
-
+	
 	PerformanceCounter counter;
 	double deltaTime;
 
@@ -248,34 +248,35 @@ void ParticleEditor::setBar()
 
 void ParticleEditor::writeToFile()
 {
+
 	FILE* file = NULL;
 	saveName = saveName + ".particle";
 	file = fopen((char*)("ParticleFiles/" + saveName).c_str(), "wb");
 
 	if (file)
 	{
-
-		emit.numEmitters = nrOfEmitters;
-		fwrite(&emit.numEmitters, sizeof(int), 1, file);
+		emitters = new emitter[nrOfEmitters];
+		fwrite(&nrOfEmitters, sizeof(int), 1, file);
 		for (int i = 0; i < particleEmitters.size(); i++)
-		{
-			emit.numOfParticles = particleEmitters.at(i)->maxParticles;
-			emit.lifeTime = particleEmitters.at(i)->lifeTime;
-			emit.speed = particleEmitters.at(i)->partSpeed;
-			emit.particleRate = particleEmitters.at(i)->particleRate;
-			emit.partPerRate = particleEmitters.at(i)->partPerRate;
-			emit.gravity = particleEmitters.at(i)->gravityFactor;
-			emit.focusSpread = particleEmitters.at(i)->focus;
-			emit.particleSize = particleEmitters.at(i)->particleSize;
-			emit.dirX = particleEmitters.at(i)->direction.x;
-			emit.dirY = particleEmitters.at(i)->direction.y;
-			emit.dirZ = particleEmitters.at(i)->direction.z;
+		{ 
+			emitters[i].numOfParticles = particleEmitters.at(i)->maxParticles;
+			emitters[i].lifeTime = particleEmitters.at(i)->lifeTime;
+			emitters[i].speed = particleEmitters.at(i)->partSpeed;
+			emitters[i].particleRate = particleEmitters.at(i)->particleRate;
+			emitters[i].partPerRate = particleEmitters.at(i)->partPerRate;
+			emitters[i].gravity = particleEmitters.at(i)->gravityFactor;
+			emitters[i].focusSpread = particleEmitters.at(i)->focus;
+			emitters[i].particleSize = particleEmitters.at(i)->particleSize;
+			emitters[i].dirX = particleEmitters.at(i)->direction.x;
+			emitters[i].dirY = particleEmitters.at(i)->direction.y;
+			emitters[i].dirZ = particleEmitters.at(i)->direction.z;
 			pTexString = particleEmitters.at(i)->getTextureName();
 			char* ptr = pTexString;
-			memcpy(&emit.textureName, ptr, sizeof(const char[32]));
-			fwrite(&emit, sizeof(emitter), 1, file);
+			memcpy(&emitters[i].textureName, ptr, sizeof(const char[32]));
 		}
 
+		fwrite(&emitters, sizeof(emitters), 1, file);
+		delete[] emitters;
 		fclose(file);
 	}
 

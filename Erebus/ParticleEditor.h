@@ -32,7 +32,6 @@ public:
 
 	struct emitter
 	{
-		int numEmitters;
 		int numOfParticles;
 		float lifeTime;
 		float speed;
@@ -51,10 +50,11 @@ private:
 	int nrOfEmitters;
 	bool running;
 	Window window;
-	//std::vector<Gear::ParticleSystem*> ps;
+	
 	Gear::ParticleSystem* ps;
 	std::vector<Gear::ParticleEmitter*> particleEmitters;
 	Gear::ParticleEmitter* pEmitter;
+	emitter* emitters;
 	TwBar * editorBar;
 	emitter emit;
 	TextureAsset* textureAsset;
