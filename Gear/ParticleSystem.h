@@ -11,7 +11,7 @@ namespace Gear
 		GEAR_API ParticleSystem();
 		GEAR_API ~ParticleSystem();
 
-		GEAR_API void update(const float &dt);
+		GEAR_API void update(const float &dt, glm::vec3 systemPos);
 		GEAR_API void addEmitter(ParticleEmitter* emitter);
 
 		glm::vec3 systemPos;

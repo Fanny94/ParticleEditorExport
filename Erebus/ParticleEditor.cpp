@@ -19,7 +19,6 @@ bool newEmitter = false;
 bool buttonReset = false;
 bool hardReset = false;
 bool buttonSave = false;
-bool systemPosActive = false;
 Importer::TextureAsset* pTexture;
 Importer::TextureAsset* cubeTexture;
 Importer::TextureAsset* particlesTexture;
@@ -101,54 +100,38 @@ void ParticleEditor::start()
 		if(nrOfEmitters > 0)
 			updateSystem();
 
-		ps->update(deltaTime);
+		ps->update(deltaTime, ps->systemPos);
 		engine.draw(&camera);
 		
 		if (inputs.keyPressed(GLFW_KEY_ESCAPE))
 			running = false;
-
-		if (systemPosActive == false)
-		{
-			if (inputs.keyPressed(GLFW_KEY_UP))
-				particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, 2.0 * deltaTime, 0);
-			if (inputs.keyPressed(GLFW_KEY_DOWN))
-				particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, -2.0 * deltaTime, 0);
-			if (inputs.keyPressed(GLFW_KEY_LEFT))
-				particleEmitters.at(selectedEmitter)->localPos += glm::vec3(-2.0 * deltaTime, 0, 0);
-			if (inputs.keyPressed(GLFW_KEY_RIGHT))
-				particleEmitters.at(selectedEmitter)->localPos += glm::vec3(2.0 * deltaTime, 0, 0);
-			if (inputs.keyPressed(GLFW_KEY_KP_ADD))
-				particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, 0, 2.0 * deltaTime);
-			if (inputs.keyPressed(GLFW_KEY_KP_SUBTRACT))
-				particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, 0, -2.0 * deltaTime);
-		}
+		if (inputs.keyPressed(GLFW_KEY_UP))
+			particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, 2.0 * deltaTime, 0);
+		if (inputs.keyPressed(GLFW_KEY_DOWN))
+			particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, -2.0 * deltaTime, 0);
+		if (inputs.keyPressed(GLFW_KEY_LEFT))
+			particleEmitters.at(selectedEmitter)->localPos += glm::vec3(-2.0 * deltaTime, 0, 0);
+		if (inputs.keyPressed(GLFW_KEY_RIGHT))
+			particleEmitters.at(selectedEmitter)->localPos += glm::vec3(2.0 * deltaTime, 0, 0);
+		if (inputs.keyPressed(GLFW_KEY_KP_ADD))
+			particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, 0, 2.0 * deltaTime);
+		if (inputs.keyPressed(GLFW_KEY_KP_SUBTRACT))
+			particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, 0, -2.0 * deltaTime);
 		if (inputs.keyPressedThisFrame(GLFW_KEY_TAB))
 		{
 			selectedEmitter = (selectedEmitter + 1) % nrOfEmitters;
 			copyOverVariables();
 		}
 
-		if (inputs.keyPressedThisFrame(GLFW_KEY_SPACE))
-		{
-			systemPosActive = true;			
-		}
-
-		while (systemPosActive)
-		{
-			if (inputs.keyPressed(GLFW_KEY_UP))
-				ps->systemPos += glm::vec3(0, 2.0 * deltaTime, 0);
-			if (inputs.keyPressed(GLFW_KEY_DOWN))
+		if (inputs.keyPressed(GLFW_KEY_W))
+			ps->systemPos += glm::vec3(0, 2.0 * deltaTime, 0);
+		if (inputs.keyPressed(GLFW_KEY_S))
 				ps->systemPos += glm::vec3(0, -2.0 * deltaTime, 0);
-			if (inputs.keyPressed(GLFW_KEY_LEFT))
-				ps->systemPos += glm::vec3(-2.0 * deltaTime, 0, 0);
-			if (inputs.keyPressed(GLFW_KEY_RIGHT))
-				ps->systemPos += glm::vec3(2.0 * deltaTime, 0, 0);
+		if (inputs.keyPressed(GLFW_KEY_A))
+			ps->systemPos += glm::vec3(-2.0 * deltaTime, 0, 0);
+		if (inputs.keyPressed(GLFW_KEY_W))
+			ps->systemPos += glm::vec3(2.0 * deltaTime, 0, 0);
 
-			if (inputs.keyPressedThisFrame(GLFW_KEY_SPACE))
-			{
-				systemPosActive = false;
-			}
-		}
 
 		if (inputs.keyPressedThisFrame(GLFW_KEY_ENTER))
 		{
