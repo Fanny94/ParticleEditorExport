@@ -31,11 +31,16 @@ std::vector<ModelInstance> mI;
 ParticleEditor::ParticleEditor(): selectedEmitter(0), nrOfEmitters(1)
 {
 	this->running = true;
+	emit.gravity = 0;
 	emit.numOfParticles = 50;
 	emit.lifeTime = 1;
 	emit.speed = 10;
 	emit.particleRate = 15;
 	emit.partPerRate = 5;
+	emit.focusSpread = 0;
+	emit.dirX = 0;
+	emit.dirY = 1;
+	emit.dirZ = 0;
 }
 
 ParticleEditor::~ParticleEditor()
@@ -62,7 +67,7 @@ void ParticleEditor::start()
 	TwWindowSize(1280, 720);
 	ps = new Gear::ParticleSystem();
 
-	pEmitter = new Gear::ParticleEmitter(emit.numOfParticles, emit.lifeTime, emit.speed, emit.particleRate, emit.partPerRate);
+	pEmitter = new Gear::ParticleEmitter(emit.gravity, emit.numOfParticles, emit.lifeTime, emit.speed, emit.particleRate, emit.partPerRate, emit.focusSpread, emit.dirX, emit.dirY, emit.dirZ);
 	particleEmitters.push_back(pEmitter);
 	ps->addEmitter(pEmitter);
 
@@ -138,7 +143,8 @@ void ParticleEditor::start()
 			if (hardReset)
 			{
 				hardReset = false;
-				particleEmitters.at(selectedEmitter)->emitterInit(emit.numOfParticles, emit.lifeTime, emit.speed, emit.particleRate, emit.partPerRate);
+				particleEmitters.at(selectedEmitter)->emitterInit(tempGravity, tempNumberParticles, tempLifeTime, tempSpeed, tempEmitPerSecond, tempEmitPerSecond, tempFocusSpread, tempDirection.x, tempDirection.y, tempDirection.z);
+
 			}
 		}
 		if (inputs.keyPressedThisFrame(GLFW_KEY_DELETE))
@@ -234,7 +240,7 @@ void ParticleEditor::setBar()
 	TwAddVarRW(editorBar, "Gravity", TW_TYPE_FLOAT, &tempGravity, "label='Gravity' step=0.1");
 	TwAddVarRW(editorBar, "Particle Size", TW_TYPE_FLOAT, &tempParticleSize, "label='Particle Size' step=0.1");
 	TwAddVarRW(editorBar, "Direction", TW_TYPE_DIR3F, &tempDirection, "label='Direction' opened=true");
-	TwAddVarRO(editorBar, "Position", TW_TYPE_DIR3F, &(particleEmitters.at(selectedEmitter)->position), "label='Position' opened=true");
+	TwAddVarRO(editorBar, "Position", TW_TYPE_DIR3F, &tempPosition, "label='Position' opened=true");
 	TwAddSeparator(editorBar, "Sep1", NULL);
 	TwAddButton(editorBar, "Activate", start, NULL, "label='Activate'");
 	TwAddButton(editorBar, "Add Emitter", addEmitter, NULL, "label='Add Emitter'");
@@ -255,6 +261,7 @@ void ParticleEditor::writeToFile()
 
 	if (file)
 	{
+
 		fwrite(&nrOfEmitters, sizeof(int), 1, file);
 		for (int i = 0; i < particleEmitters.size(); i++)
 		{ 
@@ -337,7 +344,7 @@ void ParticleEditor::updateSystem()
 
 void ParticleEditor::copyOverVariables()
 {
-	tempNumberParticles =particleEmitters.at(selectedEmitter)->maxParticles;
+	tempNumberParticles = particleEmitters.at(selectedEmitter)->maxParticles;
 	tempLifeTime = particleEmitters.at(selectedEmitter)->lifeTime;
 	tempSpeed = particleEmitters.at(selectedEmitter)->partSpeed;
 	tempEmitPerSecond = 1 / particleEmitters.at(selectedEmitter)->particleRate;

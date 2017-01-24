@@ -21,8 +21,8 @@ namespace Gear
 	public:
 		GEAR_API ParticleEmitter();
 		GEAR_API ~ParticleEmitter();
-		GEAR_API ParticleEmitter(int n, float life, float speed, float rate, int number);
-		GEAR_API void emitterInit(int n, float life, float speed, float rate, int number);
+		GEAR_API ParticleEmitter(float gravity, int n, float life, float speed, float rate, int number, float focusSpread, float dirx, float dirY, float dirZ);
+		GEAR_API void emitterInit(float gravity, int n, float life, float speed, float rate, int number, float focusSpread, float dirx, float dirY, float dirZ);
 
 		GEAR_API void update(const float &dt);
 		GEAR_API void explode();

@@ -9,9 +9,9 @@ namespace Gear
 
 	}
 
-	ParticleEmitter::ParticleEmitter(int n, float life, float speed, float rate, int number) : isActive(false), timer(0), particleSize(1.0)
+	ParticleEmitter::ParticleEmitter(float gravity, int n, float life, float speed, float rate, int number, float focusSpread, float dirx, float dirY, float dirZ) : isActive(false), timer(0), particleSize(1.0)
 	{
-		gravityFactor = 0.0;
+		gravityFactor = gravity;
 		maxParticles = n;
 		allParticles = new Partikel[n];
 		particlePos = new glm::vec3[n];
@@ -21,15 +21,14 @@ namespace Gear
 		partSpeed = speed;
 		particleRate = 1 / rate;
 		partPerRate = number;
-		direction = { 1, 0, 0 };
-		direction = { 0, 0, 0 };
-		focus = 0;
+		direction = { dirx, dirY, dirY };
+		focus = focusSpread;
 	}
 
-	GEAR_API void Gear::ParticleEmitter::emitterInit(int n, float life, float speed, float rate, int number)
+	GEAR_API void Gear::ParticleEmitter::emitterInit(float gravity, int n, float life, float speed, float rate, int number, float focusSpread, float dirx, float dirY, float dirZ)
 	{
 		isActive = false; timer = 0;
-		gravityFactor = 0.0;
+		gravityFactor = gravity;
 		maxParticles = n;
 		allParticles = new Partikel[n];
 		particlePos = new glm::vec3[n];
@@ -39,9 +38,8 @@ namespace Gear
 		partSpeed = speed;
 		particleRate = 1 / rate;
 		partPerRate = number;
-		direction = { 1, 0, 0 };
-		direction = { 0, 0, 0 };
-		focus = 0;
+		direction = { dirx, dirY, dirY };
+		focus = focusSpread;
 
 	}
 
