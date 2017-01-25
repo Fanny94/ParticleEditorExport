@@ -5,8 +5,8 @@ inline void TwEventMousePosGLFW3(GLFWwindow* window, double xpos, double ypos) {
 int tempNumberParticles;
 float tempLifeTime;
 float tempSpeed;
-float tempEmitPerSecond;
-int tempNrOfParticlesPerEmit;
+float tempRatePerSecond;
+int tempNrOfParticlesPerRate;
 float tempGravity;
 float tempFocusSpread;
 float tempParticleSize;
@@ -144,7 +144,7 @@ void ParticleEditor::start()
 			if (hardReset)
 			{
 				hardReset = false;
-				particleEmitters.at(selectedEmitter)->emitterInit(tempGravity, tempNumberParticles, tempLifeTime, tempSpeed, tempEmitPerSecond, tempNrOfParticlesPerEmit, tempFocusSpread, tempDirection.x, tempDirection.y, tempDirection.z, tempParticleSize);
+				particleEmitters.at(selectedEmitter)->emitterInit(tempGravity, tempNumberParticles, tempLifeTime, tempSpeed, tempRatePerSecond, tempNrOfParticlesPerRate, tempFocusSpread, tempDirection.x, tempDirection.y, tempDirection.z, tempParticleSize);
 
 			}
 		}
@@ -219,8 +219,8 @@ void ParticleEditor::setBar()
 	tempNumberParticles = 50;
 	tempLifeTime = 1;
 	tempSpeed = 10;
-	tempEmitPerSecond = 15;
-	tempNrOfParticlesPerEmit = 5;
+	tempRatePerSecond = 15;
+	tempNrOfParticlesPerRate = 5;
 	tempFocusSpread = 0;
 	tempGravity = 0.0;
 	tempDirection = { 0, 1, 0 };
@@ -235,8 +235,8 @@ void ParticleEditor::setBar()
 	TwAddVarRW(editorBar, "Number Particles", TW_TYPE_INT32, &tempNumberParticles, "label='Number Particles' min=0");
 	TwAddVarRW(editorBar, "Life Time", TW_TYPE_FLOAT, &tempLifeTime, "label='Life Time' min=1 step=0.1");
 	TwAddVarRW(editorBar, "Speed", TW_TYPE_FLOAT, &tempSpeed, "label='Speed' min=1 step=0.1");
-	TwAddVarRW(editorBar, "Emits per Second", TW_TYPE_FLOAT, &tempEmitPerSecond, "label='Emits / Sec' min=1");
-	TwAddVarRW(editorBar, "Number of Particles per Emit", TW_TYPE_INT32, &tempNrOfParticlesPerEmit, "label='Particles / Emit' min=0");
+	TwAddVarRW(editorBar, "Rate per Second", TW_TYPE_FLOAT, &tempRatePerSecond, "label='Emits / Sec' min=1");
+	TwAddVarRW(editorBar, "Number of Particles per Rate", TW_TYPE_INT32, &tempNrOfParticlesPerRate, "label='Particles / rate' min=0");
 	TwAddVarRW(editorBar, "Focus Spread", TW_TYPE_FLOAT, &tempFocusSpread, "label='Focus Spread' step=0.1");
 	TwAddVarRW(editorBar, "Gravity", TW_TYPE_FLOAT, &tempGravity, "label='Gravity' step=0.1");
 	TwAddVarRW(editorBar, "Particle Size", TW_TYPE_FLOAT, &tempParticleSize, "label='Particle Size' step=0.1");
@@ -265,7 +265,7 @@ void ParticleEditor::writeToFile()
 
 		fwrite(&nrOfEmitters, sizeof(int), 1, file);
 		for (int i = 0; i < particleEmitters.size(); i++)
-		{ 
+		{
 			emitter.numOfParticles = particleEmitters.at(i)->maxParticles;
 			emitter.lifeTime = particleEmitters.at(i)->lifeTime;
 			emitter.speed = particleEmitters.at(i)->partSpeed;
@@ -274,9 +274,15 @@ void ParticleEditor::writeToFile()
 			emitter.gravity = particleEmitters.at(i)->gravityFactor;
 			emitter.focusSpread = particleEmitters.at(i)->focus;
 			emitter.particleSize = particleEmitters.at(i)->particleSize;
+
+			emitter.posX = particleEmitters.at(i)->position.x;
+			emitter.posY = particleEmitters.at(i)->position.y;
+			emitter.posZ = particleEmitters.at(i)->position.z;
+
 			emitter.dirX = particleEmitters.at(i)->direction.x;
 			emitter.dirY = particleEmitters.at(i)->direction.y;
 			emitter.dirZ = particleEmitters.at(i)->direction.z;
+
 			pTexString = particleEmitters.at(i)->getTextureName();
 			char* ptr = pTexString;
 			memcpy(&emitter.textureName, ptr, sizeof(const char[32]));
@@ -332,11 +338,11 @@ void ParticleEditor::update()
 
 void ParticleEditor::updateSystem()
 {
-	particleEmitters.at(selectedEmitter)->particleRate = 1 / tempEmitPerSecond;
+	particleEmitters.at(selectedEmitter)->particleRate = 1 / tempRatePerSecond;
 	particleEmitters.at(selectedEmitter)->focus = tempFocusSpread;
 	particleEmitters.at(selectedEmitter)->gravityFactor = tempGravity;
 	particleEmitters.at(selectedEmitter)->lifeTime = tempLifeTime;
-	particleEmitters.at(selectedEmitter)->partPerRate = tempNrOfParticlesPerEmit;
+	particleEmitters.at(selectedEmitter)->partPerRate = tempNrOfParticlesPerRate;
 	particleEmitters.at(selectedEmitter)->partSpeed = tempSpeed;
 	particleEmitters.at(selectedEmitter)->direction = tempDirection;
 	particleEmitters.at(selectedEmitter)->isActive = active;
@@ -348,8 +354,8 @@ void ParticleEditor::copyOverVariables()
 	tempNumberParticles = particleEmitters.at(selectedEmitter)->maxParticles;
 	tempLifeTime = particleEmitters.at(selectedEmitter)->lifeTime;
 	tempSpeed = particleEmitters.at(selectedEmitter)->partSpeed;
-	tempEmitPerSecond = 1 / particleEmitters.at(selectedEmitter)->particleRate;
-	tempNrOfParticlesPerEmit = particleEmitters.at(selectedEmitter)->partPerRate;
+	tempRatePerSecond = 1 / particleEmitters.at(selectedEmitter)->particleRate;
+	tempNrOfParticlesPerRate = particleEmitters.at(selectedEmitter)->partPerRate;
 	tempGravity = particleEmitters.at(selectedEmitter)->gravityFactor;
 	tempFocusSpread = particleEmitters.at(selectedEmitter)->focus;
 	tempDirection = particleEmitters.at(selectedEmitter)->direction;
