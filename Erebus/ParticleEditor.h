@@ -20,17 +20,7 @@ public:
 	~ParticleEditor();
 	void start();
 
-	static void TW_CALL newTexture(void*);
-	static void TW_CALL start(void*);
-	static void TW_CALL reset(void*);
-	static void TW_CALL save(void*);
-	static void TW_CALL addEmitter(void*);
-	void setBar();
-	void writeToFile();
-	void update();
-	void updateSystem();
-
-	struct emitter
+	struct Emitter
 	{
 		int numOfParticles;
 		float lifeTime;
@@ -44,6 +34,16 @@ public:
 		char textureName[32];
 	};
 
+	static void TW_CALL newTexture(void*);
+	static void TW_CALL start(void*);
+	static void TW_CALL reset(void*);
+	static void TW_CALL save(void*);
+	static void TW_CALL addEmitter(void*);
+	void setBar();
+	void writeToFile();
+	void update();
+	void updateSystem();
+
 private:
 	float lifeTime;
 	int selectedEmitter;
@@ -55,7 +55,7 @@ private:
 	std::vector<Gear::ParticleEmitter*> particleEmitters;
 	Gear::ParticleEmitter* pEmitter;
 	TwBar * editorBar;
-	emitter emit;
+	Emitter emitter;
 	TextureAsset* textureAsset;
 	void copyOverVariables();
 };

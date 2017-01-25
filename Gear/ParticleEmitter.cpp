@@ -3,13 +3,13 @@
 
 namespace Gear
 {
-	ParticleEmitter::ParticleEmitter() : particleSize(1.0)
+	ParticleEmitter::ParticleEmitter()
 	{
 
 
 	}
 
-	ParticleEmitter::ParticleEmitter(float gravity, int n, float life, float speed, float rate, int number, float focusSpread, float dirx, float dirY, float dirZ) : isActive(false), timer(0), particleSize(1.0)
+	ParticleEmitter::ParticleEmitter(float gravity, int n, float life, float speed, float rate, int number, float focusSpread, float dirx, float dirY, float dirZ, float size) : isActive(false), timer(0)
 	{
 		gravityFactor = gravity;
 		maxParticles = n;
@@ -23,9 +23,10 @@ namespace Gear
 		partPerRate = number;
 		direction = { dirx, dirY, dirY };
 		focus = focusSpread;
+		particleSize = size;
 	}
 
-	GEAR_API void Gear::ParticleEmitter::emitterInit(float gravity, int n, float life, float speed, float rate, int number, float focusSpread, float dirx, float dirY, float dirZ)
+	GEAR_API void Gear::ParticleEmitter::emitterInit(float gravity, int n, float life, float speed, float rate, int number, float focusSpread, float dirx, float dirY, float dirZ, float size)
 	{
 		isActive = false; timer = 0;
 		gravityFactor = gravity;
@@ -40,6 +41,7 @@ namespace Gear
 		partPerRate = number;
 		direction = { dirx, dirY, dirY };
 		focus = focusSpread;
+		particleSize = size;
 
 	}
 

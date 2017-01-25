@@ -1,10 +1,8 @@
 ﻿  Assets.cpp
   Generating Code...
-  Compiling...
-  ModelAsset.cpp
-  Generating Code...
   Skipping... (no relevant changes detected)
   TextureAsset.cpp
+  ModelAsset.cpp
   MaterialAsset.cpp
   ImageAsset.cpp
   FontAsset.cpp
