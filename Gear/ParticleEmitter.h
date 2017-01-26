@@ -13,6 +13,12 @@ struct Color
 	GLfloat r, g, b;
 };
 
+struct SendStruct
+{
+	glm::vec3 pos;
+	float size;
+};
+
 namespace Gear
 {
 	class ParticleEmitter
@@ -21,10 +27,10 @@ namespace Gear
 	public:
 		GEAR_API ParticleEmitter();
 		GEAR_API ~ParticleEmitter();
-		GEAR_API ParticleEmitter(float gravity, int n, float life, float speed, float rate, int number, float focusSpread, float dirx, float dirY, float dirZ, float size);
-		GEAR_API void emitterInit(float gravity, int n, float life, float speed, float rate, int number, float focusSpread, float dirx, float dirY, float dirZ, float size);
+		GEAR_API ParticleEmitter(float gravity, int n, float life, float speed, float rate, int number, float focusSpread, float dirx, float dirY, float dirZ, float size, float shrink);
+		GEAR_API void emitterInit(float gravity, int n, float life, float speed, float rate, int number, float focusSpread, float dirx, float dirY, float dirZ, float size, float shrink);
 
-		GEAR_API void update(const float &dt);
+		bool update(const float &dt);
 		GEAR_API void explode();
 		GEAR_API GLuint getPartVertexBuffer();
 		GEAR_API void setEmitterPos(glm::vec3 pos);
@@ -33,10 +39,9 @@ namespace Gear
 		GEAR_API void activate();
 		GEAR_API void deActivate();
 		GEAR_API Partikel* getThePartikels();
-		GEAR_API glm::vec3* getPositions();
-		GEAR_API void setParticlePosition(glm::vec3* pos);
-		GEAR_API void setColor(float r, float g, float b);
-		GEAR_API Color getColor() const;
+		GEAR_API SendStruct * getPositions();
+	/*	GEAR_API void setParticlePosition(glm::vec3* pos);*/
+
 		GEAR_API void setTextrue(Importer::TextureAsset* tAParticles, char* textureName);
 		GEAR_API Importer::TextureAsset* getTexture();
 		GEAR_API char* getTextureName();		
@@ -55,17 +60,18 @@ namespace Gear
 		float focus;
 		glm::vec3 direction;
 		float gravityFactor;
+		float shrinkage;
 
 	private:
 		
 		float timer;		
 		Partikel* allParticles;
-		glm::vec3* particlePos;
+		SendStruct* particlePos;
 		int nrOfActiveParticles;
 		GLuint particleVertexBuffer;
 		char* particleTextureName;	
 		bool alive;
-		Color color;
 
+		void spawn(float dt);
 	};
 }

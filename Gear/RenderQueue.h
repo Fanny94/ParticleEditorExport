@@ -35,6 +35,7 @@ private:
 	std::vector<ModelInstance> instances;
 	glm::mat4* worldMatrices;
 	glm::mat4* tempMatrices;
+	GLuint particleBuffer;
 	int nrOfWorlds;
 	int totalWorlds;
 

@@ -10,6 +10,7 @@ int tempNrOfParticlesPerRate;
 float tempGravity;
 float tempFocusSpread;
 float tempParticleSize;
+float tempShrinkage;
 glm::vec3 tempPosition;
 bool active = false;
 glm::vec3 tempDirection;
@@ -42,6 +43,7 @@ ParticleEditor::ParticleEditor(): selectedEmitter(0), nrOfEmitters(1)
 	emitter.dirY = 1.0;
 	emitter.dirZ = 0.0;
 	emitter.particleSize = 1.0;
+	emitter.shrinkage = 0.0;
 }
 
 ParticleEditor::~ParticleEditor()
@@ -68,7 +70,7 @@ void ParticleEditor::start()
 	TwWindowSize(1280, 720);
 	ps = new Gear::ParticleSystem();
 
-	pEmitter = new Gear::ParticleEmitter(emitter.gravity, emitter.numOfParticles, emitter.lifeTime, emitter.speed, emitter.particleRate, emitter.partPerRate, emitter.focusSpread, emitter.dirX, emitter.dirY, emitter.dirZ, emitter.particleSize);
+	pEmitter = new Gear::ParticleEmitter(emitter.gravity, emitter.numOfParticles, emitter.lifeTime, emitter.speed, emitter.particleRate, emitter.partPerRate, emitter.focusSpread, emitter.dirX, emitter.dirY, emitter.dirZ, emitter.particleSize, emitter.shrinkage);
 	particleEmitters.push_back(pEmitter);
 	ps->addEmitter(pEmitter);
 
@@ -144,7 +146,7 @@ void ParticleEditor::start()
 			if (hardReset)
 			{
 				hardReset = false;
-				particleEmitters.at(selectedEmitter)->emitterInit(tempGravity, tempNumberParticles, tempLifeTime, tempSpeed, tempRatePerSecond, tempNrOfParticlesPerRate, tempFocusSpread, tempDirection.x, tempDirection.y, tempDirection.z, tempParticleSize);
+				particleEmitters.at(selectedEmitter)->emitterInit(tempGravity, tempNumberParticles, tempLifeTime, tempSpeed, tempRatePerSecond, tempNrOfParticlesPerRate, tempFocusSpread, tempDirection.x, tempDirection.y, tempDirection.z, tempParticleSize, tempShrinkage);
 
 			}
 		}
@@ -225,6 +227,7 @@ void ParticleEditor::setBar()
 	tempGravity = 0.0;
 	tempDirection = { 0, 1, 0 };
 	tempParticleSize = 1.0;
+	tempShrinkage = 0.0;
 
 	editorBar = TwNewBar("ParticleEditorBar");
 
@@ -240,6 +243,7 @@ void ParticleEditor::setBar()
 	TwAddVarRW(editorBar, "Focus Spread", TW_TYPE_FLOAT, &tempFocusSpread, "label='Focus Spread' step=0.1");
 	TwAddVarRW(editorBar, "Gravity", TW_TYPE_FLOAT, &tempGravity, "label='Gravity' step=0.1");
 	TwAddVarRW(editorBar, "Particle Size", TW_TYPE_FLOAT, &tempParticleSize, "label='Particle Size' step=0.1");
+	TwAddVarRW(editorBar, "Shrink Size", TW_TYPE_FLOAT, &tempShrinkage, "label='Shrink Size' step = 0.1");
 	TwAddVarRW(editorBar, "Direction", TW_TYPE_DIR3F, &tempDirection, "label='Direction' opened=true");
 	TwAddVarRO(editorBar, "Position", TW_TYPE_DIR3F, &tempPosition, "label='Position' opened=true");
 	TwAddSeparator(editorBar, "Sep1", NULL);
@@ -267,6 +271,11 @@ void ParticleEditor::writeToFile()
 		for (int i = 0; i < particleEmitters.size(); i++)
 		{
 			emitter.numOfParticles = particleEmitters.at(i)->maxParticles;
+
+			emitter.posX = particleEmitters.at(i)->position.x;
+			emitter.posY = particleEmitters.at(i)->position.y;
+			emitter.posZ = particleEmitters.at(i)->position.z;
+
 			emitter.lifeTime = particleEmitters.at(i)->lifeTime;
 			emitter.speed = particleEmitters.at(i)->partSpeed;
 			emitter.particleRate = particleEmitters.at(i)->particleRate;
@@ -275,16 +284,15 @@ void ParticleEditor::writeToFile()
 			emitter.focusSpread = particleEmitters.at(i)->focus;
 			emitter.particleSize = particleEmitters.at(i)->particleSize;
 
-			emitter.posX = particleEmitters.at(i)->position.x;
-			emitter.posY = particleEmitters.at(i)->position.y;
-			emitter.posZ = particleEmitters.at(i)->position.z;
-
 			emitter.dirX = particleEmitters.at(i)->direction.x;
 			emitter.dirY = particleEmitters.at(i)->direction.y;
 			emitter.dirZ = particleEmitters.at(i)->direction.z;
 
+			emitter.shrinkage = particleEmitters.at(i)->shrinkage;
+
 			pTexString = particleEmitters.at(i)->getTextureName();
 			char* ptr = pTexString;
+
 			memcpy(&emitter.textureName, ptr, sizeof(const char[32]));
 			fwrite(&emitter, sizeof(emitter), 1, file);
 		}
@@ -315,6 +323,8 @@ void ParticleEditor::update()
 	{
 		particleEmitters.at(selectedEmitter)->resetEmitter();
 		pTexture = particlesTexture;
+		tempShrinkage = 0.0;
+		tempParticleSize = 1.0;
 		buttonReset = false;
 	}
 	if (newEmitter)
@@ -347,6 +357,7 @@ void ParticleEditor::updateSystem()
 	particleEmitters.at(selectedEmitter)->direction = tempDirection;
 	particleEmitters.at(selectedEmitter)->isActive = active;
 	particleEmitters.at(selectedEmitter)->particleSize = tempParticleSize;
+	particleEmitters.at(selectedEmitter)->shrinkage = tempShrinkage;
 }
 
 void ParticleEditor::copyOverVariables()
@@ -360,5 +371,6 @@ void ParticleEditor::copyOverVariables()
 	tempFocusSpread = particleEmitters.at(selectedEmitter)->focus;
 	tempDirection = particleEmitters.at(selectedEmitter)->direction;
 	tempParticleSize = particleEmitters.at(selectedEmitter)->particleSize;
+	tempShrinkage = particleEmitters.at(selectedEmitter)->shrinkage;
 	tempPosition = particleEmitters.at(selectedEmitter)->position;
 }
