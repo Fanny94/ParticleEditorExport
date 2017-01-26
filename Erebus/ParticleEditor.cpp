@@ -24,7 +24,7 @@ Importer::TextureAsset* pTexture;
 Importer::TextureAsset* cubeTexture;
 Importer::TextureAsset* particlesTexture;
 char* pTexString;
-std::string textureName = "fireball.png";
+std::string textureName = "blackOrb.png";
 std::string saveName = "filename";
 Importer::Assets assets;
 std::vector<ModelInstance> mI;
@@ -67,7 +67,7 @@ void ParticleEditor::start()
 
 	Camera camera(45.f, 1280.f / 720.f, 0.1f, 2000.f, &inputs);
 
-	TwWindowSize(1280, 720);
+	TwWindowSize(1920, 1080);
 	ps = new Gear::ParticleSystem();
 
 	pEmitter = new Gear::ParticleEmitter(emitter.gravity, emitter.numOfParticles, emitter.lifeTime, emitter.speed, emitter.particleRate, emitter.partPerRate, emitter.focusSpread, emitter.dirX, emitter.dirY, emitter.dirZ, emitter.particleSize, emitter.shrinkage);
@@ -79,24 +79,24 @@ void ParticleEditor::start()
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
 	
-	particlesTexture = assets.load<TextureAsset>("Textures/fireball.png");
+	particlesTexture = assets.load<TextureAsset>("Textures/blackOrb.png");
 	
 	PerformanceCounter counter;
 	double deltaTime;
 
-	Importer::ModelAsset* mA = assets.load<ModelAsset>("Models/cube.model");
+	//Importer::ModelAsset* mA = assets.load<ModelAsset>("Models/cube.model");
 
 	window.changeCursorStatus(false);
-	mI.resize(1);
-	mI.at(0).asset = mA;
+	//mI.resize(1);
+	//mI.at(0).asset = mA;
 
 	particleEmitters.at(selectedEmitter)->isActive = false;
 
 	pTexture = particlesTexture;
-	pTexString = "fireball.png";
+	pTexString = "greenOrb.png";
 	particleEmitters.at(selectedEmitter)->setTextrue(pTexture, pTexString);
 
-	engine.queueModels(&mI);
+	//engine.queueModels(&mI);
 	engine.queueParticles(&particleEmitters);
 
 	while (running == true && window.isWindowOpen())
@@ -313,12 +313,12 @@ void ParticleEditor::update()
 		button1 = false;
 
 	}
-	if (button2 == true)
-	{
-		particleEmitters.at(selectedEmitter)->textureAssetParticles = particlesTexture;
-		button2 = false;
-		pTexString = "red.png";
-	}
+	//if (button2 == true)
+	//{
+	//	particleEmitters.at(selectedEmitter)->textureAssetParticles = particlesTexture;
+	//	button2 = false;
+	//	pTexString = "turquiseTexture.png";
+	//}
 	if (buttonReset == true)
 	{
 		particleEmitters.at(selectedEmitter)->resetEmitter();

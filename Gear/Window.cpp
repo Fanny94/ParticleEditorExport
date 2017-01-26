@@ -4,7 +4,7 @@
 Window::Window()
 {
 	initWindow();
-	glClearColor(0, 0, 0, 0);
+	glClearColor(0.1, 0.3, 1.0, 0);
 }
 
 void TW_CALL setEditorState(void * clientData)
@@ -24,9 +24,8 @@ void Window::initWindow()
 		std::cout << "Error init GLFW!" << std::endl;
 
 	/* Initialize the library */
-
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Erebus", NULL, NULL);
+	window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Particle Editor", glfwGetPrimaryMonitor() , NULL);
 
 	if (!window)
 	{
@@ -35,8 +34,6 @@ void Window::initWindow()
 	}
 
 	// DEBUG: This moves the main window out of the way of the console window
-	glfwSetWindowPos( window, 128, 64 );
-
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
 

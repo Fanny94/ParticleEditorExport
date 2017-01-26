@@ -40,7 +40,6 @@ namespace Gear
 		GEAR_API void deActivate();
 		GEAR_API Partikel* getThePartikels();
 		GEAR_API SendStruct * getPositions();
-	/*	GEAR_API void setParticlePosition(glm::vec3* pos);*/
 
 		GEAR_API void setTextrue(Importer::TextureAsset* tAParticles, char* textureName);
 		GEAR_API Importer::TextureAsset* getTexture();

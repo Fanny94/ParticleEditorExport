@@ -1,10 +1,17 @@
 ﻿  Assets.cpp
   Generating Code...
-  Skipping... (no relevant changes detected)
+  Compiling...
   TextureAsset.cpp
   ModelAsset.cpp
   MaterialAsset.cpp
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\importer\materialasset.cpp(31): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\importer\materialasset.cpp(47): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\importer\materialasset.cpp(117): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\importer\materialasset.cpp(138): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\importer\materialasset.cpp(155): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
   ImageAsset.cpp
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\importer\imageasset.cpp(117): warning C4018: '<': signed/unsigned mismatch
   FontAsset.cpp
+  Generating Code...
   Importer.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Importer.dll
   Importer.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Importer.pdb (Partial PDB)

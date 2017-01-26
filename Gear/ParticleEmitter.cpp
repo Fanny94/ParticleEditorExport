@@ -181,11 +181,6 @@ namespace Gear
 		return particlePos;
 	}
 
-	//GEAR_API void ParticleEmitter::setParticlePosition(glm::vec3 * pos)
-	//{
-	//	this->particlePos = pos;
-	//}
-
 	GEAR_API void ParticleEmitter::setTextrue(Importer::TextureAsset * tAParticles, char* textureName)
 	{
 		textureAssetParticles = tAParticles;
