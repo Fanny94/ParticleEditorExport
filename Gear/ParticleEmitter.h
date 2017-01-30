@@ -41,7 +41,7 @@ namespace Gear
 		GEAR_API Partikel* getThePartikels();
 		GEAR_API SendStruct * getPositions();
 
-		GEAR_API void setTextrue(Importer::TextureAsset* tAParticles, char* textureName);
+		GEAR_API void setTextrue(Importer::TextureAsset* tAParticles);
 		GEAR_API Importer::TextureAsset* getTexture();
 		GEAR_API char* getTextureName();		
 		GEAR_API void resetEmitter();
@@ -60,6 +60,8 @@ namespace Gear
 		glm::vec3 direction;
 		float gravityFactor;
 		float shrinkage;
+
+		char* texName;
 
 	private:
 		

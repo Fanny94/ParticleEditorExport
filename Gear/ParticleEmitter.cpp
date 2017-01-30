@@ -181,10 +181,9 @@ namespace Gear
 		return particlePos;
 	}
 
-	GEAR_API void ParticleEmitter::setTextrue(Importer::TextureAsset * tAParticles, char* textureName)
+	GEAR_API void ParticleEmitter::setTextrue(Importer::TextureAsset * tAParticles)
 	{
 		textureAssetParticles = tAParticles;
-		particleTextureName = textureName;
 	}
 
 	GEAR_API Importer::TextureAsset * ParticleEmitter::getTexture()

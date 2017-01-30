@@ -1,33 +1,18 @@
-﻿  Animation.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\animation.cpp(54): warning C4305: 'initializing': truncation from 'int' to 'float'
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\animation.cpp(55): warning C4305: 'initializing': truncation from 'int' to 'float'
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\animation.cpp(45): warning C4101: 'joint': unreferenced local variable
+﻿  ParticleEmitter.cpp
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\particleemitter.cpp(98): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Generating Code...
   Compiling...
-  Window.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\window.cpp(7): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\window.cpp(28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  ShaderProgram.cpp
   RenderQueue.cpp
 c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\renderqueue.cpp(49): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
 c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\renderqueue.cpp(50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
 c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\renderqueue.cpp(51): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\renderqueue.cpp(55): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\renderqueue.cpp(54): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
 c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\renderqueue.cpp(86): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   ParticleSystem.cpp
-  ParticleEmitter.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\particleemitter.cpp(98): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Material.cpp
-  Inputs.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\inputs.cpp(108): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\inputs.cpp(113): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\inputs.cpp(176): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  Gear.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(85): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(88): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(107): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\staticnonmodels.h(110): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-  Camera.cpp
   Generating Code...
+  Skipping... (no relevant changes detected)
+  Gear.cpp
+     Creating library C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Gear.lib and object C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Gear.exp
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Gear.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Gear.dll
   Gear.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Gear.pdb (Full PDB)

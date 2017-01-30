@@ -49,10 +49,10 @@ void RenderQueue::forwardPass(std::vector<ModelInstance>* staticModels)
 			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, size, 0);
 			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, size, (void*)(sizeof(float) * 3));
 			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, size, (void*)(sizeof(float) * 6));
-			//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, statAsset->getIndexBuffer(j));
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, statAsset->getIndexBuffer(j));
 			//glDrawElementsInstanced(GL_TRIANGLES, statAsset->getBufferSize(j), GL_UNSIGNED_INT, 0, numInstance);
-			//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 			glDrawArrays(GL_TRIANGLES, 0, size);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);	
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 		}
 	}

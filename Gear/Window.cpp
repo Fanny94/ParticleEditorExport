@@ -4,7 +4,7 @@
 Window::Window()
 {
 	initWindow();
-	glClearColor(0.1, 0.3, 1.0, 0);
+	glClearColor(0, 0, 0, 0);
 }
 
 void TW_CALL setEditorState(void * clientData)
@@ -25,7 +25,7 @@ void Window::initWindow()
 
 	/* Initialize the library */
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Particle Editor", glfwGetPrimaryMonitor() , NULL);
+	window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Particle Editor", NULL, NULL);
 
 	if (!window)
 	{
@@ -35,8 +35,9 @@ void Window::initWindow()
 
 	// DEBUG: This moves the main window out of the way of the console window
 	/* Make the window's context current */
-	glfwMakeContextCurrent(window);
 
+	glfwSetWindowPos(window, 512, 128);
+	glfwMakeContextCurrent(window);
 	//fixar inputs callback funktioner
 	glfwSetKeyCallback(window, Inputs::key_callback);
 	glfwSetCharCallback(window, Inputs::text_callback);

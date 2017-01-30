@@ -47,7 +47,7 @@ namespace Importer
 	void TextureAsset::bind( GLenum position )
 	{
 		glActiveTexture( position );
-		glBindTexture( GL_TEXTURE_2D, id );
+	glBindTexture( GL_TEXTURE_2D, id );
 	}
 
 	int TextureAsset::getWidth()

@@ -21,10 +21,10 @@ bool buttonReset = false;
 bool hardReset = false;
 bool buttonSave = false;
 Importer::TextureAsset* pTexture;
-Importer::TextureAsset* cubeTexture;
 Importer::TextureAsset* particlesTexture;
 char* pTexString;
-std::string textureName = "blackOrb.png";
+char* StringToCopy;
+std::string textureName = "fireball.png";
 std::string saveName = "filename";
 Importer::Assets assets;
 std::vector<ModelInstance> mI;
@@ -67,7 +67,7 @@ void ParticleEditor::start()
 
 	Camera camera(45.f, 1280.f / 720.f, 0.1f, 2000.f, &inputs);
 
-	TwWindowSize(1920, 1080);
+	TwWindowSize(1280, 720);
 	ps = new Gear::ParticleSystem();
 
 	pEmitter = new Gear::ParticleEmitter(emitter.gravity, emitter.numOfParticles, emitter.lifeTime, emitter.speed, emitter.particleRate, emitter.partPerRate, emitter.focusSpread, emitter.dirX, emitter.dirY, emitter.dirZ, emitter.particleSize, emitter.shrinkage);
@@ -79,12 +79,12 @@ void ParticleEditor::start()
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
 	
-	particlesTexture = assets.load<TextureAsset>("Textures/blackOrb.png");
+	particlesTexture = assets.load<TextureAsset>("Textures/fireball.png");
 	
 	PerformanceCounter counter;
 	double deltaTime;
 
-	//Importer::ModelAsset* mA = assets.load<ModelAsset>("Models/cube.model");
+	//Importer::ModelAsset* mA = assets.load<ModelAsset>("Models/testCube.model");
 
 	window.changeCursorStatus(false);
 	//mI.resize(1);
@@ -93,8 +93,9 @@ void ParticleEditor::start()
 	particleEmitters.at(selectedEmitter)->isActive = false;
 
 	pTexture = particlesTexture;
-	pTexString = "greenOrb.png";
-	particleEmitters.at(selectedEmitter)->setTextrue(pTexture, pTexString);
+	pTexString = "fireball.png";
+	particleEmitters.at(selectedEmitter)->setTextrue(pTexture);
+	particleEmitters.at(selectedEmitter)->texName = pTexString;
 
 	//engine.queueModels(&mI);
 	engine.queueParticles(&particleEmitters);
@@ -290,10 +291,9 @@ void ParticleEditor::writeToFile()
 
 			emitter.shrinkage = particleEmitters.at(i)->shrinkage;
 
-			pTexString = particleEmitters.at(i)->getTextureName();
-			char* ptr = pTexString;
-
-			memcpy(&emitter.textureName, ptr, sizeof(const char[32]));
+			StringToCopy = particleEmitters.at(i)->texName;
+			
+			memcpy(&emitter.textureName, StringToCopy, sizeof(const char[32]));
 			fwrite(&emitter, sizeof(emitter), 1, file);
 		}
 
@@ -310,6 +310,7 @@ void ParticleEditor::update()
 		particleEmitters.at(selectedEmitter)->textureAssetParticles = particlesTexture;
 		pTexture = particlesTexture;
 		pTexString = (char*)textureName.c_str();
+		particleEmitters.at(selectedEmitter)->texName = pTexString;
 		button1 = false;
 
 	}
@@ -317,7 +318,7 @@ void ParticleEditor::update()
 	//{
 	//	particleEmitters.at(selectedEmitter)->textureAssetParticles = particlesTexture;
 	//	button2 = false;
-	//	pTexString = "turquiseTexture.png";
+	//	pTexString = "brightParticle.png";
 	//}
 	if (buttonReset == true)
 	{
@@ -335,7 +336,8 @@ void ParticleEditor::update()
 
 		nrOfEmitters++;
 		selectedEmitter = (selectedEmitter + 1) % nrOfEmitters;
-		particleEmitters.at(selectedEmitter)->setTextrue(pTexture, pTexString);
+		particleEmitters.at(selectedEmitter)->setTextrue(particlesTexture);
+		particleEmitters.at(selectedEmitter)->texName = pTexString;
 		hardReset = true;
 		newEmitter = false;
 	}
