@@ -1,6 +1,7 @@
 #pragma once
 #include "BaseIncludes.h"
 #include "AntTweakBar.h"
+#include <unordered_map>
 
 #define INPUTS_MAX_TEXT_INPUT 8
 
@@ -28,6 +29,12 @@ public:
 private:
 	GLFWwindow* window;
 
+	const static std::unordered_map<int, int> glfw3to2_keymapping;
+	const static std::unordered_map<int, int> glfw2to3_keymapping;
+
+	static inline int TwConvertKeyGLFW3to2(int key);
+	static inline int TwConvertKeyGLFW2to3(int key);
+
 public:
 	GEAR_API Inputs(GLFWwindow* w);
 	GEAR_API ~Inputs();
@@ -43,11 +50,11 @@ public:
 	GEAR_API int getDeltaScroll();
 	GEAR_API MousePos getMousePos();
 	GEAR_API MousePos getDeltaPos();
-	GEAR_API char* getTextInput( int* length = nullptr );
+	GEAR_API char* getTextInput(int* length = nullptr);
 
 	GEAR_API static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods); //will be called whenever a key is pressed or released
 	GEAR_API static void text_callback(GLFWwindow* window, unsigned int key);
 	GEAR_API static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods); //will be called whenever a mouse button is pressed or released
 	GEAR_API static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset); //will be called whenever someone scrolls(both touchpad and mouse)
-	
+
 };
