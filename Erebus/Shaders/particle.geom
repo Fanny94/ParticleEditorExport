@@ -26,7 +26,9 @@ out vec2 vertex_UV;
 		vec4 p = viewMatrix * gl_in[0].gl_Position;
 		p.xy += quadCorners[i] * sizeZ;
 		gl_Position = projectionMatrix * p;
+
 		vertex_UV = uvCorners[i];
+		vertex_UV = vertex_UV * vec2(1, -1);
 		EmitVertex();
 	}
 	EndPrimitive();
