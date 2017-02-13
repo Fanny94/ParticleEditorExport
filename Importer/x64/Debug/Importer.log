@@ -1,3 +1,38 @@
-﻿  ModelAsset.cpp
-  Importer.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Importer.dll
-  Importer.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Importer.pdb (Partial PDB)
+﻿  TextureAsset.cpp
+  ModelAsset.cpp
+  MaterialAsset.cpp
+j:\github\particleeditorexport\importer\materialasset.cpp(31): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+j:\github\particleeditorexport\importer\materialasset.cpp(47): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+j:\github\particleeditorexport\importer\materialasset.cpp(117): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+j:\github\particleeditorexport\importer\materialasset.cpp(138): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+j:\github\particleeditorexport\importer\materialasset.cpp(155): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  ImageAsset.cpp
+j:\github\particleeditorexport\importer\imageasset.cpp(117): warning C4018: '<': signed/unsigned mismatch
+  FontAsset.cpp
+  Assets.cpp
+  Generating Code...
+     Creating library J:\GitHub\ParticleEditorExport\x64\Debug\Importer.lib and object J:\GitHub\ParticleEditorExport\x64\Debug\Importer.exp
+libpng_d.lib(png.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(png.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngerror.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngerror.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngget.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngget.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngmem.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngmem.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngread.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngread.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngrio.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngrio.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngrtran.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngrtran.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngrutil.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngrutil.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngset.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngset.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngtrans.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngtrans.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngwio.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngwio.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngwrite.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngwrite.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngwtran.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngwtran.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+libpng_d.lib(pngwutil.obj) : warning LNK4099: PDB 'libpng.pdb' was not found with 'libpng_d.lib(pngwutil.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\libpng.pdb'; linking object as if no debug info
+zlib_d.lib(adler32.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(adler32.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
+zlib_d.lib(crc32.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(crc32.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
+zlib_d.lib(deflate.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(deflate.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
+zlib_d.lib(inffast.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(inffast.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
+zlib_d.lib(inflate.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(inflate.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
+zlib_d.lib(inftrees.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(inftrees.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
+zlib_d.lib(trees.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(trees.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
+zlib_d.lib(zutil.obj) : warning LNK4099: PDB 'zlib.pdb' was not found with 'zlib_d.lib(zutil.obj)' or at 'J:\GitHub\ParticleEditorExport\x64\Debug\zlib.pdb'; linking object as if no debug info
+  Importer.vcxproj -> J:\GitHub\ParticleEditorExport\x64\Debug\Importer.dll
+  Importer.vcxproj -> J:\GitHub\ParticleEditorExport\x64\Debug\Importer.pdb (Partial PDB)
