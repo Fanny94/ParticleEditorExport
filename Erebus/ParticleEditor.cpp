@@ -24,7 +24,7 @@ Importer::TextureAsset* pTexture;
 Importer::TextureAsset* particlesTexture;
 char* pTexString;
 char* StringToCopy;
-std::string textureName = "redParticle.png";
+std::string textureName = "orangeParticle.png";
 std::string saveName = "filename";
 Importer::Assets assets;
 std::vector<ModelInstance> mI;
@@ -79,7 +79,7 @@ void ParticleEditor::start()
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
 	
-	particlesTexture = assets.load<TextureAsset>("Textures/redParticle.png");
+	particlesTexture = assets.load<TextureAsset>("Textures/orangeParticle.png");
 	
 	PerformanceCounter counter;
 	double deltaTime;
@@ -93,7 +93,7 @@ void ParticleEditor::start()
 	particleEmitters.at(selectedEmitter)->isActive = false;
 
 	pTexture = particlesTexture;
-	pTexString = "redParticle.png";
+	pTexString = "orangeParticle.png";
 	particleEmitters.at(selectedEmitter)->setTextrue(pTexture);
 	particleEmitters.at(selectedEmitter)->texName = pTexString;
 

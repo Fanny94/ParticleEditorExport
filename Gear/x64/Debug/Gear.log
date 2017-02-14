@@ -1,31 +1,31 @@
 ﻿  Window.cpp
-j:\github\particleeditorexport\gear\window.cpp(28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\window.cpp(28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   ShaderProgram.cpp
   RenderQueue.cpp
-j:\github\particleeditorexport\gear\renderqueue.cpp(49): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-j:\github\particleeditorexport\gear\renderqueue.cpp(50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-j:\github\particleeditorexport\gear\renderqueue.cpp(51): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-j:\github\particleeditorexport\gear\renderqueue.cpp(54): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-j:\github\particleeditorexport\gear\renderqueue.cpp(86): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\renderqueue.cpp(49): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\renderqueue.cpp(50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\renderqueue.cpp(51): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\renderqueue.cpp(54): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\renderqueue.cpp(86): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   ParticleSystem.cpp
   ParticleEmitter.cpp
-j:\github\particleeditorexport\gear\particleemitter.cpp(98): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\particleemitter.cpp(98): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Material.cpp
   Inputs.cpp
-j:\github\particleeditorexport\gear\inputs.cpp(240): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-j:\github\particleeditorexport\gear\inputs.cpp(245): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-j:\github\particleeditorexport\gear\inputs.cpp(333): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\inputs.cpp(240): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\inputs.cpp(245): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\inputs.cpp(333): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   Gear.cpp
-j:\github\particleeditorexport\gear\staticnonmodels.h(85): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-j:\github\particleeditorexport\gear\staticnonmodels.h(88): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-j:\github\particleeditorexport\gear\staticnonmodels.h(107): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-j:\github\particleeditorexport\gear\staticnonmodels.h(110): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\staticnonmodels.h(85): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\staticnonmodels.h(88): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\staticnonmodels.h(107): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\staticnonmodels.h(110): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
   Camera.cpp
   Animation.cpp
-j:\github\particleeditorexport\gear\animation.cpp(54): warning C4305: 'initializing': truncation from 'int' to 'float'
-j:\github\particleeditorexport\gear\animation.cpp(55): warning C4305: 'initializing': truncation from 'int' to 'float'
-j:\github\particleeditorexport\gear\animation.cpp(45): warning C4101: 'joint': unreferenced local variable
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\animation.cpp(54): warning C4305: 'initializing': truncation from 'int' to 'float'
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\animation.cpp(55): warning C4305: 'initializing': truncation from 'int' to 'float'
+\\storage10.student.bth.se\students\20142\fagu14\github\particleeditorexport\gear\animation.cpp(45): warning C4101: 'joint': unreferenced local variable
   Generating Code...
-     Creating library J:\GitHub\ParticleEditorExport\x64\Debug\Gear.lib and object J:\GitHub\ParticleEditorExport\x64\Debug\Gear.exp
+     Creating library \\storage10.student.bth.se\students\20142\fagu14\GitHub\ParticleEditorExport\x64\Debug\Gear.lib and object \\storage10.student.bth.se\students\20142\fagu14\GitHub\ParticleEditorExport\x64\Debug\Gear.exp
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-  Gear.vcxproj -> J:\GitHub\ParticleEditorExport\x64\Debug\Gear.dll
+  Gear.vcxproj -> \\storage10.student.bth.se\students\20142\fagu14\GitHub\ParticleEditorExport\x64\Debug\Gear.dll
