@@ -24,7 +24,7 @@ Importer::TextureAsset* pTexture;
 Importer::TextureAsset* particlesTexture;
 char* pTexString;
 char* StringToCopy;
-std::string textureName = "small_flame2.dds";
+std::string textureName = "timeclockPurple.dds";
 std::string saveName = "filename";
 Importer::Assets assets;
 std::vector<ModelInstance> mI;
@@ -79,7 +79,7 @@ void ParticleEditor::start()
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
 	
-	particlesTexture = assets.load<TextureAsset>("Textures/small_flame2.dds");
+	particlesTexture = assets.load<TextureAsset>("Textures/timeclockPurple.dds");
 	
 	PerformanceCounter counter;
 	double deltaTime;
@@ -93,7 +93,7 @@ void ParticleEditor::start()
 	particleEmitters.at(selectedEmitter)->isActive = false;
 
 	pTexture = particlesTexture;
-	pTexString = "small_flame2.dds";
+	pTexString = "timeclockPurple.dds";
 	particleEmitters.at(selectedEmitter)->setTextrue(pTexture);
 	particleEmitters.at(selectedEmitter)->texName = pTexString;
 
@@ -350,6 +350,7 @@ void ParticleEditor::update()
 
 void ParticleEditor::updateSystem()
 {
+	particleEmitters.at(selectedEmitter)->maxParticles = tempNumberParticles;
 	particleEmitters.at(selectedEmitter)->particleRate = 1 / tempRatePerSecond;
 	particleEmitters.at(selectedEmitter)->focus = tempFocusSpread;
 	particleEmitters.at(selectedEmitter)->gravityFactor = tempGravity;
