@@ -1,3 +1,5 @@
-﻿  Camera.cpp
+﻿  Window.cpp
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\window.cpp(7): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\window.cpp(28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Gear.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Gear.dll
   Gear.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Gear.pdb (Full PDB)

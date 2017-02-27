@@ -11,6 +11,7 @@ float tempGravity;
 float tempFocusSpread;
 float tempParticleSize;
 float tempShrinkage;
+float particleSize;
 glm::vec3 tempPosition;
 bool active = false;
 glm::vec3 tempDirection;
@@ -24,7 +25,7 @@ Importer::TextureAsset* pTexture;
 Importer::TextureAsset* particlesTexture;
 char* pTexString;
 char* StringToCopy;
-std::string textureName = "fireSpellOverlay.dds";
+std::string textureName = "windknockBack.dds";
 std::string saveName = "Filename";
 
 std::string particleFileName = "Particle File";
@@ -53,8 +54,6 @@ ParticleEditor::~ParticleEditor()
 	for (int i = 0; i < nrOfEmitters; i++)
 		delete particleEmitters.at(i);
 	delete ps;
-	delete pEmitter;
-
 }
 
 void ParticleEditor::start()
@@ -76,18 +75,14 @@ void ParticleEditor::start()
 
 	setBar();
 
-	if (fileNameButton == false)
-	{
-		pEmitter = new Gear::ParticleEmitter(emitter.gravity, emitter.numOfParticles, emitter.lifeTime, emitter.speed, emitter.particleRate, emitter.partPerRate, emitter.focusSpread, emitter.dirX, emitter.dirY, emitter.dirZ, emitter.particleSize, emitter.shrinkage);
-		particleEmitters.push_back(pEmitter);
-		ps->addEmitter(pEmitter);
-
-	}
+	pEmitter = new Gear::ParticleEmitter(emitter.gravity, emitter.numOfParticles, emitter.lifeTime, emitter.speed, emitter.particleRate, emitter.partPerRate, emitter.focusSpread, emitter.dirX, emitter.dirY, emitter.dirZ, emitter.particleSize, emitter.shrinkage);
+	particleEmitters.push_back(pEmitter);
+	ps->addEmitter(pEmitter);
 
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
 	
-	particlesTexture = assets.load<TextureAsset>("Textures/fireSpellOverlay.dds");
+	particlesTexture = assets.load<TextureAsset>("Textures/windknockBack.dds");
 	
 	PerformanceCounter counter;
 	double deltaTime;
@@ -98,15 +93,14 @@ void ParticleEditor::start()
 	//mI.resize(1);
 	//mI.at(0).asset = mA;
 	particleEmitters.at(selectedEmitter)->isActive = false;
-	if (fileNameButton == false)
-	{
-		pTexture = particlesTexture;
-		pTexString = "fireSpellOverlay.dds";
-		particleEmitters.at(selectedEmitter)->setTextrue(pTexture);
-		particleEmitters.at(selectedEmitter)->texName = pTexString;
-	}
-		//engine.queueModels(&mI);
-		engine.queueParticles(&particleEmitters);
+
+	pTexture = particlesTexture;
+	pTexString = "windknockBack.dds";
+	particleEmitters.at(selectedEmitter)->setTextrue(pTexture);
+	particleEmitters.at(selectedEmitter)->texName = pTexString;
+
+	//engine.queueModels(&mI);
+	engine.queueParticles(&particleEmitters);
 
 
 	while (running == true && window.isWindowOpen())
