@@ -25,7 +25,7 @@ Importer::TextureAsset* pTexture;
 Importer::TextureAsset* particlesTexture;
 char* pTexString;
 char* StringToCopy;
-std::string textureName = "windknockBack.dds";
+std::string textureName = "smoke.dds";
 std::string saveName = "Filename";
 
 std::string particleFileName = "Particle File";
@@ -75,14 +75,16 @@ void ParticleEditor::start()
 
 	setBar();
 
-	pEmitter = new Gear::ParticleEmitter(emitter.gravity, emitter.numOfParticles, emitter.lifeTime, emitter.speed, emitter.particleRate, emitter.partPerRate, emitter.focusSpread, emitter.dirX, emitter.dirY, emitter.dirZ, emitter.particleSize, emitter.shrinkage);
-	particleEmitters.push_back(pEmitter);
-	ps->addEmitter(pEmitter);
-
+	if (fileNameButton == false)
+	{
+		pEmitter = new Gear::ParticleEmitter(emitter.gravity, emitter.numOfParticles, emitter.lifeTime, emitter.speed, emitter.particleRate, emitter.partPerRate, emitter.focusSpread, emitter.dirX, emitter.dirY, emitter.dirZ, emitter.particleSize, emitter.shrinkage);
+		particleEmitters.push_back(pEmitter);
+		ps->addEmitter(pEmitter);
+	}
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
 	
-	particlesTexture = assets.load<TextureAsset>("Textures/windknockBack.dds");
+	particlesTexture = assets.load<TextureAsset>("Textures/smoke.dds");
 	
 	PerformanceCounter counter;
 	double deltaTime;
@@ -93,12 +95,13 @@ void ParticleEditor::start()
 	//mI.resize(1);
 	//mI.at(0).asset = mA;
 	particleEmitters.at(selectedEmitter)->isActive = false;
-
-	pTexture = particlesTexture;
-	pTexString = "windknockBack.dds";
-	particleEmitters.at(selectedEmitter)->setTextrue(pTexture);
-	particleEmitters.at(selectedEmitter)->texName = pTexString;
-
+	if (fileNameButton == false)
+	{
+		pTexture = particlesTexture;
+		pTexString = "smoke.dds";
+		particleEmitters.at(selectedEmitter)->setTextrue(pTexture);
+		particleEmitters.at(selectedEmitter)->texName = pTexString;
+	}
 	//engine.queueModels(&mI);
 	engine.queueParticles(&particleEmitters);
 
@@ -333,6 +336,7 @@ void ParticleEditor::readFromFile(std::string path)
 	Emitter p;
 	int n;
 
+
 	if (file)
 	{
 		fread(&n, sizeof(int), 1, file);
@@ -343,6 +347,19 @@ void ParticleEditor::readFromFile(std::string path)
 		
 			pEmitter = new Gear::ParticleEmitter(p.gravity, p.numOfParticles, p.lifeTime, p.speed, p.particleRate, p.partPerRate, p.focusSpread, p.dirX, p.dirY, p.dirZ, p.particleSize, p.shrinkage);
 			
+			//pEmitter->gravityFactor = p.gravity;
+			//pEmitter->maxParticles =p.numOfParticles; 
+			//pEmitter->lifeTime =p.lifeTime; 
+			//pEmitter->partSpeed =p.speed; 
+			//pEmitter->particleRate =p.particleRate; 
+			//pEmitter->partPerRate =p.partPerRate; 
+			//pEmitter->focus =p.focusSpread; 
+			//pEmitter->direction.x =p.dirX; 
+			//pEmitter->direction.y =p.dirY; 
+			//pEmitter->direction.z =p.dirZ; 
+			//pEmitter->particleSize =p.particleSize; 
+			//pEmitter->shrinkage =p.shrinkage;
+
 			pEmitter->position.x = p.posX;
 			pEmitter->position.y = p.posY;
 			pEmitter->position.z = p.posZ;
@@ -350,17 +367,17 @@ void ParticleEditor::readFromFile(std::string path)
 		
 			particlesTexture = assets.load<Importer::TextureAsset>("Textures/" + std::string(p.textureName));
 			pEmitter->textureAssetParticles = particlesTexture;
-			pEmitter->texName = p.textureName;
+			pEmitter->texName = p.textureName;	
+			//particleEmitters.at(i)->setTextrue(particlesTexture);
+
 			particleEmitters.push_back(pEmitter);
 			ps->addEmitter(pEmitter);
-			
 		}
 
 		copyOverVariables();
 		fclose(file);
 
 	}
-
 
 }
 
@@ -393,8 +410,6 @@ void ParticleEditor::update()
 
 		nrOfEmitters++;
 		selectedEmitter = (selectedEmitter + 1) % nrOfEmitters;
-		particleEmitters.at(selectedEmitter)->setTextrue(particlesTexture);
-		particleEmitters.at(selectedEmitter)->texName = pTexString;
 		hardReset = true;
 		newEmitter = false;
 	}
@@ -408,7 +423,6 @@ void ParticleEditor::update()
 	{
 		readFromFile(particleFileName);
 		selectedEmitter = (selectedEmitter) % nrOfEmitters;
-		particleEmitters.at(selectedEmitter)->setTextrue(particlesTexture);
 		particleEmitters.at(selectedEmitter)->texName = pEmitter->texName;
 		hardReset = true;
 		fileNameButton = false;

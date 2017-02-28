@@ -1,5 +1,4 @@
-﻿  Window.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\window.cpp(7): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\window.cpp(23): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+﻿  ParticleEmitter.cpp
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\particleemitter.cpp(98): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Gear.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Gear.dll
   Gear.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Gear.pdb (Full PDB)
