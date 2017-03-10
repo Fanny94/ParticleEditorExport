@@ -75,12 +75,10 @@ void ParticleEditor::start()
 
 	setBar();
 
-	if (fileNameButton == false)
-	{
-		pEmitter = new Gear::ParticleEmitter(emitter.gravity, emitter.numOfParticles, emitter.lifeTime, emitter.speed, emitter.particleRate, emitter.partPerRate, emitter.focusSpread, emitter.dirX, emitter.dirY, emitter.dirZ, emitter.particleSize, emitter.shrinkage);
-		particleEmitters.push_back(pEmitter);
-		ps->addEmitter(pEmitter);
-	}
+	pEmitter = new Gear::ParticleEmitter(emitter.gravity, emitter.numOfParticles, emitter.lifeTime, emitter.speed, emitter.particleRate, emitter.partPerRate, emitter.focusSpread, emitter.dirX, emitter.dirY, emitter.dirZ, emitter.particleSize, emitter.shrinkage);
+	particleEmitters.push_back(pEmitter);
+	ps->addEmitter(pEmitter);
+
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
 	
