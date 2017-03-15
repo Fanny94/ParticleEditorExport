@@ -73,11 +73,11 @@ void ParticleEditor::start()
 	TwWindowSize(1280, 720);
 	ps = new Gear::ParticleSystem();
 
-	setBar();
-
 	pEmitter = new Gear::ParticleEmitter(emitter.gravity, emitter.numOfParticles, emitter.lifeTime, emitter.speed, emitter.particleRate, emitter.partPerRate, emitter.focusSpread, emitter.dirX, emitter.dirY, emitter.dirZ, emitter.particleSize, emitter.shrinkage);
 	particleEmitters.push_back(pEmitter);
 	ps->addEmitter(pEmitter);
+
+	setBar();
 
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
@@ -93,13 +93,12 @@ void ParticleEditor::start()
 	//mI.resize(1);
 	//mI.at(0).asset = mA;
 	particleEmitters.at(selectedEmitter)->isActive = false;
-	if (fileNameButton == false)
-	{
-		pTexture = particlesTexture;
-		pTexString = "brightParticle.dds";
-		particleEmitters.at(selectedEmitter)->setTextrue(pTexture);
-		particleEmitters.at(selectedEmitter)->texName = pTexString;
-	}
+
+	pTexture = particlesTexture;
+	pTexString = "brightParticle.dds";
+	particleEmitters.at(selectedEmitter)->setTextrue(pTexture);
+	particleEmitters.at(selectedEmitter)->texName = pTexString;
+
 	//engine.queueModels(&mI);
 	engine.queueParticles(&particleEmitters);
 

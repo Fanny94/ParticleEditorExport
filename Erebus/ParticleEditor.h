@@ -37,7 +37,7 @@ public:
 	};
 
 	static void TW_CALL newTexture(void*);
-	static void TW_CALL newParticleFile(void *);
+	static void TW_CALL newParticleFile(void*);
 	static void TW_CALL start(void*);
 	static void TW_CALL reset(void*);
 	static void TW_CALL save(void*);
