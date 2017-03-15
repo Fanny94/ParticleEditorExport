@@ -4,7 +4,12 @@
 Window::Window()
 {
 	initWindow();
-	glClearColor(0, 0.1, 0.2, 0);
+	glClearColor(0, 0, 0, 0);
+}
+
+void TW_CALL setEditorState(void * clientData)
+{
+	std::cout << "HELLO";
 }
 
 Window::~Window()

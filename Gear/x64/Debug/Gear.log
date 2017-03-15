@@ -1,6 +1,5 @@
 ﻿  Window.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\window.cpp(7): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\window.cpp(23): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\window.cpp(28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Generating Code...
   Compiling...
   ParticleSystem.cpp

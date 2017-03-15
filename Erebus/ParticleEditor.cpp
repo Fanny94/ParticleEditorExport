@@ -11,12 +11,11 @@ float tempGravity;
 float tempFocusSpread;
 float tempParticleSize;
 float tempShrinkage;
-float particleSize;
 glm::vec3 tempPosition;
 bool active = false;
 glm::vec3 tempDirection;
 bool button1 = false;
-bool fileNameButton = false;
+bool button2 = false;
 bool newEmitter = false;
 bool buttonReset = false;
 bool hardReset = false;
@@ -25,10 +24,8 @@ Importer::TextureAsset* pTexture;
 Importer::TextureAsset* particlesTexture;
 char* pTexString;
 char* StringToCopy;
-std::string textureName = "brightParticle.dds";
-std::string saveName = "Filename";
-
-std::string particleFileName = "Particle File";
+std::string textureName = "fireSpellOverlay.dds";
+std::string saveName = "filename";
 Importer::Assets assets;
 std::vector<ModelInstance> mI;
 
@@ -82,7 +79,7 @@ void ParticleEditor::start()
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
 	
-	particlesTexture = assets.load<TextureAsset>("Textures/brightParticle.dds");
+	particlesTexture = assets.load<TextureAsset>("Textures/fireSpellOverlay.dds");
 	
 	PerformanceCounter counter;
 	double deltaTime;
@@ -92,22 +89,23 @@ void ParticleEditor::start()
 	window.changeCursorStatus(false);
 	//mI.resize(1);
 	//mI.at(0).asset = mA;
+
 	particleEmitters.at(selectedEmitter)->isActive = false;
 
 	pTexture = particlesTexture;
-	pTexString = "brightParticle.dds";
+	pTexString = "fireSpellOverlay.dds";
 	particleEmitters.at(selectedEmitter)->setTextrue(pTexture);
 	particleEmitters.at(selectedEmitter)->texName = pTexString;
 
 	//engine.queueModels(&mI);
 	engine.queueParticles(&particleEmitters);
 
-
 	while (running == true && window.isWindowOpen())
 	{
 		deltaTime = counter.getDeltaTime();
 		inputs.update();
-
+		/*Används camera.update() ???*/
+		//camera.updateLevelEditorCamera(deltaTime);
 		if(nrOfEmitters > 0)
 			updateSystem();
 
@@ -175,11 +173,6 @@ void TW_CALL ParticleEditor::newTexture(void*)
 	button1 = true;
 }
 
-void TW_CALL ParticleEditor::newParticleFile(void*)
-{
-	fileNameButton = true;
-}
-
 void TW_CALL ParticleEditor::start(void*)
 {
 	active = !active;
@@ -211,19 +204,6 @@ void TW_CALL GetTextureStringCB(void *value, void *)
 	std::string *destPtr = static_cast<std::string *>(value);
 	TwCopyStdStringToLibrary(*destPtr, textureName);
 }
-
-void TW_CALL SetParticleFileStringCB(const void *value, void *clientData)
-{
-	const std::string *srcPtr = static_cast<const std::string *>(value);
-	particleFileName = *srcPtr;
-}
-
-void TW_CALL GetParticleFileStringCB(void *value, void *)
-{
-	std::string *destPtr = static_cast<std::string *>(value);
-	TwCopyStdStringToLibrary(*destPtr, particleFileName);
-}
-
 
 void TW_CALL SetSaveNameStringCB(const void *value, void *clientData)
 {
@@ -272,10 +252,6 @@ void ParticleEditor::setBar()
 	TwAddButton(editorBar, "Add Emitter", addEmitter, NULL, "label='Add Emitter'");
 	TwAddVarCB(editorBar, "Texture Name", TW_TYPE_STDSTRING, SetTextureStringCB, GetTextureStringCB, NULL, "label='Texture Name'");
 	TwAddButton(editorBar, "Load Texture", newTexture, NULL, "label='Load Texture'");
-
-	TwAddVarCB(editorBar, "particle namefile", TW_TYPE_STDSTRING, SetParticleFileStringCB, GetParticleFileStringCB, NULL, "label='Particle Filename'");
-	TwAddButton(editorBar, "Load Particle file", newParticleFile, NULL, "labeL='Load particle file'");
-
 	TwAddSeparator(editorBar, "Sep2", NULL);
 	TwAddButton(editorBar, "Reset", reset, NULL, "label='Reset'");
 	TwAddVarCB(editorBar, "Name of Saved File", TW_TYPE_STDSTRING, SetSaveNameStringCB, GetSaveNameStringCB, NULL, "label='Name of Saved File'");
@@ -326,58 +302,6 @@ void ParticleEditor::writeToFile()
 
 }
 
-void ParticleEditor::readFromFile(std::string path)
-{
-	FILE* file;
-	file = fopen((char*)("ParticleFiles/" + path).c_str(), "rb");
-	Emitter p;
-	int n;
-
-
-	if (file)
-	{
-		fread(&n, sizeof(int), 1, file);
-		nrOfEmitters = n;
-		for (int i = 0; i < nrOfEmitters; i++)
-		{
-			fread(&p, sizeof(Emitter), 1, file);	
-		
-			pEmitter = new Gear::ParticleEmitter(p.gravity, p.numOfParticles, p.lifeTime, p.speed, p.particleRate, p.partPerRate, p.focusSpread, p.dirX, p.dirY, p.dirZ, p.particleSize, p.shrinkage);
-			
-			//pEmitter->gravityFactor = p.gravity;
-			//pEmitter->maxParticles =p.numOfParticles; 
-			//pEmitter->lifeTime =p.lifeTime; 
-			//pEmitter->partSpeed =p.speed; 
-			//pEmitter->particleRate =p.particleRate; 
-			//pEmitter->partPerRate =p.partPerRate; 
-			//pEmitter->focus =p.focusSpread; 
-			//pEmitter->direction.x =p.dirX; 
-			//pEmitter->direction.y =p.dirY; 
-			//pEmitter->direction.z =p.dirZ; 
-			//pEmitter->particleSize =p.particleSize; 
-			//pEmitter->shrinkage =p.shrinkage;
-
-			pEmitter->position.x = p.posX;
-			pEmitter->position.y = p.posY;
-			pEmitter->position.z = p.posZ;
-			pEmitter->setEmitterPos(pEmitter->position);
-		
-			particlesTexture = assets.load<Importer::TextureAsset>("Textures/" + std::string(p.textureName));
-			pEmitter->textureAssetParticles = particlesTexture;
-			pEmitter->texName = p.textureName;	
-			//particleEmitters.at(i)->setTextrue(particlesTexture);
-
-			particleEmitters.push_back(pEmitter);
-			ps->addEmitter(pEmitter);
-		}
-
-		copyOverVariables();
-		fclose(file);
-
-	}
-
-}
-
 void ParticleEditor::update()
 {
 	if (button1 == true)
@@ -390,7 +314,12 @@ void ParticleEditor::update()
 		button1 = false;
 
 	}
-
+	//if (button2 == true)
+	//{
+	//	particleEmitters.at(selectedEmitter)->textureAssetParticles = particlesTexture;
+	//	button2 = false;
+	//	pTexString = "brightParticle.png";
+	//}
 	if (buttonReset == true)
 	{
 		particleEmitters.at(selectedEmitter)->resetEmitter();
@@ -407,6 +336,8 @@ void ParticleEditor::update()
 
 		nrOfEmitters++;
 		selectedEmitter = (selectedEmitter + 1) % nrOfEmitters;
+		particleEmitters.at(selectedEmitter)->setTextrue(particlesTexture);
+		particleEmitters.at(selectedEmitter)->texName = pTexString;
 		hardReset = true;
 		newEmitter = false;
 	}
@@ -414,15 +345,6 @@ void ParticleEditor::update()
 	{
 		writeToFile();
 		buttonSave = false;
-	}
-
-	if (fileNameButton == true)
-	{
-		readFromFile(particleFileName);
-		selectedEmitter = (selectedEmitter) % nrOfEmitters;
-		particleEmitters.at(selectedEmitter)->texName = pEmitter->texName;
-		hardReset = true;
-		fileNameButton = false;
 	}
 }
 

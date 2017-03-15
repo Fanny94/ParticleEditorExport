@@ -15,6 +15,7 @@ namespace Gear
 		GEAR_API void addEmitter(ParticleEmitter* emitter);
 
 		glm::vec3 systemPos;
+		glm::vec3 systemRot;
 
 		glm::vec3* newEmitterPos;
 		glm::vec3 emitterPos;
