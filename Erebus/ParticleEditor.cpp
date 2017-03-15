@@ -25,7 +25,7 @@ Importer::TextureAsset* pTexture;
 Importer::TextureAsset* particlesTexture;
 char* pTexString;
 char* StringToCopy;
-std::string textureName = "smoke.dds";
+std::string textureName = "brightParticle.dds";
 std::string saveName = "Filename";
 
 std::string particleFileName = "Particle File";
@@ -84,7 +84,7 @@ void ParticleEditor::start()
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
 	
-	particlesTexture = assets.load<TextureAsset>("Textures/smoke.dds");
+	particlesTexture = assets.load<TextureAsset>("Textures/brightParticle.dds");
 	
 	PerformanceCounter counter;
 	double deltaTime;
@@ -98,7 +98,7 @@ void ParticleEditor::start()
 	if (fileNameButton == false)
 	{
 		pTexture = particlesTexture;
-		pTexString = "smoke.dds";
+		pTexString = "brightParticle.dds";
 		particleEmitters.at(selectedEmitter)->setTextrue(pTexture);
 		particleEmitters.at(selectedEmitter)->texName = pTexString;
 	}

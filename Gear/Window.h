@@ -21,7 +21,7 @@ public:
 private:
 
 	static inline void TwEventMousePosGLFW3(GLFWwindow* window, double xpos, double ypos) { TwMouseMotion(int(xpos), int(ypos)); }
-
+	const static int MONITOR_WIDTH = 1920;
 	GLFWwindow* window;
 
 	void initWindow();
