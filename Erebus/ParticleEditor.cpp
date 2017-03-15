@@ -15,7 +15,6 @@ glm::vec3 tempPosition;
 bool active = false;
 glm::vec3 tempDirection;
 bool button1 = false;
-bool button2 = false;
 bool newEmitter = false;
 bool buttonReset = false;
 bool hardReset = false;
@@ -24,7 +23,7 @@ Importer::TextureAsset* pTexture;
 Importer::TextureAsset* particlesTexture;
 char* pTexString;
 char* StringToCopy;
-std::string textureName = "fireSpellOverlay.dds";
+std::string textureName = "brightParticle.dds";
 std::string saveName = "filename";
 Importer::Assets assets;
 std::vector<ModelInstance> mI;
@@ -79,7 +78,7 @@ void ParticleEditor::start()
 	glfwSetMouseButtonCallback(window.getGlfwWindow(), (GLFWmousebuttonfun)TwEventMouseButtonGLFW3);
 	glfwSetCursorPosCallback(window.getGlfwWindow(), (GLFWcursorposfun)TwEventMousePosGLFW3);
 	
-	particlesTexture = assets.load<TextureAsset>("Textures/fireSpellOverlay.dds");
+	particlesTexture = assets.load<TextureAsset>("Textures/brightParticle.dds");
 	
 	PerformanceCounter counter;
 	double deltaTime;
@@ -93,7 +92,7 @@ void ParticleEditor::start()
 	particleEmitters.at(selectedEmitter)->isActive = false;
 
 	pTexture = particlesTexture;
-	pTexString = "fireSpellOverlay.dds";
+	pTexString = "brightParticle.dds";
 	particleEmitters.at(selectedEmitter)->setTextrue(pTexture);
 	particleEmitters.at(selectedEmitter)->texName = pTexString;
 
@@ -104,8 +103,7 @@ void ParticleEditor::start()
 	{
 		deltaTime = counter.getDeltaTime();
 		inputs.update();
-		/*Används camera.update() ???*/
-		//camera.updateLevelEditorCamera(deltaTime);
+
 		if(nrOfEmitters > 0)
 			updateSystem();
 
@@ -314,12 +312,7 @@ void ParticleEditor::update()
 		button1 = false;
 
 	}
-	//if (button2 == true)
-	//{
-	//	particleEmitters.at(selectedEmitter)->textureAssetParticles = particlesTexture;
-	//	button2 = false;
-	//	pTexString = "brightParticle.png";
-	//}
+
 	if (buttonReset == true)
 	{
 		particleEmitters.at(selectedEmitter)->resetEmitter();
