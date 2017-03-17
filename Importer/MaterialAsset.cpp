@@ -46,7 +46,6 @@ namespace Importer
 
 				int nameLen = cur - start;
 
-				// remove ':'
 				cur++;
 				if( strncmp( start, "Ambient color", nameLen ) == 0 )
 				{
@@ -161,7 +160,6 @@ namespace Importer
 
 	bool MaterialAsset::isWhitespace( char c )
 	{
-		// NOTE: since we include \n and \r it's technically not just whitespace
 		return ( c == ' ' || c == '\t' || c == '\n' || c == '\r' );
 	}
 

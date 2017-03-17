@@ -142,11 +142,6 @@ void ShaderProgram::use()
 	if (framebufferID != 0)
 	{
 		glBindFramebuffer(GL_FRAMEBUFFER, framebufferID);
-		/*for (int i = 0; i < nrOfTextures; i++)
-		{
-			glActiveTexture(GL_TEXTURE0 + i);
-			glBindTexture(GL_TEXTURE_2D, textureIDs[i]);
-		}*/
 	}
 	for (int i = 0; i < totalAttributes; i++)
 		glEnableVertexAttribArray(i);
@@ -244,11 +239,6 @@ std::string* ShaderProgram::getPaths(const shaderBaseType& type, const std::stri
 GLuint* ShaderProgram::getTypes(const shaderBaseType& type) {
 	GLuint* returnVal;
 
-	/*
-	types[0] = GL_VERTEX_SHADER;
-	types[1] = GL_FRAGMENT_SHADER;
-	types[2] = GL_GEOMETRY_SHADER;
-	*/
 	switch (type)
 	{
 	case shaderBaseType::VERTEX_FRAGMENT:

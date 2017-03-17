@@ -278,29 +278,6 @@ void Inputs::key_callback(GLFWwindow * window, int key, int scancode, int action
 	if (action == GLFW_RELEASE) {
 		keysReleasedThisFrame[key] = true;
 	}
-	//if (action == GLFW_PRESS)
-	//	holdingDownKey = true;
-	//else if(action == GLFW_RELEASE){
-	//	std::cout << "releasing key!" << std::endl;
-	//	holdingDownKey = false;
-
-	//}
-	//	
-	//keyCB = key;
-	//scancodeCB = scancode;
-	//actionCB = action;
-	//modsCB = mods;
-	////if (isAntTweak == 0 && isAntTweak1 == 0) {
-	//	keys[key] = action > 0;
-	//	keysRepeated[key] = action > 0;
-	//	if (action == GLFW_PRESS) {
-	//		keysPressedThisFrame[key] = true;
-	//	}
-	//	if (action == GLFW_RELEASE) {
-	//		keysReleasedThisFrame[key] = true;
-	//	}
-	//}
-
 }
 
 void Inputs::text_callback(GLFWwindow* window, unsigned int key)

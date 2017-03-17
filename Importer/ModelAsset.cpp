@@ -5,7 +5,6 @@ namespace Importer
 	ModelAsset::ModelAsset()
 		: dataptr(nullptr), material( nullptr )
 	{
-		//header.meshCount = header.materialCount = 0;
 		header.numMeshes = header.numSkeletons = header.numBBoxes = 0;
 	}
 
@@ -84,12 +83,10 @@ namespace Importer
 				if (meshes[curMesh].numVertices > 0)
 				{
 					glBufferData(GL_ARRAY_BUFFER, sizeof(sVertex)*meshes[curMesh].numVertices, vertices + offsets[curMesh].vertex, GL_STATIC_DRAW);
-					//bufferSizes[curMesh] = meshes[curMesh].vertexCount;
 				}
 				else
 				{
 					glBufferData(GL_ARRAY_BUFFER, sizeof(sSkeletonVertex)*meshes[curMesh].numAnimVertices, skeletonVertices + offsets[curMesh].skeletonVertex, GL_STATIC_DRAW);
-					//bufferSizes[curMesh] = meshes[curMesh].skeletonVertexCount;
 				}
 				glBindBuffer(GL_ARRAY_BUFFER, 0);
 
@@ -164,7 +161,6 @@ namespace Importer
 		jnt = (hJoint*)((char*)joints + skel->jointOffset + (joint * sizeof(hJoint)));
 
 		hAnimationState* animSt8t = (hAnimationState*)((char*)animationStates + jnt->animationStateOffset + animationState * sizeof(hAnimationState));
-		//Look into how animation state offsets are made in the FbxToFile - program
 		sKeyFrame* retFrames = (sKeyFrame*)((char*)keyFrames + animSt8t->keyOffset);
 
 		return retFrames;

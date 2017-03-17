@@ -151,12 +151,8 @@ namespace Importer
 			case ID_DXT5: format = GL_COMPRESSED_RGBA_S3TC_DXT5_EXT; break;
 		}
 
-		// TODO: Check for DXT10 header and fail appropriately
-
 		pixels = (uint8_t*)malloc( size );
 		fread( pixels, sizeof( BYTE ), size, file );
-
-		// NOTE: If we want mipmaps, cube maps, etc, we have to read them below
 
 		result = true;
 

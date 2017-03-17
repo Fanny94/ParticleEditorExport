@@ -131,7 +131,6 @@ namespace Importer
 
 	void Assets::unload()
 	{
-		//for( std::map<std::string, Asset*>::iterator it = assets.begin(); it != assets.end(); it++ )
 		for( std::map<AssetID, Asset*>::iterator it = assets.begin(); it != assets.end(); it++ )
 		{
 			it->second->unload();

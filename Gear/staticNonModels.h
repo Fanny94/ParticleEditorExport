@@ -78,7 +78,6 @@ public:
 	}
 
 	GEAR_API void drawAsLines() {
-		//programRef->use();
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 		for (size_t i = 0; i < nrDiffValues; i++)
 		{
@@ -90,17 +89,9 @@ public:
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iVBO);
 		glDrawElements(GL_LINES, iVBOsize, GL_UNSIGNED_INT, 0);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-		//programRef->unUse();
-		//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 5, 0);
-		//glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void*)(sizeof(float) * 3));
-		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iVBO);
-		//glDrawElements(GL_TRIANGLES, iVBOsize / sizeof(unsigned int), GL_UNSIGNED_INT, 0);
-
-		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
 
 	GEAR_API void draw() {
-		//programRef->use();
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 		for (size_t i = 0; i < nrDiffValues; i++)
 		{
@@ -112,13 +103,6 @@ public:
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iVBO);
 		glDrawElements(GL_TRIANGLES, iVBOsize, GL_UNSIGNED_INT, 0);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-		//programRef->unUse();
-		//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 5, 0);
-		//glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void*)(sizeof(float) * 3));
-		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iVBO);
-		//glDrawElements(GL_TRIANGLES, iVBOsize / sizeof(unsigned int), GL_UNSIGNED_INT, 0);
-
-		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
 
 };

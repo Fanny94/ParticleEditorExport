@@ -50,7 +50,6 @@ void RenderQueue::forwardPass(std::vector<ModelInstance>* staticModels)
 			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, size, (void*)(sizeof(float) * 3));
 			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, size, (void*)(sizeof(float) * 6));
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, statAsset->getIndexBuffer(j));
-			//glDrawElementsInstanced(GL_TRIANGLES, statAsset->getBufferSize(j), GL_UNSIGNED_INT, 0, numInstance);
 			glDrawArrays(GL_TRIANGLES, 0, size);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);	
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -62,7 +61,6 @@ void RenderQueue::forwardPass(std::vector<ModelInstance>* staticModels)
 void RenderQueue::particlePass(std::vector<Gear::ParticleEmitter*>* particleEmitters)
 {
 	allShaders[1]->use();
-	//GLuint loc = glGetUniformLocation(allShaders[1]->getProgramID(), "particleSize");
 	
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -74,7 +72,6 @@ void RenderQueue::particlePass(std::vector<Gear::ParticleEmitter*>* particleEmit
 	{
 		if (particleEmitters->at(i)->isActive)
 		{
-	/*		glUniform1f(loc, particleEmitters->at(i)->particleSize);*/
 			pos = particleEmitters->at(i)->getPositions();
 			particleEmitters->at(i)->getTexture()->bind(GL_TEXTURE0);
 			particleCount = particleEmitters->at(i)->getNrOfActiveParticles();

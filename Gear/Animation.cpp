@@ -141,28 +141,7 @@ void Animation::updateJointMatrices()
 
 	for (int i = 0; i < finalList.size(); i++)
 	{
-		////glm::mat4x4 translateMat = glm::make_mat4x4(finalList[i].keyTranslate);
-		////glm::mat4x4 rotateMat = glm::make_mat4x4(finalList[i].keyRotate);
-		////scaleMat = glm::make_mat4x4(finalList[i].keyScale);
-		//glm::mat4 scaleMat = glm::scale(glm::make_vec3(finalList[i].keyScale));
-
-		//glm::vec3 transVec = glm::tvec3<float>(glm::make_vec3(finalList[i].keyTranslate));
-		//glm::mat4 translateMat = glm::translate(transVec);
-
-		//glm::tvec3<float> rotXAxis = glm::vec3(1, 0, 0);
-		//glm::tvec3<float> rotYAxis = glm::vec3(0, 1, 0);
-		//glm::tvec3<float> rotZAxis = glm::vec3(0, 0, 1);
-
-		////rotations expressed in radians, convert to degrees by: deg * rad / deg
-		//float degreesX = finalList[i].keyRotate[0] * 180 / 3.14159265359;
-		//float degreesY = finalList[i].keyRotate[1] * 180 / 3.14159265359;
-		//float degreesZ = finalList[i].keyRotate[2] * 180 / 3.14159265359;
-
-		//glm::mat4x4 rotateMat = glm::rotate(degreesX, rotXAxis) * glm::rotate(degreesY, rotYAxis) * glm::rotate(degreesZ, rotZAxis);
 		float degRot[3];
-		//degRot[0] = finalList[i].keyRotate[0] * 180 / 3.14159265359;
-		//degRot[1] = finalList[i].keyRotate[1] * 180 / 3.14159265359;
-		//degRot[2] = finalList[i].keyRotate[2] * 180 / 3.14159265359;
 
 		degRot[0] = finalList[i].keyRotate[0];
 		degRot[1] = finalList[i].keyRotate[1];
@@ -171,15 +150,12 @@ void Animation::updateJointMatrices()
 		glm::mat4 rotateMat;
 		glm::mat4 scaleMat;
 
-
-		//convertToRotMat(finalList[i].keyRotate, &rotateMat);
 		convertToRotMat(degRot, &rotateMat);
 		convertToTransMat(finalList[i].keyTranslate, &translateMat);
 		convertToScaleMat(finalList[i].keyScale, &scaleMat);
 
 		tMatrices[i] = translateMat * scaleMat * rotateMat;
 	}
-	/*It looks like only the root is moving... But it should not*/
 	int jointIdxOffset = 0;
 	hSkeleton* skelPtr = asset->getSkeleton(0);
 	hJoint* modelJointPtr = asset->getJointsStart();
@@ -203,8 +179,6 @@ void Animation::updateJointMatrices()
 			jointIdxOffset = skelPtr->jointOffset / sizeof(hJoint);
 		}
 	}
-	//for (int i = 0; i < finalList.size(); i++)
-	//	shaderMatrices[i] = glm::mat4();
 }
 
 void Animation::myLerp(float arr1[3], float arr2[3], float fillArr[3], float iVal)

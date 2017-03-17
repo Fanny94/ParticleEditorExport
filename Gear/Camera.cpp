@@ -213,7 +213,6 @@ GEAR_API void Camera::setPosition(glm::vec3 position)
 GEAR_API void Camera::setHeight(float h)
 {
 	this->camPosition.y = h;
-	//this->lookPos.y += h;
 	setCamera(camPosition, lookPos);
 }
 
