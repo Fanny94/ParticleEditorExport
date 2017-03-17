@@ -23,7 +23,6 @@ namespace Gear
 {
 	class ParticleEmitter
 	{
-
 	public:
 		GEAR_API ParticleEmitter();
 		GEAR_API ~ParticleEmitter();

@@ -3,11 +3,7 @@
 
 namespace Gear
 {
-	ParticleEmitter::ParticleEmitter()
-	{
-
-
-	}
+	ParticleEmitter::ParticleEmitter(){}
 
 	ParticleEmitter::ParticleEmitter(float gravity, int n, float life, float speed, float rate, int number, float focusSpread, float dirx, float dirY, float dirZ, float size, float shrink) : isActive(false), timer(0)
 	{
@@ -29,7 +25,6 @@ namespace Gear
 		{
 			particlePos[i].size = particleSize;
 		}
-
 	}
 
 	GEAR_API void Gear::ParticleEmitter::emitterInit(float gravity, int n, float life, float speed, float rate, int number, float focusSpread, float dirx, float dirY, float dirZ, float size, float shrink)
@@ -60,6 +55,7 @@ namespace Gear
 		delete[] allParticles;
 		delete[] particlePos;
 	}
+
 	void ParticleEmitter::spawn(float dt)
 	{
 		if (alive)

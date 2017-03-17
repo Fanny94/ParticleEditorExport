@@ -6,7 +6,6 @@ namespace Gear
 {
 	class ParticleSystem
 	{
-
 	public:
 		GEAR_API ParticleSystem();
 		GEAR_API ~ParticleSystem();
@@ -24,8 +23,5 @@ namespace Gear
 		glm::vec3 v2;
 		glm::vec3 v3;
 		std::vector<Gear::ParticleEmitter*> particleEmitters;
-
-	private:
-
 	};
 }

@@ -20,7 +20,6 @@ namespace Gear
 
 	GEAR_API void ParticleSystem::update(const float &dt, glm::vec3 systemPos)
 	{
-	
 		for (int i = 0; i < particleEmitters.size(); i++)
 		{
 			emitterPos = particleEmitters.at(i)->localPos;
@@ -33,15 +32,11 @@ namespace Gear
 			
 			particleEmitters.at(i)->setEmitterPos(emitterPos);
 			particleEmitters.at(i)->update(dt);
-			
 		}
-	
 	}
 
 	GEAR_API void ParticleSystem::addEmitter(ParticleEmitter* emitter)
 	{
 		particleEmitters.push_back(emitter);
-		
 	}
-
 }

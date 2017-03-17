@@ -83,11 +83,7 @@ void ParticleEditor::start()
 	PerformanceCounter counter;
 	double deltaTime;
 
-	//Importer::ModelAsset* mA = assets.load<ModelAsset>("Models/testCube.model");
-
 	window.changeCursorStatus(false);
-	//mI.resize(1);
-	//mI.at(0).asset = mA;
 
 	particleEmitters.at(selectedEmitter)->isActive = false;
 
@@ -96,7 +92,6 @@ void ParticleEditor::start()
 	particleEmitters.at(selectedEmitter)->setTextrue(pTexture);
 	particleEmitters.at(selectedEmitter)->texName = pTexString;
 
-	//engine.queueModels(&mI);
 	engine.queueParticles(&particleEmitters);
 
 	while (running == true && window.isWindowOpen())
@@ -139,7 +134,6 @@ void ParticleEditor::start()
 		if (inputs.keyPressed(GLFW_KEY_W))
 			ps->systemPos += glm::vec3(2.0 * deltaTime, 0, 0);
 
-
 		if (inputs.keyPressedThisFrame(GLFW_KEY_ENTER))
 		{
 			if (hardReset)
@@ -149,6 +143,7 @@ void ParticleEditor::start()
 
 			}
 		}
+
 		if (inputs.keyPressedThisFrame(GLFW_KEY_DELETE))
 		{
 			delete particleEmitters.at(selectedEmitter);
@@ -258,7 +253,6 @@ void ParticleEditor::setBar()
 
 void ParticleEditor::writeToFile()
 {
-
 	FILE* file = NULL;
 	saveName = saveName + ".particle";
 	file = fopen((char*)("ParticleFiles/" + saveName).c_str(), "wb");
@@ -297,7 +291,6 @@ void ParticleEditor::writeToFile()
 
 		fclose(file);
 	}
-
 }
 
 void ParticleEditor::update()
@@ -310,7 +303,6 @@ void ParticleEditor::update()
 		pTexString = (char*)textureName.c_str();
 		particleEmitters.at(selectedEmitter)->texName = pTexString;
 		button1 = false;
-
 	}
 
 	if (buttonReset == true)
@@ -321,6 +313,7 @@ void ParticleEditor::update()
 		tempParticleSize = 1.0;
 		buttonReset = false;
 	}
+
 	if (newEmitter)
 	{
 		pEmitter = new Gear::ParticleEmitter();
@@ -334,6 +327,7 @@ void ParticleEditor::update()
 		hardReset = true;
 		newEmitter = false;
 	}
+
 	if (buttonSave == true)
 	{
 		writeToFile();
