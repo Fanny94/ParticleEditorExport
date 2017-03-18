@@ -163,15 +163,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\anim.frag" />
-    <None Include="Shaders\anim.geom" />
-    <None Include="Shaders\anim.vert" />
-    <None Include="Shaders\forward.frag" />
-    <None Include="Shaders\forward.geom" />
-    <None Include="Shaders\forward.vert" />
-    <None Include="Shaders\forwardAnim.frag" />
-    <None Include="Shaders\forwardAnim.geom" />
-    <None Include="Shaders\forwardAnim.vert" />
     <None Include="Shaders\particle.frag" />
     <None Include="Shaders\particle.geom" />
     <None Include="Shaders\particle.vert" />
