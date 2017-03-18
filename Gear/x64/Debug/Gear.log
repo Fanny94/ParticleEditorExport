@@ -1,10 +1,4 @@
-﻿  Window.cpp
-c:\users\fantanny\documents\visual studio 2015\projects\particleeditorexport\gear\window.cpp(28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
-  Compiling...
-  ParticleSystem.cpp
-  Generating Code...
-  LINK : C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Gear.dll not found or not built by the last incremental link; performing full link
+﻿  LINK : C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Gear.dll not found or not built by the last incremental link; performing full link
      Creating library C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Gear.lib and object C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Gear.exp
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Gear.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Gear.dll
