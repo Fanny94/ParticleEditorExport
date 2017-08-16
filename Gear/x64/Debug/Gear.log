@@ -1,6 +1,1 @@
-﻿  Gear.cpp
-c:\users\funne\onedrive\dokument\particleeditorexport\gear\staticnonmodels.h(84): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\funne\onedrive\dokument\particleeditorexport\gear\staticnonmodels.h(87): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\funne\onedrive\dokument\particleeditorexport\gear\staticnonmodels.h(98): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\funne\onedrive\dokument\particleeditorexport\gear\staticnonmodels.h(101): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
-  Gear.vcxproj -> C:\Users\funne\OneDrive\Dokument\ParticleEditorExport\x64\Debug\Gear.dll
+﻿
