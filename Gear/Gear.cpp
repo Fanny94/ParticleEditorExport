@@ -11,6 +11,7 @@ namespace Gear
 
 	GearEngine::~GearEngine()
 	{
+
 		glfwTerminate();
 	}
 
@@ -29,7 +30,7 @@ namespace Gear
 		queue.updateUniforms(camera);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		queue.particlePass(emitters);
-		queue.forwardPass(staticModels);
+		/*queue.forwardPass(staticModels);*/
 	}
 
 }

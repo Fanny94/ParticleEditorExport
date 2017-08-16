@@ -24,14 +24,14 @@ public:
 	void init();
 	void updateUniforms(Camera* camera);
 
-	void forwardPass(std::vector<ModelInstance>* staticModels);
+	//void forwardPass(std::vector<ModelInstance>* staticModels);
 	// TEMP:
 	std::vector<Gear::ParticleEmitter*> particleEmitters;
 
 	void particlePass(std::vector<Gear::ParticleEmitter*>* particleEmitters);
 
 private:
-	ShaderProgram* allShaders[2];
+	ShaderProgram* allShaders[1];
 	std::vector<ModelInstance> instances;
 	glm::mat4* worldMatrices;
 	glm::mat4* tempMatrices;

@@ -1,3 +1,20 @@
-﻿LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-  Erebus.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Erebus.exe
-  Erebus.vcxproj -> C:\Users\Fantanny\Documents\Visual Studio 2015\Projects\ParticleEditorExport\x64\Debug\Erebus.pdb (Full PDB)
+﻿  source.cpp
+c:\users\funne\onedrive\dokument\particleeditorexport\gear\staticnonmodels.h(84): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+c:\users\funne\onedrive\dokument\particleeditorexport\gear\staticnonmodels.h(87): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+c:\users\funne\onedrive\dokument\particleeditorexport\gear\staticnonmodels.h(98): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+c:\users\funne\onedrive\dokument\particleeditorexport\gear\staticnonmodels.h(101): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+  PerformanceCounter.cpp
+c:\users\funne\onedrive\dokument\particleeditorexport\erebus\performancecounter.cpp(35): warning C4101: 'elapsedTime': unreferenced local variable
+c:\users\funne\onedrive\dokument\particleeditorexport\erebus\performancecounter.cpp(50): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  ParticleEditor.cpp
+c:\users\funne\onedrive\dokument\particleeditorexport\gear\staticnonmodels.h(84): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+c:\users\funne\onedrive\dokument\particleeditorexport\gear\staticnonmodels.h(87): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+c:\users\funne\onedrive\dokument\particleeditorexport\gear\staticnonmodels.h(98): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+c:\users\funne\onedrive\dokument\particleeditorexport\gear\staticnonmodels.h(101): warning C4267: 'argument': conversion from 'size_t' to 'GLuint', possible loss of data
+c:\users\funne\onedrive\dokument\particleeditorexport\erebus\particleeditor.cpp(39): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\funne\onedrive\dokument\particleeditorexport\erebus\particleeditor.cpp(105): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\funne\onedrive\dokument\particleeditorexport\erebus\particleeditor.cpp(258): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  Erebus.vcxproj -> C:\Users\funne\OneDrive\Dokument\ParticleEditorExport\x64\Debug\Erebus.exe
