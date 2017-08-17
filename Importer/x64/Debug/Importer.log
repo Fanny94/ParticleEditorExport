@@ -1,1 +1,17 @@
-﻿
+﻿  Assets.cpp
+  Generating Code...
+  Compiling...
+  TextureAsset.cpp
+  ModelAsset.cpp
+  MaterialAsset.cpp
+c:\users\funne\onedrive\dokument\particleeditorexport\importer\materialasset.cpp(31): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\funne\onedrive\dokument\particleeditorexport\importer\materialasset.cpp(47): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+c:\users\funne\onedrive\dokument\particleeditorexport\importer\materialasset.cpp(116): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\funne\onedrive\dokument\particleeditorexport\importer\materialasset.cpp(137): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\funne\onedrive\dokument\particleeditorexport\importer\materialasset.cpp(154): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  ImageAsset.cpp
+c:\users\funne\onedrive\dokument\particleeditorexport\importer\imageasset.cpp(117): warning C4018: '<': signed/unsigned mismatch
+  FontAsset.cpp
+  Generating Code...
+  Importer.vcxproj -> C:\Users\funne\OneDrive\Dokument\ParticleEditorExport\x64\Debug\Importer.dll
+  Importer.vcxproj -> C:\Users\funne\OneDrive\Dokument\ParticleEditorExport\x64\Debug\Importer.pdb (Partial PDB)

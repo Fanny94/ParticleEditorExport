@@ -21,7 +21,6 @@ namespace Gear
 		std::vector<ModelInstance> defaultModelList = std::vector<ModelInstance>(0);
 
 		RenderQueue queue;	
-
 		std::vector<ParticleEmitter*>* emitters;
 	};
 }

@@ -3,6 +3,7 @@
 
 Window::Window()
 {
+	window = 0;
 	initWindow();
 	glClearColor(0, 0, 0, 0);
 }
@@ -33,7 +34,7 @@ void Window::initWindow()
 		std::cout << "Error init WINDOW!" << std::endl;
 	}
 
-	glfwSetWindowPos(window, 512, 128);
+	glfwSetWindowPos(window, 0, 30);
 	glfwMakeContextCurrent(window);
 	//fixar inputs callback funktioner
 	glfwSetKeyCallback(window, Inputs::key_callback);

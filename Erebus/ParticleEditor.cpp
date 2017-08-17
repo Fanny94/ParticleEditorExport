@@ -64,9 +64,9 @@ void ParticleEditor::start()
 
 	glEnable(GL_DEPTH_TEST);
 
-	Camera camera(45.f, 1280.f / 720.f, 0.1f, 2000.f, &inputs);
+	Camera camera(45.f, 1920.f / 1080.f, 0.1f, 2000.f, &inputs);
 
-	TwWindowSize(1280, 720);
+	TwWindowSize(1920, 1080);
 	ps = new Gear::ParticleSystem();
 
 	pEmitter = new Gear::ParticleEmitter(emitter.gravity, emitter.numOfParticles, emitter.lifeTime, emitter.speed, emitter.particleRate, emitter.partPerRate, emitter.focusSpread, emitter.dirX, emitter.dirY, emitter.dirZ, emitter.particleSize, emitter.shrinkage);
@@ -107,6 +107,7 @@ void ParticleEditor::start()
 		
 		if (inputs.keyPressed(GLFW_KEY_ESCAPE))
 			running = false;
+			window.isWindowOpen() == false;
 		if (inputs.keyPressed(GLFW_KEY_UP))
 			particleEmitters.at(selectedEmitter)->localPos += glm::vec3(0, 2.0 * deltaTime, 0);
 		if (inputs.keyPressed(GLFW_KEY_DOWN))
@@ -131,7 +132,7 @@ void ParticleEditor::start()
 				ps->systemPos += glm::vec3(0, -2.0 * deltaTime, 0);
 		if (inputs.keyPressed(GLFW_KEY_A))
 			ps->systemPos += glm::vec3(-2.0 * deltaTime, 0, 0);
-		if (inputs.keyPressed(GLFW_KEY_W))
+		if (inputs.keyPressed(GLFW_KEY_D))
 			ps->systemPos += glm::vec3(2.0 * deltaTime, 0, 0);
 
 		if (inputs.keyPressedThisFrame(GLFW_KEY_ENTER))
@@ -159,6 +160,8 @@ void ParticleEditor::start()
 		window.update();
 	}
 	TwTerminate();
+	glfwDestroyWindow(w);
+	window.isWindowOpen() == false;
 }
 
 void TW_CALL ParticleEditor::newTexture(void*)
@@ -225,7 +228,7 @@ void ParticleEditor::setBar()
 
 	editorBar = TwNewBar("ParticleEditorBar");
 
-	TwDefine("ParticleEditorBar label='Particle Editor' position='0 0' size='300 720' valueswidth=145 buttonalign=right color='192 255 192' movable=false resizable=false iconifiable=false");
+	TwDefine("ParticleEditorBar label='Particle Editor' position='0 30' size='400 700' valueswidth=145 buttonalign=right color='100 149 237' movable=false resizable=false iconifiable=false");
 
 	TwAddVarRO(editorBar, "Number of Emitters", TW_TYPE_INT32, &nrOfEmitters, "label='Number of Emitters' opened=true");
 	TwAddVarRO(editorBar, "Selected Emitter", TW_TYPE_INT32, &selectedEmitter, "label='Selected Emitter' opened=true");
@@ -239,7 +242,7 @@ void ParticleEditor::setBar()
 	TwAddVarRW(editorBar, "Particle Size", TW_TYPE_FLOAT, &tempParticleSize, "label='Particle Size' step=0.1");
 	TwAddVarRW(editorBar, "Shrink Size", TW_TYPE_FLOAT, &tempShrinkage, "label='Shrink Size' step = 0.1");
 	TwAddVarRW(editorBar, "Direction", TW_TYPE_DIR3F, &tempDirection, "label='Direction' opened=true");
-	TwAddVarRO(editorBar, "Position", TW_TYPE_DIR3F, &tempPosition, "label='Position' opened=true");
+	//TwAddVarRO(editorBar, "Position", TW_TYPE_DIR3F, &tempPosition, "label='Position' opened=true");
 	TwAddSeparator(editorBar, "Sep1", NULL);
 	TwAddButton(editorBar, "Activate", start, NULL, "label='Activate'");
 	TwAddButton(editorBar, "Add Emitter", addEmitter, NULL, "label='Add Emitter'");
