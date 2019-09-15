@@ -1,5 +1,5 @@
 # ParticleEditorExport
-This is a poarticle editor I created for a game me and other students made as a big game project.
+This is a particle editor I created for a game me and other students made as a big game project.
 
 To run the particle editor, build the Erebus.sin project in visual studio.
 
